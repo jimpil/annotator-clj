@@ -1,0 +1,164 @@
+losartan
+s-diastereomer
+dihydroergotamine
+verapamil
+warfarin
+3-hydroxyflunitrazepam
+ethoxyresorufin
+ketoconazole
+indinavir
+alpha-naphthoflavone (aNF)
+5,6-dimethylxanthenone-4-acetic acid
+3-hydroxylidocaine
+bromocriptine
+norcisapride
+paclitaxel
+5beta-cholestane-3alpha,7alpha,12alpha-triol
+loratidine
+fluvoxamine
+amlodipine
+6-hydroxymethyl-5-methylxanthenone-4-acetic acid (6-OH-MXAA)
+denitronifedipine
+eserine
+fentanyl
+delavirdine
+eprosartan
+6-OH-MXAA.
+desalkyl delavirdine
+omeprazole
+dapsone
+s-mephenytoin
+tangeretin
+desmethylflunitrazepam
+4-hydroxyalprazolam
+rPR 106541
+zafirlukast
+(S)-methadone
+sulfaphenazole
+perphenazine
+miconazole
+(R)-methadone
+1'-hydroxyalprazolam
+nevirapine
+irbesartan
+rosiglitazone
+risperidone
+rifamycin
+alpha-naphthoflavone
+r-sulfoxide
+midazolam
+norfluoxetine
+proguanil
+ebrotidine
+1'-hydroxymidazolam/midazolam
+l'-hydroxymidazolam
+caCl2
+7-ethoxyresorufin
+imipramine
+tris-HCl (Tris)
+trospium chloride
+benzene
+dihydrodiol
+tangerine juice
+astemizole
+triazolam
+s-warfarin
+candesartan
+nicardipine
+cycloguanil
+tolbutamide
+HMR3004
+dextromethorphan
+l'-OH MDZ
+desmethylazelastine
+alprazolam
+furafylline
+mgCl2
+terfenadine
+MDZ 4-OH
+cimetidine
+sulphaphenazole
+nifedipine
+diclofenac
+1'-hydroxymidazolam
+aniline
+clomipramine
+5,5'-dithio-bis(2-nitrobenzoic acid)
+mibefradil
+(S)-mephenytoin
+efavirenz
+3-fluoro-4-hydroxycisapride
+bupropion
+diethyldithiocarbamate
+diethyl p-nitrophenyl phosphate
+mDZ 1'-OH
+p-chloromercuribenzoate
+sodium phosphate (PO4)
+phenobarbital
+artelinic acid
+chlorzoxazone
+cisapride
+thioridazine
+cetirizine
+parathion
+rifabutin
+nelfinavir
+rifampicin
+terbinafine
+amprenavir
+4-fluoro-2-hydroxycisapride
+7,8-benzoflavone
+saquinavir
+pO4
+diazepam
+orphenadrine
+cyclosporin A
+dimethylformamide
+rifalazil
+5, 6-dimethylxanthenone-4-acetic acid (DMXAA)
+felodipine
+methadone
+phenacetin
+diisopropyl fluorophosphate
+fluphenazine
+propofol
+phenytoin
+midazolam (MDZ)
+flunitrazepam
+bufuralol
+6-hydroxyazelastine
+dihydralazine
+aNF
+alphanaphthoflavone
+mizolastine
+torasemide
+haloperidol
+caffeine
+lidocaine
+troleandomycin
+ritonavir
+coumarin
+testosterone
+azithromycin
+ranitidine
+amitriptyline
+loratadine
+quinidine
+fluconazole
+clarithromycin
+dihydroqinghaosu
+chlorpromazine
+roxithromycin
+dextrorphan
+clozapine
+diltiazem
+benzoquinone
+azelastine
+dexamethasone
+valsartan
+s-(+)-mephenytoin
+[triacetyloleandomycin (TAO)
+cis-thiothixene
+erythromycin
+artemisinin
+sildenafil

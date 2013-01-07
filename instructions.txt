@@ -1,0 +1,16 @@
+directly from the command-line (last parameter is optional):
+
+->  java -cp publ-0.1.0-SNAPSHOT-standalone.jar Annotator -d data-file.txt -t target-file.txt -e drug
+--------------------------------------------------------------------------------------------
+from java source (as an API):
+
+import Annotator; //need PAnnotator-0.1.0-SNAPSHOT-standalone.jar on your classpath
+
+//first we need the map with the appropriate arguments
+private Map parameters = new new HashMap<clojure.lang.Keyword, String>();
+parameters.put(clojure.lang.Keyword.intern("target"), "target-file.txt");    //example target-file
+parameters.put(clojure.lang.Keyword.intern("files+dics"), "data-file.txt"); //example data-file
+parameters.put(clojure.lang.Keyword.intern("entity-type"), "drug"); //this arg is optional ("default" will be used if missing )
+
+Annotator.process(parameters); //finally call the static void method process(java.util.Map m);
+---------------------------------------------------------------------------------------------

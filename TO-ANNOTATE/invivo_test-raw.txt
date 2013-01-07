@@ -1,0 +1,238 @@
+Pharmacokinetics of methadone in human-immunodeficiency-virus-infected patients receiving nevirapine once daily.
+The effect of nevirapine once-daily dosing on the pharmacokinetics of methadone and its main metabolite, 2-ethylidene-1,5-dimethyl-3,3-diphenylpyrrolidine, was evaluated in ten HIV positive patients on stable methadone therapy.
+Nevirapine 200 mg once daily was administered orally from day 1 to day 14.
+On day 15, nevirapine dose was increased to 400 mg once daily for the following 7 days of study and thereafter.
+On days 0, 8, and 22, concentration-time profiles of methadone and its metabolite were collected after methadone intake.
+Noncompartmental pharmacokinetic analysis was performed.
+Pharmacokinetic parameters obtained on days 8 and 22 were compared with those obtained before nevirapine administration.
+After starting nevirapine treatment, nine out of ten patients experienced symptoms of abstinence syndrome, and methadone dose had to be increased by 20% on average during the course of the study.
+Switching to high dose nevirapine (400 mg once daily) did not result in a greater decrease in the methadone AUC and C(max) compared with 200 mg nevirapine.
+None of the noncompartmental pharmacokinetic parameters of methadone metabolite evidenced statistically significant differences across the three study periods.
+The decrease in methadone AUC and C(max) administrated once daily was similar to that seen in other studies with nevirapine administrated twice daily, suggesting that the degree of induction of methadone metabolism by nevirapine is similar for both dosing regimens.
+After 7 days with nevirapine 200 mg, methadone area under the plasma concentration time curve (AUC) and maximum concentration (C(max)) values were reduced by 63.3% and 55.2%, respectively.
+A comparative pharmacokinetic study in healthy volunteers of the effect of carbamazepine and oxcarbazepine on cyp3a4.
+Carbamazepine (CBZ) and oxcarbazepine (OXCZ) are well-known inducers of drug metabolism via CYP3A4.
+Indirect interaction studies and clinical experience suggest that CBZ has a stronger potential in this regard than OXCZ.
+However this has never been subject to a direct comparative study.
+We performed a study in healthy volunteers to investigate the relative inductive effect of CBZ and OXCZ on CYP3A4 activity using the metabolism of quinidine as a biomarker reaction.
+Ten healthy, male volunteers participated in an open, randomized crossover study consisting of two periods separated by a 4-week wash-out period.
+The subjects received 1200 mg oral OXCZ daily for 17 days and 800 mg oral CBZ for 17 days.
+A single 200 mg oral dose of quinidine was administered at baseline and following administration of CBZ and OXCZ.
+Outcome parameters were the formation clearance of 3-hydroxyquinidine dose and the ratio of the AUCs of 3-hydroxyquinidine to quinidine.
+The relative inductive effect of CBZ was 46% higher than for OXCZ.
+tmax was not changed in either period.
+The inductive effect of CBZ was about 46% higher than that of OXCZ, a difference that may be of clinical relevance.
+Formation clearance of 3-hydroxyquinidine was increased by means of 89% (CI: 36-164; p=0.0022) and 181% (CI: 120-260, p<0.0001) after treatment with OXCZ and CBZ, respectively, compared to baseline.
+AUC ratio increased by means of 161% (CI: 139-187, p<0.0001) (OXCZ) and 222% (CI: 192-257, p<0.0001) (CBZ).
+Quinidine Cmax decreased by means of 29% (CI: 16-40, p=0.0018) (OXCZ) and 33% (CI: 18-45, p=0.0020) (CBZ).
+t1/2decreased by means of 12% (CI: 6-17, p<0.0014) (OXCZ) and 32% (CI: 25-38, p<0.0001) (CBZ).
+We confirm a clinically significant inductive effect of both OXCZ and CBZ.
+Effect of efavirenz on the pharmacokinetics of ketoconazole in HIV-infected patients.
+To investigate the effect of efavirenz on the ketoconazole pharmacokinetics in HIV-infected patients.
+Twelve HIV-infected patients were assigned into a one-sequence, two-period pharmacokinetic interaction study.
+In phase one, the patients received 400 mg of ketoconazole as a single oral dose on day 1; in phase two, they received 600 mg of efavirenz once daily in combination with 150 mg of lamivudine and 30 or 40 mg of stavudine twice daily on days 2 to 16.
+On day 16, 400 mg of ketoconazole was added to the regimen as a single oral dose.
+Ketoconazole pharmacokinetics were studied on days 1 and 16.
+C(max) and AUC(0-24) were significantly decreased by 44 and 72%, respectively.
+The T ((1/2)) was significantly shorter by 58%.
+Pretreatment with efavirenz significantly increased the clearance of ketoconazole by 201%.
+Efavirenz has a strong inducing effect on the metabolism of ketoconazole.
+Effect of itraconazole on pharmacokinetics of paroxetine: the role of gut transporters.
+A recent in vitro study has shown that paroxetine is a substrate of P-glycoprotein.
+However, there was no in vivo information indicating the involvement of P-glycoprotein on the pharmacokinetics of paroxetine.
+The aim of this study was to examine the effects of itraconazole, a P-glycoprotein inhibitor, on the pharmacokinetics of paroxetine.
+Two 6 day courses of either 200 mg itraconazole daily or placebo with at least a 4 week washout period were conducted.
+Thirteen volunteers took a single oral 20 mg dose of paroxetine on day 6 of both courses.
+Plasma concentrations of paroxetine were monitored up to 48 hours after the dosing.
+Although elimination half-life differed significantly (16.1 +/- 3.4 versus 18.8 +/- 5.9 hours, P < 0.05), the alteration was small (1.1 fold).
+Compared with placebo, itraconazole treatment significantly increased the peak plasma concentration (Cmax) of paroxetine by 1.3 fold (6.7 +/- 2.5 versus 9.0 +/- 3.3 ng/mL, P < 0.05) and the area under the plasma concentration-time curve from zero to 48 hours [AUC (0-48)] of paroxetine by 1.5 fold (137 +/- 73 versus 199 +/- 91 ng*h/mL, P < 0.01).
+The present study demonstrated that the bioavailability of paroxetine was increased by itraconazole, suggesting a possible involvement of P-glycoprotein in the pharmacokinetics of paroxetine.
+Amiodarone interacts with simvastatin but not with pravastatin disposition kinetics.
+The aim of this study was to determine the influence of amiodarone on the pharmacokinetics of simvastatin and pravastatin in humans.
+This was a prospective, crossover, randomized, open-label study performed in 12 healthy volunteers comparing the pharmacokinetics of a single oral dose of simvastatin (40 mg) or pravastatin (40 mg) taken alone and after 3 days of amiodarone (400 mg/day).
+If amiodarone and a statin have to be simultaneously prescribed, pravastatin should be preferred to simvastatin in order to avoid a drug interaction.
+Amiodarone increased simvastatin acid AUC (area under the plasma concentration-time curve)0-24 h, peak plasma concentration (Cmax), and t1/2 by 73% (P=0.02), 100% (P=0.02), and 48% (P=0.06), respectively, whereas it did not significantly alter pravastatin pharmacokinetics.
+Point estimates and 90% confidence intervals for simvastatin acid, simvastatin lactone, and pravastatin AUC(0-24 h) were 154% (109-216%), 155% (109-227%), and 86% (63-118%), respectively.
+Effects of clarithromycin and grapefruit juice on the pharmacokinetics of glibenclamide.
+Case reports suggest that clarithromycin can increase the glucose-lowering effect of glibenclamide which is metabolized mainly by CYP2C9 and is a substrate for P-glycoprotein and OATP2B1.
+Our objective was to evaluate whether the P-glycoprotein inhibitor, clarithromycin, increases and the putative OATP2B1 inhibitor, grapefruit juice, decreases plasma concentrations of glibenclamide.
+In a randomized three-phase crossover study, 12 subjects ingested 250 mg clarithromycin or placebo twice daily or 200 ml grapefruit juice three times daily for 2 days.
+On day 3, they ingested 0.875 mg glibenclamide with sugar water or grapefruit juice.
+Concentrations of glibenclamide and clarithromycin in plasma, glucose in blood, and excretion of hydroxy-glibenclamide into urine were measured up to 12 h. "
+Clarithromycin concentrations implied a good compliance.
+Blood glucose did not deviate between the phases.
+Clarithromycin increased the peak concentration (C(max)) of glibenclamide to 1.25-fold (95% confidence interval (CI) 1.12, 1.40; P < 0.01) and the area under the plasma concentration-time curve to 1.35-fold (95% CI 1.21, 1.50; P < 0.01) compared with the placebo phase.
+The time to C(max), the half-life of glibenclamide, and the amount of hydroxy-glibenclamide excreted into urine remained unaltered.
+grapefruit juice did not change the pharmacokinetics of glibenclamide.
+Clarithromycin increased plasma concentrations of glibenclamide, possibly by inhibiting P-glycoprotein in the intestinal wall.
+Although not seen with the present study design, clarithromycin may enhance the effect of glibenclamide by increasing plasma glibenclamide concentrations, which warrants close monitoring of blood glucose during their co-administration.
+grapefruit juice had no effect on glibenclamide pharmacokinetics.
+Significant pharmacokinetic and pharmacodynamic interaction of warfarin with the NO-independent sGC activator HMR1766.
+HMR1766 is a new nitric oxide (NO)-independent activator of soluble guanylyl cyclase (sGC) in development for the treatment of cardiovascular diseases and chronic heart failure.
+A significant fraction of patients to be treated with HMR1766 is expected to be maintained on warfarin.
+Because HMR1766 is an inhibitor and warfarin a substrate of CYP2C9, the authors studied whether warfarin pharmacokinetics and pharmacodynamics are influenced by HMR1766.
+Eighteen healthy males were to receive a single oral dose of 20 mg warfarin each under steady-state conditions of HMR1766 or placebo.
+Plasma concentrations of HMR1766, (R)- and (S)-warfarin, and its 7-hydroxy-metabolites were determined using high-performance liquid chromatography and prothrombin time, and the international standardized ratio was determined by the nephelometric method.
+These data demonstrate a CYP2C9-mediated pharmacokinetic interaction with pharmacodynamic, clinically relevant consequences, which might require warfarin dose adjustment.
+(S)-Warfarin AUC(inf) and t(1/2) were 106,471 h x microg/L and 82.92 hours versus 33,148 h x microg/L under HMR1766 and 31.72 hours under placebo, and the maximum decrease in prothrombin time values after warfarin dosing was 58.75% versus 39.94%.
+Inhibitory effects of propafenone on the pharmacokinetics of caffeine in humans.
+CYP1A2 is involved in the metabolism of both caffeine and propafenone, a class Ic antiarrhythmic agent.
+Despite the widespread consumption of caffeine, drug-drug interactions with this agent are often overlooked.
+This study investigated effects of propafenone on the pharmacokinetics of caffeine.
+Eight healthy volunteers were included in our study.
+A total of 300 mg of caffeine was given on 2 occasions, once alone and once during the coadministration of 300 mg propafenone.
+Serial blood samples were collected and pharmacokinetic parameters were estimated using a population pharmacokinetic approach.
+A one-compartment PK model with first-order absorption and elimination described plasma concentration profiles.
+One of our volunteers was a poor metabolizer of CYP2D6.
+Concomitant administration of propafenone to this volunteer caused the greatest increase in caffeine plasma concentrations.
+Caffeine has intrinsic proarrhythmic effects; thus, its coadministration with an antiarrhythmic agent such as propafenone should be used with caution, especially in patients with poor CYP2D6 activity.
+Concomitant administration of propafenone decreased caffeine oral clearance from 8.3 +/- 0.9 L/h to 5.4 +/- 0.7 L/h (P < 0.05).
+Elimination half-life of caffeine was also increased 54% by propafenone.
+These results support the concept of competitive inhibition between propafenone and caffeine.
+Our results suggest that propafenone causes significant inhibition of CYP1A2 activity leading to a decrease in the clearance of caffeine.
+Rofecoxib is a potent inhibitor of cytochrome P450 1A2: studies with tizanidine and caffeine in healthy subjects.
+Case reports suggest an interaction between rofecoxib and the CYP1A2 substrate tizanidine.
+Our objectives were to explore the extent and mechanism of this possible interaction and to determine the CYP1A2 inhibitory potency of rofecoxib.
+In a randomized, double-blind, two-phase cross-over study, nine healthy subjects took 25 mg rofecoxib or placebo daily for 4 days and, on day 4, each ingested 4 mg tizanidine.
+Plasma concentrations and the urinary excretion of tizanidine, its metabolites (M) and rofecoxib, and pharmacodynamic variables were measured up to 24 h. On day 3, a caffeine test was performed to estimate CYP1A2 activity.
+Finally, the AUC(0-25) of rofecoxib correlated with the placebo phase caffeine/paraxanthine ratio (r = 0.80, P = 0.01).
+The findings suggest that rofecoxib itself is also metabolized by CYP1A2, raising concerns about interactions between rofecoxib and other CYP1A2 substrate and inhibitor drugs.
+rofecoxib increased the area under the plasma concentration-time curve (AUC(0-infinity)) of tizanidine by 13.6-fold [95% confidence interval (CI) 8.0, 15.6; P < 0.001), peak plasma concentration (C(max)) by 6.1-fold (4.8, 7.3; P < 0.001) and elimination half-life (t(1/2)) from 1.6 to 3.0 h (P < 0.001).
+Consequently, rofecoxib markedly increased the blood pressure-lowering and sedative effects of tizanidine (P < 0.05).
+rofecoxib increased several fold the tizanidine/M-3 and tizanidine/M-4 ratios in plasma and urine and the tizanidine/M-5, tizanidine/M-9 and tizanidine/M-10 ratios in urine (P < 0.05).
+In addition, it increased the plasma caffeine/paraxanthine ratio by 2.4-fold (95% CI 1.4, 3.4; P = 0.008) and this ratio correlated with the tizanidine/metabolite ratios.
+rofecoxib is a potent inhibitor of CYP1A2 and it greatly increases the plasma concentrations and adverse effects of tizanidine.
+Effect of fluvoxamine and erythromycin on the pharmacokinetics of oral lidocaine.
+Lidocaine is metabolized by cytochrome P450 3A4 (CYP3A4) and CYP1A2 enzymes, but inhibitors of CYP3A4 have had only a minor effect on its pharmacokinetics.
+We studied the effect of co-administration of fluvoxamine (CYP1A2 inhibitor) and erythromycin (CYP3A4 inhibitor) on the pharmacokinetics of lidocaine in a double-blind, randomized, three-way cross-over study.
+Eight healthy volunteers ingested daily either 100 mg fluvoxamine and placebo, 100 mg fluvoxamine and 1500 mg erythromycin, or their corresponding placebos (control) for five days.
+On day 6, 1 mg/kg lidocaine was administered orally.
+Plasma concentrations of lidocaine, monoethylglycinexylidide (MEGX) and 3-hydroxylidocaine (3-OH-lidocaine) were measured for 10 hr.
+During the fluvoxamine phase the area under the plasma concentration-time curve (AUC) and peak concentration (Cmax) of oral lidocaine were 305% (P<0.001) and 220% (P<0.05) of the control values.
+During the combination of fluvoxamine and erythromycin, lidocaine AUC was 360% (P<0.001) and Cmax 250% (P<0.05) of those during placebo.
+Fluvoxamine alone had no statistically significant effect on the half-life of lidocaine (t1/2), but during the combination phase t1/2 (3.8 hr) was significantly longer than during the placebo phase (2.4 hr; P<0.01).
+Fluvoxamine alone and in the combination with erythromycin decreased MEGX peak concentrations by approximately 50% (P<0.001) and 30% (P<0.01), respectively.
+We conclude that inhibition of CYP1A2 by fluvoxamine considerably reduces the presystemic metabolism of oral lidocaine and may increase the risk of lidocaine toxicity if lidocaine is ingested.
+The concomitant use of both fluvoxamine and a CYP3A4 inhibitor like erythromycin may further increase plasma lidocaine concentrations.
+Potent cytochrome P450 2C19 genotype-related interaction between voriconazole and the cytochrome P450 3A4 inhibitor ritonavir.
+Cytochrome P450 (CYP) 2C19 and CYP3A4 are the major enzymes responsible for voriconazole elimination.
+Because the activity of CYP2C19 is under genetic control, the extent of inhibition with a CYP3A4 inhibitor was expected to be modulated by the CYP2C19 metabolizer status.
+This study thus assessed the effect of the potent CYP3A4 inhibitor ritonavir after short-term administration on voriconazole pharmacokinetics in extensive metabolizers (EMs) and poor metabolizers (PMs) of CYP2C19.
+In a randomized, placebo-controlled crossover study, 20 healthy participants who were stratified according to CYP2C19 genotype received oral ritonavir (300 mg twice daily) or placebo for 2 days.
+Together with the first ritonavir or placebo dose, a single oral dose of 400 mg voriconazole was administered.
+Voriconazole was determined in plasma and urine by liquid chromatography-mass spectrometry, and pharmacokinetic parameters were estimated by noncompartmental analysis.
+When given alone, the apparent oral clearance of voriconazole after single oral dosing was 26%+/-16% (P > .05) lower in CYP2C19*1/*2 individuals and 66%+/-14% (P < .01) lower in CYP2C19 PMs.
+This reduction occurred in all CYP2C19 genotypes (463+/-168 mL/min versus 305+/-112 mL/min [P = .023] for *1/*1, 343+/-127 mL/min versus 190+/-93 mL/min [P = .008] for *1/*2, and 158+/-54 mL/min versus 22+/-11 mL/min for *2/*2) and is probably caused by inhibition of CYP3A4-mediated voriconazole metabolism.
+Coadministration of a potent CYP3A4 inhibitor leads to a higher and prolonged exposure with voriconazole that might increase the risk of the development of adverse drug reactions on a short-term basis, particularly in CYP2C19 PM patients.
+The addition of ritonavir caused a major reduction in voriconazole apparent oral clearance (354+/-173 mL/min versus 202+/-139 mL/min, P = .0001).
+Effect of the CYP3A4 inhibitor erythromycin on the pharmacokinetics of lignocaine and its pharmacologically active metabolites in subjects with normal and impaired liver function.
+The objectives of this study were: (i) to evaluate the effect of a cytochrome P450 (CYP) 3A4 inhibitor, erythromycin, on the pharmacokinetics of intravenous lignocaine and its two pharmacologically active metabolites, monoethylglycinexylidide (MEGX) and glycinexylidide (GX); (ii) to assess whether the effects of the erythromycin inhibitory action on lignocaine clearance and the results of the MEGX liver function test depend on liver functional status; and (iii) to determine the effects of both moderate and severe liver dysfunction on the disposition kinetics of lignocaine.
+The study was carried out on 10 healthy volunteers, and 10 Child's class A and 10 class C cirrhotic patients, according to a double-blind, randomized, two-way crossover design.
+On day 1 of the investigation, all subjects received three oral doses of erythromycin (600 mg of the ethylsuccinate ester) or placebo, and two further doses on day 2.
+One hour after the fourth dose, subjects were given 1 mg kg-1 lignocaine intravenously.
+Timed plasma samples were then obtained until 12 h for determination of the concentrations of lignocaine, MEGX and GX.
+Quantitatively similar modifications were observed in the two cirrhotic groups.
+Only in patients with Child's grade C liver cirrhosis were lignocaine kinetic parameters significantly altered with respect to healthy volunteers.
+Thus, clearance was approximately halved, steady-state volume of distribution was increased, and terminal half-life was more than doubled.
+A pharmacodynamic study following lignocaine infusion to steady state appears necessary to assess the actual clinical relevance of these combined effects.
+The degree of liver dysfunction has no influence on the extent of the erythromycin-lignocaine interaction, whereas it markedly influences the extent of the changes in lignocaine pharmacokinetics.
+These findings indicate that no dose adjustment is needed in patients with moderate liver cirrhosis, whereas the lignocaine dose should be halved in patients with severe cirrhosis.
+Erythromycin caused statistically significant, although limited, modifications of lignocaine and MEGX pharmacokinetic parameters.
+In healthy volunteers, lignocaine clearance was decreased from 9.93 to 8.15 ml kg-1 min-1 [mean percentage ratio (95% CI), 82 (65-98)] and the half-life was prolonged from 2.23 to 02.80 h [mean percentage ratio (95% CI), 130 (109-151)]; MEGX area under the concentration-time curve from 0 h to 12 h was increased from 665 to 886 ng ml-1 h [mean percentage ratio (95% CI), 129 (102-156)].
+GX concentrations were lowered in all study groups, although not to statistically significant extents.
+Erythromycin coadministration caused no appreciable interference with the results of the MEGX test.
+Although erythromycin only modestly decreases lignocaine clearance, it causes a concomitant elevation of the concentrations of its pharmacologically active metabolite MEGX.
+Rifampin markedly decreases plasma concentrations of praziquantel in healthy volunteers.
+Praziquantel is extensively metabolized by the hepatic cytochrome P450 (CYP) enzymes.
+The CYP3A isoforms are likely to be major enzymes responsible for praziquantel metabolism.
+Rifampin (INN, rifampicin), a potent enzyme inducer of CYP-mediated metabolism (especially CYP2C9, CYP2C19, and CYP3A4), is known to markedly decrease plasma concentrations and effects of a number coadministered drugs.
+The aim of this investigation was to study the possible pharmacokinetic interaction between rifampin and praziquantel.
+An open, randomized, 2-phase crossover design was used in each study of single or multiple doses.
+In the single-dose study, 10 healthy Thai male volunteers ingested single doses of 40 mg/kg praziquantel alone (phase 1) or after pretreatment with 600 mg of oral rifampin once daily for 5 days (phase 2).
+In the multiple-dose study, all participants received multiple doses of 25 mg/kg praziquantel alone (phase 1) or after 5-day pretreatment with 600 mg of oral rifampin once daily (phase 2).
+Plasma concentrations of praziquantel in each phase were determined by the HPLC method.
+In the single-dose study, rifampin decreased plasma praziquantel concentrations to undetectable levels in 7 of 10 subjects, whereas praziquantel concentrations were reduced by rifampin to undetectable levels in 5 of 10 subjects in the multiple-dose study.
+Because praziquantel and rifampin are widely used in the treatment of liver flukes (Opisthorchis viverrini) and Mycobacterium tuberculosis, respectively, in Thailand and in some other countries in southeast Asia, the possibility of one drug influencing the pharmacokinetics of the other must be considered.
+Therefore simultaneous use of rifampin and praziquantel must be avoided in medical practice to optimize the therapeutic efficacy of praziquantel.
+In 3 subjects with measurable concentrations in the single-dose study, rifampin significantly decreased the mean maximum plasma concentration (C(max)) and area under the plasma concentration-time curve from 0 to 24 hours [AUC(0-24)] of praziquantel by 81% (P <.05) and 85% (P <.01), respectively, whereas rifampin significantly decreased the mean C(max) and AUC(0-24) of praziquantel by 74% (P <.05) and 80% (P <.01), respectively, in 5 subjects with measurable concentrations in the multiple-dose study.
+The mean C(max) and AUC(0-24) of praziquantel in subjects whose praziquantel concentrations could not be detected in the single-dose study (7 subjects) after rifampin pretreatment were reduced by approximately 99% (P <.001) and 94% (P <.001), respectively, and in the multiple-dose study (5 subjects), they were reduced by 98% (P <.05) and 89% (P <.01), respectively.
+Rifampin greatly decreased plasma concentrations of single and multiple oral doses of praziquantel to levels lower than that of the minimum therapeutic concentration.
+Plasma concentrations of inhaled budesonide and its effects on plasma cortisol are increased by the cytochrome P4503A4 inhibitor itraconazole.
+Our objective was to examine the effects of itraconazole on the pharmacokinetics and cortisol-suppressant activity of budesonide administered by inhalation.
+In a randomized, double-blind, 2-phase crossover study, 10 healthy subjects took 200 mg itraconazole or placebo orally once a day for 5 days.
+On day 5, 1 hour after the last dose of itraconazole or placebo, 1000 microg budesonide was administered by inhalation.
+Plasma budesonide and cortisol concentrations were measured up to 23 hours.
+This interaction resulted in enhanced systemic effects of budesonide, as shown by suppression of cortisol production.
+Long-term coadministration of budesonide and a potent CYP3A4 inhibitor may be associated with an increased risk of adverse effects of budesonide.
+Itraconazole increased the mean total area under the plasma concentration-time curve of inhaled budesonide 4.2-fold (range, 1.7-fold to 9.8-fold; P <.01) and the peak plasma concentration 1.6-fold (P <.01) compared with placebo.
+The mean terminal half-life of budesonide was prolonged from 1.6 to 6.2 hours (ie, 3.7-fold; range, 1.5-fold to 9.3-fold; P <.001) by itraconazole.
+The suppression of cortisol production after inhalation of budesonide was significantly increased by itraconazole as compared with placebo, as shown by a 43% reduction in the area under the plasma cortisol concentration-time curve from 0.5 to 10 hours (P <.001) and a 12% decrease in the cortisol concentration measured 23 hours after administration of budesonide, at 8 am (P <.05).
+Itraconazole markedly increased systemic exposure to inhaled budesonide, probably by inhibiting the cytochrome P4503A4-mediated metabolism of budesonide during both the first-pass and the elimination phases.
+Evaluation of potential losartan-phenytoin drug interactions in healthy volunteers.
+Phenytoin, a cytochrome P450 (CYP) 2C9 substrate, has a narrow therapeutic index and nonlinear pharmacokinetics.
+Therefore there is the potential for significant concentration-related adverse effects when phenytoin is coadministered with other CYP2C9 substrates.
+Losartan, an antihypertensive agent, is also a substrate for CYP2C9.
+Our objective was to assess the effects of losartan on the pharmacokinetics of phenytoin and the effects of phenytoin on the pharmacokinetics of losartan in a healthy population of volunteers.
+A prospective, randomized, 3-period crossover study was conducted in 16 healthy volunteers with phenytoin alone, phenytoin in combination with losartan, and losartan alone.
+Each treatment was given for 10 days with a 3-week washout period between treatments.
+On day 10, plasma concentrations of phenytoin and plasma and urine concentrations of losartan and its active carboxylic-acid metabolite E3174 were measured to determine steady-state pharmacokinetic parameters.
+Coadministration of losartan had no effect on the pharmacokinetics of phenytoin.
+Coadministration of phenytoin increased the mean area under the concentration-time curve from time zero to 24 hours [AUC(0-24)] of losartan by 17% (355 +/- 220 ng x h/mL versus 427 +/- 177 ng x h/mL; P =.1), but this difference was not statistically significant.
+In the 14 CYP2C9*1/*1 subjects, the mean AUC(0-24) of losartan was increased by 29% (284 +/- 84 ng x h/mL versus 402 +/- 128 ng x h/mL; P =.008).
+Coadministration of phenytoin significantly reduced the AUC(0-24) of E3174 by 63% (1254 +/- 256 ng x h/mL versus 466 +/- 174 ng x h/mL; P =.0001) and the formation clearance of losartan to E3174 (1.91 +/- 0.8 mL/h per kilogram versus 0.62 +/- 0.4 mL/h per kilogram; P =.0001).
+Losartan, a CYP2C9 substrate, had no effect on the pharmacokinetics of phenytoin.
+However, phenytoin inhibited the CYP2C9-mediated conversion of losartan to E3174.
+Effect of coadministration of nelfinavir, indinavir, and saquinavir on the pharmacokinetics of amprenavir.
+OBJECTIVE: Pharmacokinetic interactions are expected when human immunodeficiency virus (HIV) protease inhibitors are coadministered because many are both substrates for and inhibitors of CYP3A4.
+The goal of this model-based pharmacokinetic analysis was to describe the differences observed in amprenavir pharmacokinetics among treatment arms in the Adult AIDS Clinical Trial Group (AACTG) study protocol 398 and to propose mechanisms to account for them.
+METHODS: One hundred seventy-six HIV-positive subjects receiving 1200 mg amprenavir twice daily as part of AACTG protocol 398 were included in the pharmacokinetic study.
+All patients also received background medications efavirenz, adefovir dipivoxil, and abacavir and, depending on the study arm, placebo or one of the following protease inhibitors: nelfinavir, indinavir, or saquinavir.
+A population pharmacokinetic model was fitted to a total of 565 amprenavir concentration measurements.
+The blood samples for concentration measurements were drawn at week 2 (12-hour pharmacokinetic study, approximately 7 samples per study; 46 patients) and at week 24 (6-hour pharmacokinetic study, approximately 5 samples per study; 10 patients).
+In addition, samples were collected at 1 or more follow-up visits (population pharmacokinetic study, 1 to 3 occasions per patient; 150 patients).
+The absolute magnitude of amprenavir intrinsic clearance suggests that CYP3A4 inhibition by nelfinavir and indinavir is balanced by enzymatic induction in the presence of the background drug(s), most likely efavirenz.
+Results and Conclusion: Amprenavir intrinsic clearance was significantly reduced relative to placebo by nelfinavir (-41%) and indinavir (-54%) but not by saquinavir.
+Amprenavir intrinsic clearance apparently increases by more than 30% between weeks 2 and 24, possibly because of the time course of CYP3A4 induction.
+Inhibition of risperidone metabolism by fluoxetine in patients with schizophrenia: a clinically relevant pharmacokinetic drug interaction.
+The effect of fluoxetine on the steady-state plasma concentrations of risperidone and its active metabolite 9-hydroxyrisperidone (9-OH-risperidone) was evaluated in 10 patients with schizophrenia or schizoaffective disorder.
+Patients stabilized on risperidone (4-6 mg/day) received additional fluoxetine (20 mg/day) to treat concomitant depression.
+One patient dropped out after 1 week due to the occurrence of akathisia associated with markedly increased plasma risperidone concentrations.
+During the second week of adjunctive therapy, two patients developed Parkinsonian symptoms, which were controlled with anticholinergic medication.
+This interaction may lead to toxic plasma risperidone concentrations.
+In addition to careful clinical observation, monitoring plasma risperidone levels may be of value in patients given adjunctive therapy with fluoxetine.
+In the other subjects, mean plasma concentrations of risperidone increased during fluoxetine administration from 12 +/- 9 ng/mL at baseline to 56 +/- 31 at week 4 (p < 0.001), while the levels of 9-OH-risperidone were not significantly affected.
+After 4 weeks of combined treatment, the levels of the active moiety (sum of the concentrations of risperidone and 9-OH-risperidone) increased by 75% (range, 9-204%, p < 0.01) compared with baseline.
+The mean plasma risperidone/9-OH-risperidone ratio also increased significantly.
+These findings indicate that fluoxetine, a potent inhibitor of the cytochrome P450 enzyme CYP2D6 and a less potent inhibitor of CYP3A4, reduces the clearance of risperidone by inhibiting its 9-hydroxylation or alternative metabolic pathways.
+Single- and multiple-dose pharmacokinetics of bosentan and its interaction with ketoconazole.
+The present study was conducted to characterize the single- and multiple-dose pharmacokinetics of bosentan, a dual endothelin receptor antagonist, and to investigate a possible pharmacokinetic interaction with ketoconazole.
+In a randomized, two-way crossover study, 10 healthy male subjects received treatments A and B. Treatment A consisted of a single dose of 62.5 mg bosentan on day 1 followed by 62.5 mg twice daily for 5.5 days.
+Treatment B consisted of bosentan (62.5 mg twice daily) for 5.5 days plus concomitant ketoconazole (200 mg once daily) for 6 days.
+Plasma concentrations of bosentan and its three metabolites were measured on days 1 and 7 of treatment A and on day 6 of treatment B. "
+Upon multiple dosing, the exposure to bosentan was reduced by 33% without change in tmax and t(1/2).
+Exposure to the metabolites was low and represented less than 25% of that to bosentan both after single and multiple doses.
+The multiple-dose pharmacokinetics of bosentan are consistent with the phenomenon of auto-induction.
+Bosentan was absorbed and eliminated with a tmax of 4.5 h (range 3.5-6.0 h) and a t(1/2) of 5.4 h (95% CI; 4.5, 6.6).
+Concomitant administration of ketoconazole increased the Cmax and AUC of bosentan 2.1- (95% CI; 1.5, 2.7) and 2.3-fold (95% CI; 1.8, 2.9), respectively.
+In the presence of ketoconazole, formation of the metabolites was inhibited.
+In the presence of CYP3A4 inhibitors, bosentan concentrations may be increased 2-fold.
+The roles of CYP2D6 and stereoselectivity in the clinical pharmacokinetics of chlorpheniramine.
+To examine the stereoselective disposition of chlorpheniramine and to evaluate the role of CYP2D6 in chlorpheniramine pharmacokinetics in humans.
+Eight healthy volunteers (six extensive metabolizers with respect to CYP2D6 and two poor metabolizers) received a single 8 mg oral dose of rac-chlorpheniramine either given alone or following administration of quinidine 50 mg every 6 h for 2 days prior to the study day and every 6 h thereafter until the end of the study.
+Plasma concentrations of (S)-(+)- and (R)-(-)-enantiomers of chlorpheniramine were determined using liquid chromatography/mass spectrometry.
+Stereoselective elimination of chlorpheniramine occurs in humans, with the most pharmacologically active (S)-(+)-enantiomer cleared more slowly than the (R)-(-)-enantiomer.
+CYP2D6 plays a role in the metabolism of chlorpheniramine in humans.
+In extensive metabolizers, mean Cmax was greater (12.55+/-1.51 ng ml-1vs 5.38+/-0.44 ng ml-1) and CLoral was lower (0.49+/-0.08 l h-1 kg-1vs 1.07+/-0.15 l h-1 kg-1) for (S)-(+)- than for (R)-(-)-chlorpheniramine (P<0.005).
+For (S)-(+)-chlorpheniramine, administration of quinidine, an inhibitor of CYP2D6, resulted in an increase in Cmax to 13.94+/-1.51 (P<0.01), a reduction in CLoral to 0.22+/-0.03 l h-1 kg-1 (P<0.01), and a prolongation of elimination half-life from 18.0+/-2.0 h to 29.3+/-2.0 h (P<0.001).
+Administration of quinidine decreased CLoral for (R)-(-)-chlorpheniramine to 0.60+/-0.10 l h-1 kg-1 (P<0.005).
+In CYP2D6 poor metabolizers, systemic exposure was greater after chlorpheniramine alone than in extensive metabolizers, and administration of quinidine resulted in a slight increase in CLoral.
+Omeprazole hydroxylation is inhibited by a single dose of moclobemide in homozygotic EM genotype for CYP2C19.
+The pharmacokinetics of omeprazole and its metabolites in healthy subjects were evaluated to determine if a single dose of moclobemide inhibited CYP2C19 activity.
+Sixteen volunteers, of whom eight were extensive metabolizers (EM) and eight were poor metabolizers for CYP2C19, participated in two studies.
+Venous blood samples were collected for 24 h after oral ingestion of 40 mg omeprazole with or without 300 mg moclobemide coadministration.
+The pharmacokinetic change of omeprazole, omeprazole sulphone and 5-hydroxyomeprazole concentrations were assessed to test for an interaction between omeprazole and moclobemide.
+There was a significant decrease in Cmax and AUC of 5-hydroxyomeprazole in PMs but no significant changes were seen in the results for omeprazole and omeprazole sulphone AUCs.
+A single dose of moclobemide resulted in significant suppression of CYP2C19 activity in EMs.
+We conclude that physicians prescribing moclobemide should pay attention to its pharmacokinetic interactions even on the first day of coadministration with CYP2C19 substrates.
+The coadministration of moclobemide in EMs approximately doubled the mean AUC (from 1834 to 3760 ng ml(-1) h) and C(max) (from 987 to 1649 ng ml(-1)) of omeprazole, and increased the AUC of omeprazole sulphone without changing AUC ratio of omeprazole to omeprazole sulphone.
+Moclobemide coadministration more than doubled the AUC ratio of omeprazole to 5-hydroxyomeprazole (from 2.5 to 5.3) in EMs, too.

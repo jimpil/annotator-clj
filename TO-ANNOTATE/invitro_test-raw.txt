@@ -1,0 +1,475 @@
+Cytochrome P450 isoforms involved in melatonin metabolism in human liver microsomes.
+The present study was carried out to identify the cytochrome P450 enzyme(s) involved in the 6-hydroxylation and O-demethylation of melatonin.
+The formation kinetics of 6-hydroxymelatonin and N-acetylserotonin were determined using human liver microsomes and cDNA yeast-expressed human enzymes (CYP1A2, 2C9 and 2C19) over the substrate concentration range 1-1000 microM.
+Selective inhibitors and substrates of various cytochrome P450 enzymes were also employed.
+cDNA yeast-expressed CYP1A2, CYP2C9 and CYP2C19 catalysed the formation of the two metabolites, confirming the data obtained with specific inhibitors and substrates.
+Our results strongly suggest that 6-hydroxylation, the main metabolic pathway of melatonin, is mediated mainly, but not exclusively, by CYP1A2, the high-affinity enzyme involved in melatonin metabolism, confirming the observation that a single oral dose of fluvoxamine increases nocturnal serum melatonin levels in healthy subjects.
+Fluvoxamine was a potent inhibitor of 6-hydroxymelatonin formation, giving 50 +/- 5% and 69 +/- 9% inhibition at concentrations of 1 microM and 10 microM, respectively, after incubation with 50 microM melatonin.
+Furafylline, sulphaphenazole and omeprazole used at low and high concentrations substantially inhibited both metabolic pathways.
+Furthermore, the results indicate that there is a potential for interaction with drugs metabolised by CYP1A2 both at physiological levels and after oral administration of melatonin, while CYP2C19 and CYP2C9are assumed to be less important.
+Involvement of human liver cytochrome P4502B6 in the metabolism of propofol.
+To determine the cytochrome P450 (CYP) isoforms involved in the oxidation of propofol by human liver microsomes.
+The rate constant calculated from the disappearance of propofol in an incubation mixture with human liver microsomes and recombinant human CYP isoforms was used as a measure of the rate of metabolism of propofol.
+The correlation of these rate constants with rates of metabolism of CYP isoform-selective substrates by liver microsomes, the effect of CYP isoform-selective chemical inhibitors and monoclonal antibodies on propofol metabolism by liver microsomes, and its metabolism by recombinant human CYP isoforms were examined.
+The mean rate constant of propofol metabolism by liver microsomes obtained from six individuals was 4.2 (95% confidence intervals 2.7, 5.7) nmol min(-1) mg(-1) protein.
+The rate constants of propofol by microsomes were significantly correlated with S-mephenytoin N-demethylation, a marker of CYP2B6 (r = 0.93, P < 0.0001), but not with the metabolic activities of other CYP isoform-selective substrates.
+Of the recombinant CYP isoforms screened, CYP2B6 produced the highest rate constant for propofol metabolism (197 nmol min-1 nmol P450-1).
+Antibodies raised against other CYP isoforms had no effect on the metabolism of propofol.
+CYP2B6 is predominantly involved in the oxidation of propofol by human liver microsomes.
+Of the chemical inhibitors of CYP isoforms tested, orphenadrine, a CYP2B6 inhibitor, reduced the rate constant of propofol by liver microsomes by 38% (P < 0.05), while other CYP isoform-selective inhibitors had no effects.
+An antibody against CYP2B6 inhibited the disappearance of propofol in liver microsomes by 74%.
+Identification of the cytochrome P450 enzymes involved in the N-demethylation of sildenafil.
+To characterize the cytochrome P450 (CYP) enzymes responsible for the N-demethylation of sildenafil to its main metabolite, UK-103 320, to investigate the potential inhibitory effects of sildenafil on CYP enzymes and to evaluate the potential of selected drugs to affect sildenafil metabolism.
+The metabolic pathways of sildenafil N-demethylation were studied using human liver microsomes, as well as microsomes expressing individual human CYP enzymes.
+Further studies to identify the individual enzymes were performed at 2.5 and 250 microM sildenafil , and employed a combination of chemical inhibition , correlation analysis, and metabolism by expressed recombinant CYP enzymes.
+In addition, the effect of sildenafil on the activity of the six major drug metabolizing enzymes was investigated.
+Sildenafil conversion was found to be mediated by at least two CYP enzymes, for which the mean kinetic parameters were Km1 = 6(+/-3 microM), Km2 = 81(+/-45 microM), Vmax1 = 22(+/-9 pmol) and Vmax2 = 138(+/-77 pmol) UK-103 320 formed min(-1) mg(-1).
+At 250 microM sildenafil, N-demethylation was primarily mediated through the low-affinity, high-Km enzyme (approximately 83%), whilst at 2.5 microM there was a greater role for the high-affinity, low-Km enzyme (approximately 61%).
+Overall, 75% or more of the N-demethylation of sildenafil at any concentration is probably attributable to CYP3A4.
+These results were supported by experiments using expressed human CYP enzymes, in which only CYP3A4 and CYP3A4 exhibited substantial sildenafil N-demethylase activity (respective Km values of 221 microM and 27 microM).
+Since peak plasma concentrations of clinical doses of sildenafil are only 200 ng ml(-1) ( approximately 0.4 microM) it is very unlikely that sildenafil will significantly alter the plasma concentration of other compounds metabolized by cytochrome P450 enzymes.
+Ketoconazole strongly inhibited metabolism at both sildenafil concentrations and was the only significantinhibitor at 250 microM sildenafil.
+At the lower sildenafil concentration, sulphaphenazole and quinidine also inhibited formation of UK-103 320.
+Sildenafil metabolism was inhibited by potent CYP3A4 inhibitors which are used clinically, but was found to be only a weak inhibitor of drug metabolizing enzymes itself, the strongest inhibition occurring against CYP2C9 (Ki = 80 microM).
+Evidence is provided for CYP3A4 and to a lesser extent CYP2C9-mediated metabolism of sildenafil.
+There is the possibility that elevated plasma concentrations of sildenafil could occur with coadministration of known inhibitors of CYP2C9 or CYP3A4.
+Flunitrazepam metabolism by cytochrome P450S 2C19 and 3A4.
+ We have identified CYP2C19 and CYP3A4 as the principal cytochrome P450s involved in the metabolism of flunitrazepam to its major metabolites desmethylflunitrazepam and 3-hydroxyflunitrazepam .
+Human CYP2C19 and CYP3A4 mediated the formation of desmethylflunitrazepam with Km values of 11.1 and 108 microM, respectively, and 3-hydroxyflunitrazepam with Km values of 642 and 34.0 microM, respectively.
+In human liver microsomes (n = 4) formation of both metabolites followed biphasic kinetics.
+Our data also suggest that CYP1A2, -2B6 , -2C8 , -2C9, -2D6 , and -2E1 are not involved in either of these metabolic pathways.
+We estimate that the relative contributions of CYP2C19 and CYP3A4 to the formation of desmethylflunitrazepam in vivo are 63 and 37%, respectively, at therapeutic flunitrazepam concentrations (0.03 microM).
+We conclude that the polymorphic enzyme CYP2C19 importantly mediates flunitrazepam demethylation, which may alter the efficacy and safety of the drug, while CYP3A4 catalyzes the formation of 3-hydroxyflunitrazepam .
+Desmethylflunitrazepam formation was inhibited 31% by S-mephenytoin and 78% by ketoconazole , suggesting involvement of both CYP2C19 and CYP3A4 .
+Formation of 3-hydroxyflunitrazepam was also significantly inhibited by ketoconazole (94%) and S-mephenytoin (18%).
+In support of these chemical inhibition data, antibodies directed against CYP2C19 and CYP3A4 selectively inhibited formation of desmethylflunitrazepam by 26 and 45%, respectively, while anti-CYP3A4 antibodies reduced 3-hydroxyflunitrazepam formation by 80%.
+Inhibition of human cytochrome P450 isoforms by nonnucleoside reverse transcriptase inhibitors.
+The capacity of three clinically available nonnucleoside reverse transcriptase inhibitors (NNRTIs) to inhibit the activity of human cytochromes P450 (CYPs) was studied in vitro using human liver microsomes.
+The in vitro microsomal model provides relevant predictive data on probable drug interactions with NNRTIs when the mechanism is inhibition of CYP-mediated drug biotransformation.
+However, the model does not incorporate interactions attributable to enzyme induction.
+Delavirdine , nevirapine , and efavirenz produced negligible inhibition of phenacetin O-deethylation (CYP1A2) or dextromethorphan O-demethylation (CYP2D6).
+Nevirapine did not inhibit hydroxylation of tolbutamide (CYP2C9) or S-mephenytoin(CYP2C19) , but these CYP isoforms were importantly inhibited by delavirdine and efavirenz .
+This indicates the likelihood of significantly impaired clearance of CYP2C substrate drugs (such as phenytoin , tolbutamide , and warfarin ) upon initial exposure to these two NNRTIs.
+Delavirdine and efavirenz (but not nevirapine ) also were strong inhibitors of CYP3A , consistent with clinical hazards of initial cotreatment with either of these drugs and substrates of CYP3A .
+Ritonavir , efavirenz , and nelfinavir inhibit CYP2B6 activity in vitro: potential drug interactions with bupropion .
+Since antiretroviral drugs are known to inhibit many cytochrome P450 isoforms, the inhibition of CYP2B6 by non-nucleoside reverse transcriptase inhibitors and viral protease inhibitors was studied in vitro in human liver microsomes using bupropion hydroxylation as the CYP2B6 index reaction.
+Mean IC(50) values (microM) for inhibition of bupropion hydroxylation were: nelfinavir (2.5), ritonavir (2.2), and efavirenz (5.5).
+The reaction was only weakly inhibited by indinavir , saquinavir , amprenavir , delavirdine , and nevirapine .
+The inhibition of bupropion hydroxylation in vitro by nelfinavir , ritonavir , and efavirenz indicates inhibitory potency versus CYP2B6 and suggests the potential for clinical drug interactions.
+Identification of the human cytochrome P450 isoforms mediating in vitro N-dealkylation of perphenazine .
+To identify the human cytochrome P450 (CYP) isoforms mediating the N-dealkylation of the antipsychotic drug perphenazine in vitro and estimate the relative contributions of the CYP isoforms involved.
+cDNA-expressed CYP isoforms were used to identify the isoforms that are able to mediate the N-dealkylation of perphenazine , which is considered a major metabolic pathway for the drug.
+Using human liver microsomal preparations (HLM), inhibition studies were carried out to establish the relative contributions of the CYP isoforms involved in the N-dealkylation reaction.
+Reaction velocities and their relative abundance in HLM suggested that CYP1A2 , 3A4, 2C19 and 2D6 were the most important contributors to N-dealkylation.
+Apparent Km values of CYP1A2 and CYP2D6 were in the range 1-2 microM, and Km values of CYP2C19 and CYP3A4 were 14 microM and 7.9 microM, respectively.
+HLM-mediated N-dealkylation of perphenazine accounted for 57% of the total amount of substrate consumed during incubation.
+The present in vitro study suggests that CYP isoforms 1A2 , 3A4, 2C19 and 2CD6 are primarily involved in the N-dealkylation of perphenazine .
+The relatively modest role of CYP2D6 is at variance with in vivo studies, which indicate a greater contribution of this isoform.
+Alternative metabolic pathways, corresponding to 43% of the HLM-mediated metabolism of the drug, may depend more strongly on CYP2D6 .
+CYP isoforms 1A2 , 3A4, 2C8, 2C9, 2C18, 2C19 and 2D6 were able to mediate the N-dealkylation of perphenazine.
+Ketoconazole inhibition of N-dealkylation mediated by a mixed HLM indicated that CYP3A4 accounted for about 40% of perphenazine N-dealkylation at therapeutically relevant concentrations.
+The contribution of the CYP isoforms 1A2 , 2C19 and 2D6 amounted to 20-25% each as measured by the percentage inhibition obtained by addition of furafylline , fluvoxamine or quinidine, respectively.
+Interaction of delavirdine with human liver microsomal cytochrome P450 : inhibition of CYP2C, CYP2C19 , and CYP2D6 .
+It is also an irreversible inhibitor of CYP3A4.
+The interaction of delavirdine with CYP2C9 was examined with pooled human liver microsomes using diclofenac 4'-hydroxylation as a reporter of CYP2C9 catalytic activity.
+Nonlinear regression analysis revealed an apparent K(i) of 2.6+/-0.4 microM.
+There was no evidence for bioactivation as prerequisite to inhibition of CYP2C9 .
+Desalkyl delavirdine , the major circulating metabolite of delavirdine , had no apparent effect on microsomal CYP2C9 activity at concentrations up to 20 microM.
+Several analogs of delavirdine showed similar inhibition of CYP2C9 .
+Delavirdine , a non-nucleoside inhibitor of HIV-1 reverse transcriptase, is metabolized primarily through desalkylation catalyzed by CYP3A4 and CYP2D6 and by pyridine hydroxylation catalyzed by CYP3A4 .
+As delavirdine concentration was increased from 0 to 100 microM, the K(M) for diclofenac metabolism rose from 4.5+/-0.5 to 21+/-6 microM, and V(max) declined from 4.2+/-0.1 to 0.54+/-0.08 nmol/min/mg of protein, characteristic of mixed-type inhibition .
+Delavirdine significantly inhibited cDNA-expressed CYP2C19-catalyzed (S)-mephenytoin 4'-hydroxylation in a noncompetitive manner, with an apparent K(i) of 24+/-3 microM.
+Delavirdine at concentrations up to 100 microM did not inhibit the activity of CYP1A2 or -2E1 .
+Delavirdine competitively inhibited recombinant CYP2D6 activity with a K(i) of 12.8+/-1.8 microM, similar to the observed K(M) for delavirdine desalkylation.
+These results, along with previously reported experiments, indicate that delavirdine can partially inhibit CYP2C9 , -2C19 , -2D6 , and -3A4 , although the degree of inhibition in vivo would be subject to a variety of additional factors.
+Identification of the human liver cytochrome P450 isoenzyme responsible for the 6-methylhydroxylation of the novel anticancer drug 5,6-dimethylxanthenone-4-acetic acid .
+In vitro studies were conducted to identify the hepatic cytochrome P450 (CYP) isoenzyme involved in the 6-methylhydroxylation of 5, 6-dimethylxanthenone-4-acetic acid (DMXAA) by using a human liver library (n = 14).
+The metabolite 6-hydroxymethyl-5-methylxanthenone-4-acetic acid (6-OH-MXAA) was determined by HPLC with fluorescence detection.
+The metabolite formed in human liver microsomes and by cDNA-expressed CYP isoform was identified by liquid chromatography mass spectrometry as 6-OH-MXAA.
+In human liver microsomes (n = 14), 6-methylhydroxylation of DMXAA followed monophasic Michaelis-Menten kinetics, with a mean apparent K(m) of 21 +/- 5 microM and V(max) of 0.043 +/- 0.019 nmol/min/mg.
+An approximate 10-fold interindividual variation in the intrinsic clearance (V(max)/K(m)) of DMXAA 6-methylhydroxylation in human liver microsomes was observed.
+The involvement of CYP1A2 in DMXAA metabolism by human livers was demonstrated by the following: 1) the potent inhibition of DMXAA metabolism by furafylline (k(inact) = 0.23 +/- 0.04 min(-1), K'(app) = 15.6 +/- 6.7 microM) and alpha-naphthoflavone (K(i) = 0.036 microM) , but not by cimetidine , ketoconazole , tolbutamide , quinidine, chlorzoxazone , diethyldithiocarbamate , troleandomycin , and sulfaphenazole ; 2) when incubated with human lymphoblastoid cell microsomes containing cDNA-expressed CYP isoenzymes, DMXAA was metabolized only by CYP1A2 , with an apparent K(m) of 6.2 +/- 1.5 microM and V(max) of 0.014 +/- 0.001 nmol/min/mg , but not by CYP2A6 , CYP2B6 , CYP2C9(Arg(144)), CYP2C19 , CYP2D6 (Val(374)), CYP2E1 , and CYP3A4 ; 3) a significant correlation (r = 0.90; P <.001) between 6-methylhydroxylation of DMXAA and 7-ethoxyresorufin O-deethylation; and 4) a significant correlation (r = 0.75; P <.01) between the CYP1A protein level determined by Western blots and DMXAA 6-methylhydroxylation.
+Effects of macrolide antibiotics on CYP3A expression in human and rat hepatocytes: interspecies differences in response to troleandomycin .
+The effects of various macrolide antibiotics [triacetyloleandomycin (TAO) , clarithromycin , azithromycin , roxithromycin , erythromycin base] and the new ketolide HMR3004 on CYP3A expression were evaluated in human and rat hepatocytes.
+Cells were treated for 3 days with nontoxic concentrations of the drugs, and CYP3A induction was assessed through midazolam hydroxylase activity and Western and Northern blot analyses.
+In rat hepatocytes, no induction of CYP3A1 expression was observed following exposure to macrolides, even to erythromycin base and TAO (well known in vivo CYP3A1 inducers), whereas dexamethasone and phenobarbital were confirmed to induce this enzyme.
+This result was in agreement with the high amount of CYP3A4 protein and mRNA revealed by Western and Northern blot analyses.
+Other tested macrolides had no induction effect on CYP3A expression.
+These results confirmed the interspecies variability of CYP3A regulation in hepatocytes and raised the question of its mechanism of induction by macrolides in human liver.
+In contrast, treatment of fresh and thawed human hepatocytes with TAO, produced an increase of midazolam hydroxylation (4-fold over control).
+CYP3A4 is a major isoform responsible for oxidation of 7-hydroxy-Delta(8)-tetrahydrocannabinol to 7-oxo-delta(8)-tetrahydrocannabinol in human liver microsomes.
+The human liver enzyme microsomal alcohol oxygenase was able to oxidize both 7alpha- and 7beta-hydroxy-Delta(8)-tetrahydrocannabinol (7alpha- and 7beta-hydroxy-Delta(8)-THC) to 7-oxo-Delta(8)-THC.
+The oxidative activity was determined by using a panel of 12 individual cDNA-expressed human cytochrome P450s (CYPs) (1A1 , 1A2 , 2A6 , 2B6 , 2C8 , 2C9-Arg , 2C9-Cys , 2C19 , 2D6-Met , 2D6-Val, 2E1 and 3A4).
+Among the CYP isoforms examined, CYP3A4 showed the highest activity for both of substrates.
+The metabolism of 7alpha- and 7beta-hydroxy-Delta(8)-THC to 7-oxo-Delta(8)-THC was also detected for CYPs 1A1 (4.8% of CYP3A4 ), 1A2 (4.7%), 2A6 (2.3%), 2C8 (16.6%), and 2C9-Cys (5.4%), and CYPs 1A1 (0.4%), 2C8 (1.3%), 2C9-Arg (4.3%), and 2C9-Cys (0.9%), respectively.
+When the substrates were incubated with the CYP3A4-expressed microsomes under oxygen-18 gas phase, atmospheric oxygen was incorporated into 35% of 7-oxo-Delta(8)-THC formed from 7alpha-OH-Delta(8)-THC, but only 12% of 7-oxo-Delta(8)-THC formed from 7beta-OH-Delta(8)-THC.
+These results indicate that CYP3A4 is a major isoform responsible for the oxidation of 7alpha- and 7beta-hydroxy-Delta(8)-THC to 7-oxo-Delta(8)-THC in liver microsomes of humans, although the oxidation mechanisms for 7alpha- and 7beta-hydroxy-Delta(8)-THC might be different.
+The 7alpha- and 7beta-hydroxy-Delta(8)-THC microsomal alcohol oxygenase activities in human liver were significantly inhibited by addition of 100 microMtroleandomycin , 1 microM ketoconazole , and anti-CYP3A antibody, although these activities were not inhibited by 1 microM 7, 8-benzoflavone and 50 microM sulfaphenazole.
+Identification of enzymes responsible for rifalazil metabolism in human liver microsomes.
+1.
+The major metabolites of rifalazil in human are 25-deacetyl-rifalazil and 32-hydroxy-rifalazil.
+Biotransformation to these metabolites in pooled human liver microsomes, cytosol and supernatant 9000g (S9) fractions was studied, and the enzymes responsible for rifalazil metabolism were identified using inhibitors of esterases and cytochromes P450 (CYP) .
+2.
+The 25-deacetylation and 32-hydroxylation of rifalazil occurred in incubations with microsomes or S9 but not with cytosol, indicating that both the enzymes responsible for rifalazil metabolism were microsomal.
+Km and Vmax of the rifalazil-25-deacetylation in microsomes were 6.5 microM and 11.9 pmol/min/mg with NADPH, and 2.6 microM and 6.0 pmol/min/mg without NADPH, indicating that, although rifalazil-25-deacetylation did not require NADPH, NADPH activated it.
+Rifalazil-32-hydroxylation was NADPH dependent, and its Km and Vmax were 3.3 microM and 11.0 pmol/min/mg respectively.
+3.
+4.
+ Rifalazil-25-deacetylation in microsomes was completely inhibited by diisopropyl fluorophosphate , diethyl p-nitrophenyl phosphate and eserine , but not by p-chloromercuribenzoate or 5,5'-dithio-bis(2-nitrobenzoic acid) , indicating that the enzyme responsible for the rifalazil-25-deacetylation is a B-esterase .
+Rifalazil-32-hydroxylation in microsomes was completely inhibited by CYP3A4-specific inhibitors (fluconazole ,ketoconazole, miconazole , troleandomycin) and drugs metabolized by CYP3A4 such as cyclosporin A and clarithromycin , indicating that the enzyme responsible for the rifalazil-32-hydroxylation is CYP3A4 .
+CYP2C8/9 mediate dapsone N-hydroxylation at clinical concentrations of dapsone .
+This activation was cytochrome b5-dependent.
+Because CYP2C18 and CYP19 are expressed at low concentrations in the human liver, these observations indicate that at clinical DDS concentrations, CYP2C9 is a major and CYP2C8 is a likely minor contributor to DDS-NHY in human liver microsomes.
+Using selective cytochrome P450 (CYP) inhibitors and clinical concentrations (4 microM) of dapsone (DDS), we found a major contribution of CYP2C9 and little or no contribution (< or = 10%) of CYP3A4 and CYP2E1 to dapsone N-hydroxylation (DDS-NHY) in human liver microsomes.
+Sulfaphenazole (2.16 microM) and tolbutamide (500 microM), selective inhibitors of CYP2C9 (or 2C8/9) , inhibited DDS-NHY by 48 +/- 14 and 41 +/- 15%, respectively.
+The apparent Michaelis-Menten Km values for DDS-NHY by cloned CYP2C8 , CYP2C9 , CYP2C18, and CYP2C19 were 75 microM, 31 microM, 25 microM, and greater than 1 mM, respectively.
+CYP3A4 and CYP2E1 were incapable of DDS-NHY at 4 microM DDS.
+S-mephenytoin (360 microM) activated DDS-NHY by human liver microsomes and by CYP2C8 by 43 +/- 36 and 193 +/- 16%, respectively.
+In contrast, S-mephenytoin inhibited DDS-NHY by CYP2C9 , CYP2C18 , and CYP2C19 by 27 +/- 2, 49 +/- 1, and 32 +/- 4%, respectively.
+In vitro inhibition screening of human hepatic P450 enzymes by five angiotensin-II receptor antagonists.
+Metabolic interactions at the level of drug-metabolising enzymes are important for drug therapy.
+We investigated potential interactions of losartan , irbesartan , valsartan , eprosartan and candesartan with cytochrome P450 (CYP) enzymes in human liver microsomes.
+In incubations with human liver microsomes in vitro, the inhibitory potency of angiotensin-II receptor antagonists (sartans) on CYP-specific model activities were compared by measuring the IC50 and, with respect to more potent inhibition , Ki values.
+All sartans except eprosartan have at least some affinity for CYP2C9 , but only losartan has an affinity for CYP2C19 .
+ Losartan and irbesartan have modest affinity for CYP1A2 and CYP3A4 .
+This would suggest that the theoretical potential for drug interactions is likely to be quite low, with the possible exceptions of losartan and irbesartan for CYP2C9 .
+Based on these findings, further studies on the interaction potential of losartan and irbesartan are warranted.
+None of the five sartans inhibited CYP2A6 -, CYP2D6 - or CYP2E1-associated activities (coumarin 7-hydroxylation, dextromethorphan O-demethylation and chlorzoxazone 6-hydroxylation, respectively) to any significant extent.
+Losartan and irbesartan inhibited the CYP2C9-associated tolbutamide methylhydroxylation more potently (Ki values 4.1 microM and 24.5 microM), than valsartan , candesartan or eprosartan (Ki values 135 microM, 155 microM and > 1000 microM, respectively).
+Losartan and irbesartan inhibited CYP1A2- and CYP3A4-associated activities (ethoxyresorufin O-deethylation and testosterone 6beta-hydroxylation) with relatively weak affinities (IC50 values between 200 microM and 500 microM).
+CYP2C1OFF S-mephenytoin 4'-hydroxylation activity was inhibited by losartan (IC50 value 138 microM) and much less or not at all by the other sartans tested.
+ Inhibition of human cytochrome P450 isoforms in vitro by zafirlukast .
+Zafirlukast is a cysteinyl leukotriene antagonist used to treat allergic and exercise-induced asthma.
+This in vitro study used human liver microsomes to evaluate the inhibitory activity of zafirlukast versus six human cytochrome P450 (CYP) isoforms.
+Zafirlukast (0-250 microM) was co-incubated with fixed concentrations of index substrates.
+Zafirlukast deserves further clinical study as an inhibitor of other CYP2C9 substrates such as nonsteroidal anti-inflammatory agents, tolbutamide , phenytoin and mestranol.
+Clinically important inhibition by zafirlukast of other CYP isoforms is not established.
+Zafirlukast inhibited the hydroxylation of tolbutamide (CYP2C9 ; mean IC(50)=7.0 microM), triazolam (CYP3A; IC(50)=20.9 microM) and S-mephenytoin (CYP2C19; IC(50)=32.7 microM), and was a less potent inhibitor of phenacetin O-deethylation (CYP1A2; IC(50)=56 microM) and dextromethorphan O-demethylation (CYP2D6 ; IC(50)=116 microM).
+Zafirlukast produced negligible inhibition of CYP2E1 .
+In vitro inhibition of CYP2C9 by zafirlukast is consistent with clinical studies showing impaired clearance of S-warfarin and enhanced anti-thrombotic effects, although the in vitro IC(50) value is higher than the usual range of clinically relevant plasma concentrations.
+Interaction of cisapride with the human cytochrome P450 system: metabolism and inhibition studies.
+Using human liver microsomes (HLMs) and recombinant cytochrome P450s (CYP450s) , we characterized the CYP450 isoforms involved in the primary metabolic pathways of cisapride and documented the ability of cisapride to inhibit the CYP450 system.
+In HLMs, cisapride was N-dealkylated to norcisapride (NORCIS) and hydroxylated to 3-fluoro-4-hydroxycisapride (3-F-4-OHCIS) and to 4-fluoro-2-hydroxycisapride (4-F-2-OHCIS).
+Formation of NORCIS, 3-F-4-OHCIS, and 4-F-2-OHCIS in HLMs exhibited Michaelis-Menten kinetics (K(m): 23.4 +/- 8.6, 32 +/- 11, and 31 +/- 23 microM; V(max): 155 +/- 91, 52 +/- 23, and 31 +/- 23 pmol/min/mg of protein, respectively).
+The average in vitro intrinsic clearance (V(max)/K(m)) revealed that the formation of NORCIS was 3.9- to 5.
+9-fold higher than that of the two hydroxylated metabolites.
+Of 10 recombinant human CYP450s tested, CYP3A4 formed NORCIS from 10 microM cisapride at the highest rate (V = 0.56 +/- 0.13 pmol/min/pmol of P450) followed by CYP2C8 (V = 0.29 +/- 0.08 pmol/min/pmol of P450) and CYP2B6 (0.15 +/- 0.04 pmol/min/pmol of P450).
+The formation of 3-F-4-OHCIS was mainly catalyzed by CYP2C8 (V = 0.71 +/- 0.24 pmol/min/pmol of P450) and that of 4-F-2-OHCIS by CYP3A4 (0.16 +/- 0.03 pmol/min/pmol of P450 ).
+Clearly, recombinant CYP2C8 participates in cisapride metabolism, but when the in vitro intrinsic clearances obtained were corrected for abundance of each CYP450 in the liver, CYP3A4 is the dominant isoform.
+Our data suggest that CYP3A is the main isoform involved in the overall metabolic clearance of cisapride .
+Cisapride metabolism is likely to be subject to interindividual variability in CYP3A expression and to drug interactions involving this isoform.
+Formation rate of NORCIS from 10 microM cisapride in 14 HLMs was highly variable (range, 4.9-133.6 pmol/min/mg of protein) and significantly correlated with the activities of CYP3A (r = 0.86, P =.0001),CYP2C19 , and 1A2 .
+Of isoform-specific inhibitors, 1 microM ketoconazole and 50 microM troleandomycin were potent inhibitors of NORCIS formation from 10 microM cisapride (by 51 +/- 9 and 44 +/- 17%, respectively), whereas the effect of other inhibitors was minimal.
+Cisapride was a relatively potent inhibitor of CYP2D6 , with no significant effect on other isoforms tested, but the K(i) value derived (14 +/- 16 microM) was much higher than the clinically expected concentration of cisapride (<1 microM).
+Lack of correlation between in vitro and in vivo studies on the effects of tangeretin and tangerine juice on midazolam hydroxylation.
+Tangeretin is a flavonoid that stimulates the catalytic activity of cytochrome P450 3A4 (CYP3A4) and is found in high levels in tangerine juice.
+The effect of tangeretin on hydroxylation of midazolam , a CYP3A4 probe, was examined in vitro with human liver microsomes and recombinant CYP3A4.
+In addition, the effect of tangerine juice on the pharmacokinetics and pharmacodynamics of orally administered midazolam (15 mg) and its active 1'-hydroxymetabolite was studied in a randomized crossover study in eight healthy volunteers.
+These findings are consistent with a small delay in the absorption of midazolam and lack of effect on midazolam 1'-hydroxylation.
+However, tangerine juice is unlikely to have any appreciable effect on CYP3A4 in humans.
+Further studies are required to assess whether in vitro stimulators of CYP3A4 can influence drug metabolism in vivo.
+In microsomes from three human livers, tangeretin (1 to 100 micromol/L) increased 1'-hydroxymidazolam formation (12.5 micromol/L midazolam) by up to 212%.
+In complementary deoxyribonucleic acid-expressed CYP3A4 , a 52% stimulation of midazolam 1'-hydroxylation was reached at 50 micromol/L tangeretin with no effect on midazolam 4-hydroxylation.
+In the pharmacokinetic-pharmacodynamic study, 200 mL tangerine juice reduced the area under the concentration versus time curve to 1.5 hours [AUC(O-1.5h)] of midazolam and 1'-hydroxymidazolam by 39% and 46%, respectively, and prolonged the time to reach peak concentration (P < .05) without affecting the total AUC values, elimination half-life values, or AUC ratios (1'-hydroxymidazolam/midazolam ).
+Accordingly, tangerine juice slightly postponed the maximum pharmacodynamic effects of midazolam (P < .05).
+Tangeretin is a potent regioselective stimulator of midazolam 1'-hydroxylation by human liver microsomes and complementary deoxyribonucleic acid-expressed CYP3A4.
+Human cytochrome P-450 3A4: in vitro drug-drug interaction patterns are substrate-dependent.
+Testosterone, terfenadine , midazolam , and nifedipine , four commonly used substrates for human cytochrome P-450 3A4 (CYP3A4), were studied in pairs in human liver microsomes and in microsomes from cells containing recombinant human CYP3A4 and P-450 reductase, to investigate in vitro substrate-substrate interaction with CYP3A4 .
+The interaction patterns between compounds with CYP3A4 were found to be substrate-dependent.
+Furthermore, the effect of testosterone and 7,8-benzoflavone on midazolam 1'-hydroxylation and 4-hydroxylation demonstrated different regiospecificities.
+These results may be explained by a model in which multiple substrates or ligands can bind concurrently to the active site of a single CYP3A4 molecule.
+However, the contribution of separate allosteric sites and conformational heterogeneity to the atypical kinetics of CYP3A4 can not be ruled out in this model.
+Mutual inhibition, partial inhibition, and activation were observed in the testosterone-terfenadine, testosterone-midazolam, or terfenadine-midazolam interactions.
+However, the most unusual result was the interaction between testosterone and nifedipine.
+Although nifedipine inhibited testosterone 6beta-hydroxylation in a concentration-dependent manner, testosterone did not inhibit nifedipine oxidation.
+Drug interactions with calcium channel blockers: possible involvement of metabolite-intermediate complexation with CYP3A .
+The inhibitory effects of six commonly used calcium channel blockers on three major cytochrome P-450 activities were examined and characterized in human liver microsomes.
+The IC(50) values for the inhibition of CYP2D6 and CYP2C9 for nicardipine were 3 to 9 microM, whereas those for all others ranged from 14 to >150 microM.
+Similar results also were obtained based on midazolam 1'-hydroxylase activity.
+Unlike the observations with mibefradil , a potent irreversible inhibitor of CYP3A , the NADPH-dependent inhibition of CYP3A activity by nicardipine and verapamil was completely reversible on dialysis, whereas that by diltiazem was partially restored (80%).
+Additional experiments revealed that nicardipine , verapamil , and diltiazem formed cytochrome P-450-iron (II) -metabolite complex in both human liver microsomes and recombinant CYP3A4.
+Nicardipine yielded a higher extent of complex formation ( approximately 30% at 100 microM), and was a much faster-acting inhibitor (maximal inhibition rate constant approximately 2 min(-1)) as compared with verapamil and diltiazem .
+These present findings that the CYP3A inhibition caused by nicardipine , verapamil , and diltiazem is, at least in part, quasi-irreversible provide a rational basis for pharmacokinetically significant interactions reported when they were coadministered with agents that are cleared primarily by CYP3A-mediated pathways.
+All six compounds reversibly inhibited CYP2D6 (bufuralol 1'-hydroxylation) and CYP2C9 (tolbutamide methyl hydroxylation) activities.
+Except for nifedipine , all calcium channel blockers showed increased inhibitory potency toward CYP3A activities (testosterone 6beta-hydroxylation and midazolam 1'-hydroxylation) after 30-min preincubation with NADPH.
+IC(50) values for the inhibition of testosterone 6beta-hydroxylase obtained in the NADPH-preincubation experiment for nicardipine (1 microM), verapamil (2 microM), and diltiazem (5 microM) were within 10-fold, whereas those for amlodipine (5 microM) and felodipine (13 microM) were >200-fold of their respective plasma concentrations reported after therapeutic doses.
+Inhibitory effects of trospium chloride on cytochrome P450 enzymes in human liver microsomes.
+Trospium chloride , an atropine derivative used for the treatment of urge incontinence, was tested for inhibitory effects on human cytochrome P450 enzymes.
+Metabolic activities were determined in liver microsomes from two donors using the following selective substrates: dextromethorphan (CYP2D6) , denitronifedipine (CYP3A4) , caffeine (CYP1A2) , chlorzoxazone (CYP2E1) , S-(+)-mephenytoin (CYP2C19) , S-(-)-warfarin (CYP2C9) and coumarin (CYP2A6).
+Incubations with each substrate were carried out without a possible inhibitor and in the presence of trospium chloride at varying concentrations (37-3000 microM) at 37 degrees in 0.1 M KH2PO4 buffer containing up to 3% DMSO.
+Metabolite concentrations were determined by high-performance liquid chromatography (HPLC) in all cases except CYP2A6 where direct fluorescence spectroscopy was used.
+First, trospium chloride IC50 values were determined for each substrate at respective K(M) concentrations.
+Therefore, additional dextromethorphan concentrations (0.4-2000 microM) were tested.
+Compared to therapeutic trospium chloride peak plasma concentrations below 50 nM, the 1000-times higher competitive inhibition constant Ki however suggests that inhibition of CYP2D6 by trospium chloride is without any clinical relevance.
+Trospium chloride did not show relevant inhibitory effects on the metabolism of most substrates (IC50 values considerably higher than 1 mM).
+The only clear inhibition was seen for the CYP2D6-dependent high-affinity O-demethylation of dextromethorphan, where IC50 values of 27 microM and 44 microM were observed.
+Trospium chloride was a competitive inhibitor of the reaction with Ki values of 20 and 51 microM, respectively.
+Thus, trospium chloride has negligible inhibitory effects on CYP3A4 , CYP1A2, CYP2E1, CYP2C19, CYP2C9 and CYP2A6 activity but is a reasonably potent inhibitor of CYP2D6 in vitro.
+Fluvoxamine is a more potent inhibitor of lidocaine metabolism than ketoconazole and erythromycin in vitro.
+CYP3A4 is generally believed to be the major CYP enzyme involved in the biotransformation of lidocaine in man; however, recent in vivo studies suggest that this may not be the case.
+We have examined the effects of the CYP3A4 inhibitors erythromycin and ketoconazole and the CYP1A2 inhibitor fluvoxamine on the N-deethylation, i.e. formation of monoethylglycinexylidide (MEGX), and 3-hydroxylation of lidocaine by human liver microsomes.
+The experiments were carried out at lidocaine concentrations of 5 microM (clinically relevant concentration) and 800 microM.
+The formation of both MEGX and 3-hydroxylidocaine was best described by a two-enzyme model.
+At 5 microM of lidocaine , fluvoxamine was a potent inhibitor of the formation of MEGX (IC50 1.2 microM).
+Although further studies are needed to elucidate the role of distinct CYP enzymes in the biotransformation of lidocaine in humans, the findings of this study suggest that while both CYP1A2 and CYP3A4 are involved in the metabolism of lidocaine by human liver microsomes, CYP1A2 is the more important isoform at clinically relevant lidocaine concentrations.
+Ketoconazole and erythromycin also showed an inhibitory effect on MEGX formation, but ketoconazole (IC50 8.5 microM) was a much more potent inhibitor than erythromycin (IC50 200 microM).
+At 800 microM of lidocaine , fluvoxamine (IC50 20.7 microM) and ketoconazole (IC50 20.4 microM) displayed a modest inhibitory effect on MEGX formation, whereas erythromycin was a weak inhibitor (IC50 >250 microM).
+The 3-hydroxylation of lidocaine was potently inhibited by fluvoxamine at both lidocaine concentrations (IC50 0.16 microM at 5 microM and 1.8 microM at 800 microM).
+ Erythromycin and ketoconazole showed a clear inhibitory effect on the 3-hydroxylation of lidocaine at 5 microM of lidocaine (IC50 9.9 microM and 13.9 microM, respectively), but did not show a consistent effect at 800 microM of lidocaine (IC50 >250 microM and 75.0 microM, respectively).
+In vitro inhibition of human liver drug metabolizing enzymes by second generation antihistamines.
+Cetirizine , terfenadine , loratadine , astemizole and mizolastine were compared for their ability to inhibit marker activities for CYP1A2 , CYP2C9,CYP2C19, CYP2D6, CYP3A4 and for some glucuronidation isoenzymes in human liver microsomes.
+A comparison of the inhibitory potencies of cetirizine , terfenadine , loratidine , astemizole and mizolastine with their corresponding plasma concentrations in humans suggests that these antihistamines are not likely to interfere with the metabolic clearance of coadministered drugs, with the exception of loratidine , which appears to inhibit CYP2C19 with sufficient potency to warrant additional investigation.
+The most pronounced effects were observed with terfenadine , astemizole and loratadine which inhibited CYP3A4-mediated testosterone 6beta-hydroxylation (IC50 of 23, 21 and 32 microM, respectively) and CYP2D6-mediated dextromethorphan O-demethylation (IC50 of 18, 36 and 15 microM, respectively).
+In addition,loratadine markedly inhibited the CYP2C19 marker activity, (S)-mephenytoin 4-hydroxylation (Ki of 0.17 microM).
+Furthermore, loratadine activated the CYP2C9-catalyzed tolbutamide hydroxylation (ca. 3-fold increase at 30 microM) and inhibited some glucuronidation enzymes.
+Mizolastine appeared to be a relatively weak and unspecific inhibitor of CYP2E1 , CYP2C9 , CYP2D6 and CYP3A4 (IC50Ss in the 100 micromolar range).
+Cetirizine demonstrated no effect on the investigated activities.
+Characterization of the in vitro biotransformation of the HIV-1 reverse transcriptase inhibitor nevirapine by human hepatic cytochromes P-450 .
+Nevirapine (NVP), a non-nucleoside inhibitor of HIV-1 reverse transcriptase, is concomitantly administered to patients with a variety of medications.
+To assess the potential for its involvement in drug interactions, cytochrome P-450 (CYP) reaction phenotyping of NVP to its four oxidative metabolites, 2-, 3-, 8-, and 12-hydroxyNVP, was performed.
+The NVP metabolite formation rates by characterized human hepatic microsomes were best correlated with probe activities for either CYP3A4 (2- and 12-hydroxyNVP) or CYP2B6 (3-and 8-hydroxyNVP).
+In studies with cDNA-expressed human hepatic CYPs, 2- and 3-hydroxyNVP were exclusively formed by CYP3A and CYP2B6 , respectively.
+Multiple cDNA-expressed CYPs produced 8- and 12-hydroxyNVP, although they were produced predominantly by CYP2D6 and CYP3A4, respectively.
+Antibody to CYP3A4 inhibited the rates of 2-, 8-, and 12-hydroxyNVP formation by human hepatic microsomes, whereas antibody to CYP2B6 inhibited the formation of 3- and 8-hydroxyNVP.
+Collectively, these data indicate that NVP is principally metabolized by CYP3A4 and CYP2B6 and that it has little potential to be involved in inhibitory drug interactions.
+Studies using the CYP3A4 inhibitors ketoconazole , troleandomycin , and erythromycin suggested a role for CYP3A4 in the formation of 2-, 8-, and 12-hydroxyNVP.
+These inhibitors were less effective or ineffective against the biotransformation of NVP to 3-hydroxyNVP.
+Quinidine very weakly inhibited only 8-hydroxyNVP formation.
+NVP itself was an inhibitor of only CYP3A4 at concentrations that were well above those of therapeutic relevance (K(i) = 270 microM).
+Fentanyl inhibits metabolism of midazolam : competitive inhibition of CYP3A4 in vitro.
+Fentanyl decreases clearance of midazolam administered i.v., but the mechanism remains unclear.
+To elucidate this mechanism, we have investigated the effect of fentanyl on metabolism of midazolam using human hepatic microsomes and recombinant cytochrome P450 isoforms (n = 6).
+Midazolam was metabolized to l'-hydroxymidazolam (l'-OH MDZ) by human hepatic microsomes, with a Michaelis-Menten constant (K(m)) of 5.0 (SD 2.7) mumol litre-1.
+Of the seven representative human hepatic P450 isoforms, CYP1A2 , 2A6 , 2C9, 2C19 , 2D6, 2E1 and 3A4 , only CYP3A4 catalysed hydroxylation of midazolam, with a K(m) of 3.6 (0.8) mumol liter-1.
+These findings indicate that fentanyl competitively inhibits metabolism of midazolam by CYP3A4 .
+Fentanyl competitively inhibited metabolism of midazolam in human hepatic microsomes, with an inhibition constant (Ki) of 26.8 (12.4) mumol litre-1.
+Fentanyl competitively inhibited metabolism of midazolam to l'-OH MDZ by CYP3A4 , with a Ki of 24.2 (6.8) mumol litre-1, comparable with the Ki obtained in human hepatic microsomes.
+Biotransformation of alprazolam by members of the human cytochrome P4503A subfamily.
+1.
+To aid in the prediction of drug interactions with alprazolam , the human CYP involved in the 1'- and 4-hydroxylation of alprazolam were characterized using human liver microsomes, expressed enzymes and selective chemical inhibitors .
+2.
+Only microsomes from B-lymphoblastoid cells expressing CYP3A4 were capable of catalysing the 1'- and 4-hydroxylation of alprazolam .
+3.
+The formation rates of 1'-hydroxyalprazolam and 4-hydroxyalprazolam at an alprazolam concentration of 1 mM were significantly correlated (n = 19, r = 0.95, p<0.01) indicating that the same enzyme(s) mediated these biotransformations .
+A significant (p<0.01) correlation was observed between alprazolam 4- and 1'-hydroxylase activity and CYP3A-mediated midazolam 4-hydroxylase, midazolam 1'-hydroxylase, dextromethorphan N-demethylase and erythromycin N-demethylase activities.
+4.
+In conclusion, in adult human liver the CYP3A subfamily members are the principal enzymes involved in the 1'- and 4-hydroxylation of alprazolam.
+Thus, clinically significant drug drug interactions between alprazolam and other CYP3A substrates are to be expected.
+The formation of 4-hydroxyalprazolam and 1'-hydroxyalprazolam at an alprazolam concentration of 62.5 microM were reduced by the prototypic CYP3A inhibitor , troleandomycin (50 microM), by 97 and 9900 respectively.
+Activation of phenacetin O-deethylase activity by alpha-naphthoflavone in human liver microsomes.
+1.
+The roles of different human cytochrome P450s (CYP) in phenacetin O-deethylation were investigated using human liver microsomes and recombinant proteins.
+2.
+In recombinant CYP from human B-lymphoblast cells, POD activities at a phenacetin concentration of 500 microM were detected for CYP2E1 and CYP3A4 , as well as CYP1A2 ,CYP1A1 , CYP2C19 , CYP2C9 and CYP2A6 .
+In recombinant CYP from human B-lymphoblast cells or baculovirus-infected insect cells and in reconstituted systems, a requirement of cytochrome b5 (b5) for POD activities catalysed by CYP2E1 and CYP3A4 was observed.
+3.
+4.
+Inter-individual differences in the effects of alpha-naphthoflavone on POD activity in human liver microsomes were observed, and the involvement of CYP3A4 as well as CYP1A2 in POD activity in human liver was identified even at a low substrate concentration.
+Phenacetin O-deethylase (POD) activities in human liver microsomes at substrate concentrations of 10 and 500 microM were inhibited by 0.1 and 1 microM alpha-naphthoflavone and activated by 10 and 100 microM alpha-naphthoflavone .
+The activation of POD activity in human liver microsomes by alphanaphthoflavone was inhibited by 100 microM aniline, anti-CYP2E1 antibody, 1 microM ketoconazole and anti-CYP3A4 antibody.
+The activation of POD activity by alpha-naphthoflavone was observed for CYP3A4 , but not for CYP2E1 .
+Co-expression of b5 with CYP3A4 enhanced the activation of POD activity by alpha-naphthoflavone .
+In the absence of alpha-naphthoflavone , the POD activity in pooled human liver microsomes at 500 microM phenacetin was significantly inhibited (p<0.0001) by 10 microM fluvoxamine , but not by 1 microM ketoconazole .
+In the presence of alpha-naphthoflavone , the activity was significantly inhibited (p<0.0001) by 1 microM ketoconazole , but not by 10 microM fluvoxamine .
+Mechanism-based inactivation of cytochrome P450s 1A2 and 3A4 by dihydralazine in human liver microsomes.
+Dihydralazine is known to induce immunoallergic hepatitis.
+Since anti-liver microsome (anti-LM) autoantibodies found in the serum of the patients react with P450 1A2 , it is suggested that dihydralazine is biotransformed into a reactive metabolite, which covalently binds to cytochrome P450 1A2 and triggers an immunological response as a neoantigen.
+We investigated inactivation of P450 enzymes, including P450 1A2 , during the metabolism of dihydralazine to evaluate the selectivity of P450 1A2 as a catalyst and a target of dihydralazine .
+Human liver microsomes or microsomes from lymphoblastoid cells expressing P450 enzymes were preincubated with dihydralazine in the presence of NADPH, followed by an assay of several monooxygenase activities.
+The inactivation of both of the P450s followed pseudo-first-order kinetics and was saturable with increasing dihydralazine concentrations.
+Similar time-dependent decreases in the activities were obtained in the case for use in microsomes expressing P450 1A2 and P450 3A4 instead of the human liver microsomes.
+The data support the postulated covalent binding of a reactive metabolite of dihydralazine to P450 1A2 as a step in the formation of anti-LM antibodies in dihydralazine hepatitis, but it is not the unique factor for determining the specificity of the autoantibodies.
+Preincubation of human liver microsomes with dihydralazine in the presence of NADPH resulted in decreases in phenacetin O-deethylase activity (an indicator of P450 1A2 activity) and testosterone 6beta-hydroxylase activity (P450 3A4) , but not in diclofenac 4'-hydroxylase activity (P450 2C9) , an indication of inactivation of P450s 1A2 and 3A4 during the dihydralazine metabolism. "
+The data presented here demonstrated that dihydralazine was metabolically activated not only by P450 1A2 but also by P450 3A4 , and the chemically reactive metabolite bound to and inactivated the enzyme themselves, suggesting that dihydralazine is a mechanism-based inactivator of P450s 1A2 and 3A4.
+Characterization of the cytochrome P450 enzymes involved in the in vitro metabolism of rosiglitazone .
+AIMS: To identify the human cytochrome P450 enzyme (s) involved in the in vitro metabolism of rosiglitazone , a potential oral antidiabetic agent for the treatment of type 2 diabetes-mellitus.
+Method The specific P450 enzymes involved in the metabolism of rosiglitazone were determined by a combination of three approaches; multiple regression analysis of the rates of metabolism of rosiglitazone in human liver microsomes against selective P450 substrates, the effect of selective chemical inhibitors on rosiglitazone metabolism and the capability of expressed P450 enzymes to mediate the major metabolic routes of rosiglitazone metabolism.
+Result The major products of metabolism following incubation of rosiglitazone with human liver microsomes were para-hydroxy and N-desmethyl rosiglitazone .
+The rate of formation varied over 38-fold in the 47 human livers investigated and correlated with paclitaxel 6alpha-hydroxylation (P<0.001).
+In addition, both metabolites were produced by microsomes derived from a cell line transfected with human CYP2C8 cDNA.
+There was some evidence for CYP2C9 playing a minor role in the metabolism of rosiglitazone .
+Conclusion CYP2C8 is primarily responsible for the hydroxylation and N-demethylation of rosiglitazone in human liver; with minor contributions from CYP2C9 .
+Formation of these metabolites was inhibited significantly (>50%) by 13-cis retinoic acid, a CYP2C8 inhibitor , but not by furafylline , quinidine or ketoconazole .
+Sulphaphenazole caused limited inhibition (<30%) of both pathways in human liver microsomes and microsomes from cells transfected with CYP2C9 cDNA were able to mediate the metabolism of rosiglitazone , in particular the N-demethylation pathway, albeit at a much slower rate than CYP2C8 .
+Rosiglitazone caused moderate inhibition of paclitaxel 6alpha-hydroxylase activity ( CYP2C8 ; IC50=18 microM ), weak inhibition of tolbutamide hydroxylase activity (CYP2C9 ; IC50=50 microM ) but caused no marked inhibition of the other cytochrome P450 activities investigated (CYP1A2 , 2A6 , 2C9 , 2C19 , 2D6 , 2E1 , 3A and 4A ) .
+Participation of CYP2C8 in retinoic acid 4-hydroxylation in human hepatic microsomes.
+Cytochromes P450 (CYPs) catalyze the 4-hydroxylation of all-trans-retinoic acid (ATRA), an agent used in the treatment of certain malignancies.
+Literature studies have implicated several CYPs in this reaction, but the relative importance of individual CYPs is unclear.
+Human microsomal CYPs that contribute to the activity were evaluated by correlation with activities of hepatic drug-metabolizing CYPs, the capacity of cDNA-derived CYPs to catalyze the reaction, and inhibition of the microsomal activity by chemicals.
+The Km for the reaction was 9 +/- 3 microM in hepatic microsomes (N = 3) and 6 microM in microsomes containing cDNA-derived CYP2C8 ; by comparison,Km values for the activity mediated by CYPs 2C9 and 3A4 were 100 and 74 microM, respectively.
+These findings suggest that CYP2C8 is a major contributor to ATRA 4-hydroxylation in human liver and that 3A subfamily CYPs may be minor participants.
+Individual variation in CYP2C8 and 3A4 expression may influence ATRA pharmacokinetics and drug interactions during therapy.
+4-HydroxyATRA formation in microsomes varied 7-fold (8.7 to 61 pmol/mg protein/min) and correlated partially with activities mediated by CYPs 3A ,2C , and 1A (p = 0.53 to 0.66).
+cDNA-derived CYPs 2C8 , 2C9 , and 3A4 , but not 1A1 or 1A2 , catalyzed ATRA 4-hydroxylation (2.53, 4.68, and 1.29 pmol/pmol CYP/hr).
+Inhibition of microsomal ATRA 4-hydroxylation was elicited by chemicals that interact with CYP2C8 (paclitaxel and diclofenac ), but not those that interact with CYP2C9 ( sulfaphenazole , tolbutamide , and torasemide ) .
+The CYP3A inhibitor troleandomycin and an anti-CYP3A IgG inhibited the activity slightly.
+Greater inhibition was produced by the less selective CYP3A inhibitors parathion , quinidine , and ketoconazole ; CYP1A inhibitors were ineffective.
+Effect of antipsychotic drugs on human liver cytochrome P-450 (CYP) isoforms in vitro: preferential inhibition of CYP2D6 .
+The ability of antipsychotic drugs to inhibit the catalytic activity of five cytochrome P-450 (CYP) isoforms was compared using in vitro human liver microsomal preparations to evaluate the relative potential of these drugs to inhibit drug metabolism.
+The apparent kinetic parameters for enzyme inhibition were determined by nonlinear regression analysis of the data.
+The estimated K(i) values for the inhibition of CYP2C9 , 2C19 , and 3A were >300 microM in almost all antipsychotics tested.
+These results suggest that antipsychotic drugs exhibit a striking selectivity for CYP2D6 compared with other CYP isoforms.
+This may reflect a remarkable commonality of structure between the therapeutic targets for these drugs, the transporters, and metabolic enzymes that distribute and eliminate them.
+Clinically, coadministration of these medicines with drugs that are primarily metabolized by CYP2D6 may result in significant drug interactions.
+All antipsychotic drugs tested competitively inhibited dextromethorphan O-demethylation, a selective marker for CYP2D6 , in a concentration-dependent manner.
+Thioridazine and perphenazine were the most potent, with IC(50) values (2.7 and 1.5 microM) that were comparable to that of quinidine (0.52 microM).
+The estimated K(i) values for CYP2D6-catalyzing dextrorphan formation were ranked in the following order: perphenazine (0.8 microM), thioridazine (1.4 microM), chlorpromazine (6.4 microM), haloperidol (7.2 microM), fluphenazine (9.4 microM), risperidone (21.9 microM), clozapine (39.0 microM), and cis-thiothixene (65.0 microM).
+No remarkable inhibition of other CYP isoforms was observed except for moderate inhibition of CYP1A2-catalyzed phenacetin O-deethylation by fluphenazine (K(i) = 40.2 microM) and perphenazine (K(i) = 65.1).
+Multiple cytochrome P-450s involved in the metabolism of terbinafine suggest a limited potential for drug-drug interactions.
+Biotransformation pathways and the potential for drug-drug interactions of the orally active antifungal terbinafine were characterized using human liver microsomes and recombinant human cytochrome P-450s (CYPs) .
+The terbinafine metabolites represented four major pathways: 1) N-demethylation, 2) deamination, 3) alkyl side chain oxidation, and 4) dihydrodiol formation.
+Michaelis-Menten kinetics for the pathways revealed mean K(m) values ranging from 4.4 to 27.8 microM, and V(max) values of 9.8 to 82 nmol/h/mg protein.
+At least seven CYP enzymes are involved in terbinafine metabolism.
+Recombinant human CYPs predict that CYP2C9 , CYP1A2 , and CYP3A4 are the most important for total metabolism. "
+N-demethylation is primarily mediated by CYP2C9 , CYP2C8 , and CYP1A2 ; dihydrodiol formation by CYP2C9 and CYP1A2 ; deamination by CYP3A4 ; and side chain oxidation equally by CYP1A2 , CYP2C8 , CYP2C9 , and CYP2C19 .
+Additionally, characteristic CYP substrates inhibited pathways of terbinafine metabolite formation, confirming the involvement of multiple enzymes.
+Terbinafine had little or no effect on the metabolism of many characteristic CYP substrates.
+In summary, terbinafine is metabolized by at least seven CYPs.
+The potential for terbinafine interaction with other drugs is predicted to be insignificant with the exception that it may inhibit the metabolism of CYP2D6 substrates.
+Clinical trials are needed to assess the relevance of these findings.
+The deamination pathway was mainly inhibited by CYP3A inhibitors , including troleandomycin and azole antifungals.
+Dihydrodiol formation was inhibited by the CYP1A2 inhibitor furafylline.
+Terbinafine , however, is a competitive inhibitor of the CYP2D6 reaction, dextromethorphan O-demethylation (K(i) = 0.03 microM).
+Metabolism of artelinic acid to dihydroqinqhaosu by human liver cytochrome P4503A.
+1.
+Artelinic acid (AL), a water-soluble artemisinin analogue for treatment of multidrug resistant malaria, is metabolized to the active metabolite dihydroqinghaosu (DQHS) solely by CYP3A4/5 .
+2.
+In human liver microsomes, AL is metabolized to DQHS with a Km = 157 +/- 44 microM and Vmax = 0.77 +/- 0.56 nmol DQHS/min/mg protein.
+The kinetic parameters (Km and Vmax) for DQHS formation from CYP3A5 were 189 +/- 19 microM and 3.60 +/- 0.42 nmol DQHS/min/nmol P450 respectively.
+3.
+Inhibition studies suggest that azole antifungals and calcium channel blockers may present clinically significant drug drug interactions.
+Although AL is not metabolized by CYP2C9, it does inhibit diclofenac 4-hydroxylase activity with an IC50 = 115 microM.
+Interestingly, AL activate CYP2D6-mediated bufuralol metabolism in human liver microsomes but not recombinant CYP2D6-Val by approximately 30% at AL concentrations up to 100 microM.
+Human recombinant CYP3A4 catalysed the conversion of AL to DQHS with a Km = 102 +/- 23 microM and a Vmax = 1.96 +/- 0.38 nmol DQHS/min/nmol P450.
+In human liver microsomes, ketoconazole and miconazole were potent competitive inhibitors of DQHS formation with a Ki = 0.028 and 0.124 microM respectively.
+Verapamil is a non-competitive inhibitor of DQHS formation in human liver microsomes with a Ki = 15 microM.
+Comparative effects of rifabutin and rifampicin on cytochromes P450 and UDP-glucuronosyl-transferases expression in fresh and cryopreserved human hepatocytes.
+The aim of this study was to evaluate rifabutin (RBT) and rifampicin (RIF) capabilities in inducing various xenobiotic metabolizing enzymes such as cytochromes P450 (CYPs) and UDP-glucuronosyl-transferases (UGTs) in cultured fresh and cryopreserved human hepatocytes.
+Enzyme induction was assessed through the use of several diagnostic markers, i.e. testosterone, midazolam (MDZ), diazepam (DZP) and 7-ethoxyresorufin for CYP-dependent enzyme reactions; and AZT for UGT-dependent enzyme reactions.
+RBT concentrations (0.118, 0.708 microM) were selected according to previously published pharmacokinetic data in patients.
+The known CYP3A4 inducer in humans, RIF, was used as a positive control.
+At the concentrations used, no sign of cytotoxicity was evidenced.
+The other hydroxylated metabolites (16alpha-OH and 2alpha-OH) were also enhanced.
+The metabolism of MDZ , which is specifically metabolized by CYP3A4 in humans, was also investigated following drug's exposure to hepatocytes.
+DZP one, which is governed by various CYPs , including CYP3A , was also investigated.
+Moreover, the effects of both drugs on ethoxyresorufin O-deethylase activity (EROD), which is representative of CYPIA1/2 isoforms, were tested.
+Results showed only a moderate induction of this marker (approximately 2-fold over control) when compared to the high effect observed after hepatocyte exposure to 3-methylcholantene (approximately 14-fold over control).
+On the whole, exposure of fresh or cryopreserved human hepatocytes to RBT dose-dependently affected the levels of drug metabolizing enzymes in a dose-dependent manner.
+However, as already demonstrated by in vivo pharmacokinetic studies, its inducing properties towards CYPs , CYP3A in particular, are less pronounced than RIF.
+Both compounds were able to dose-dependently induce the overall metabolism of testosterone (approximately 2-fold for RBT, 4-fold for RIF) and the formation of the 6beta-hydroxylated-derivative (up to approximately 4-fold over control for RBT and approximately 10-fold for RIF), which is CYP3A4 dependent.
+RBT was shown to increase the biotransformation of both benzodiazepines (approximately 1.9-fold over control).
+Finally, the action of RBT and RIF on UGTs expression was investigated by using AZT as diagnostic substrate: glucuronides formation was not significantly affected by the two rifamycin derivatives .
+Use of the steroid derivative RPR 106541 in combination with site-directed mutagenesis for enhanced cytochrome P-450 3A4 structure/function analysis.
+RPR 106541 (20R-16alpha,17alpha-[butylidenebis(oxy)]-6al pha, 9alpha-difluoro-11beta-hydroxy-17beta-(methylthio)androst a-4-en-3-one) is an airway-selective steroid developed for the treatment of asthma.
+Two metabolites produced by human liver microsomes were identified as R- and S-sulfoxide diastereomers based on liquid chromatography/mass spectrometry analysis, proton nuclear magnetic resonance, and cochromatography with standards.
+The high rate of sulfoxidation by CYP3A4 and the blockage of oxidative metabolism at the electronically favored 6beta-position provided advantages for RPR 106541 over other substrates as an active site probe of CYP3A4 .
+Therefore, oxidation of RPR 106541 by various CYP3A4 substrate recognition site (SRS) mutants was assessed.
+In conclusion, the structure of RPR 106541 imposes specific constraints on enzyme binding and activity and thus represents an improved CYP3A4 probe substrate.
+Sulfoxide formation was determined to be cytochrome P-450 (CYP) 3A4-dependent by correlation with CYP3A4-marker nifedipine oxidase activity,inhibition by cyclosporin A and troleandomycin , and inhibition of R- (70%) and S- (64%) sulfoxide formation by anti-3A antibody.
+Expressed CYP2C forms catalyzed RPR 106541 sulfoxidation; however, other phenotyping approaches failed to confirm the involvement of CYP2C forms in these reactions in human liver microsomes .
+Expressed CYP3A4 catalyzed the formation of the sulfoxide diastereomers in a 1:1 ratio, whereas CYP3A5 displayed stereoselectivity for formation of the S-diastereomer.
+In SRS-4, A305V and F304A showed dramatically reduced rates of R-diastereomer formation (83 and 64% decreases, respectively), but S-diastereomer formation was affected to a lesser extent.
+A370V (SRS-5) showed decreased formation of the R-sulfoxide (52%) but increased formation of the S-diastereomer.
+In the SRS-2 region, the most dramatic change in sulfoxide ratios was observed for L210A.
+Inhibitory effects of azelastine and its metabolites on drug oxidation catalyzed by human cytochrome P-450 enzymes.
+Azelastine , an antiallergy and antiasthmatic drug, has been reported to be metabolized mainly to desmethylazelastine and 6-hydroxyazelastine in mammals.
+In the present study, the inhibitory effects of azelastine and its two metabolites on human cytochrome P-450 (CYP) isoform-dependent reactions were investigated to predict the drug interactions of azelastine using microsomes from human B-lymphoblast cells expressing CYP.
+The specific activities for human CYP isoforms included: 7-ethoxyresorufin O-deethylation (CYP1A1) , phenacetin O-deethylation (CYP1A2), coumarin 7-hydroxylation ( CYP2A6), 7-benzyloxyresorufin O-dealkylation (CYP2B6 ), S-warfarin 7-hydroxylation (CYP2C9 ), S-mephenytoin 4'-hydroxylation (CYP2C19 ), bufuralol 1'-hydroxylation ( CYP2D6 ), chlorzoxazone 6-hydroxylation (CYP2E1), and testosterone 6beta-hydroxylation (CYP3A4).
+In almost all the activities, desmethylazelastine exhibited stronger inhibition than azelastine and 6-hydroxyazelastine.
+6-Hydroxyazelastine interfered with the determination of testosterone 6beta-hydroxylation by HPLC.
+In consideration of the Ki values and the concentration of azelastine and desmethylazelastine in human livers after chronic oral administration of azelastine , the possibility of in vivo drug interaction of azelastine and other drugs that are mainly metabolized by CYP2D6 was suggested although it might not cause critical side effects.
+The inhibition of CYP2C9 , CYP2C19 , and CYP3A4 activity by azelastine and its two metabolites might be clinically significant.
+Desmethylazelastine, but not azelastine and 6-hydroxyazelastine, uncompetitively inhibited CYP2B6 activity (Ki = 32.6 +/- 4.8 microM).
+Azelastine , desmethylazelastine , and 6-hydroxyazelastine competitively inhibited CYP2C9 activity (Ki = 13.9 +/- 1.8, 15.0 +/- 3.1, and 17.0 +/- 4.1 microM, respectively), CYP2C19 activity (Ki = 21.9 +/- 2.2, 7.3 +/- 1.6, and 9.3 +/- 1.6 microM, respectively), and CYP2D6 activity (Ki = 1.2 +/- 0.1, 1.5 +/- 0.2, and 3.0 +/- 0.5 microM, respectively).
+Azelastine and desmethylazelastine competitively inhibited CYP3A4 activity (Ki = 23.7 +/- 4.6 and 13.2 +/- 2.3 microM).
+CYP1A2, CYP2A6 , and CYP2E1 activities were not significantly inhibited by azelastine and the two metabolites.
+Among the human CYPs tested, the inhibitory effects of azelastine and its two metabolites were the most potent on human CYP2D6 .
+Methadone N-demethylation in human liver microsomes: lack of stereoselectivity and involvement of CYP3A4 .
+To investigate the kinetics of CYP-mediated N-demethylation of methadone in human liver microsomes, and examine the role of stereoselectivity and CYP isoforms involved.
+The kinetics of 2-ethylidene-1,5-dimethyl-3,3-diphenylpyrrolidine (EDDP) formation via N-demethylation of rac-, (R)- and (S)-methadone in human liver microsomes prepared from six liver samples were determined by h.p.l.c., and inhibition of metabolic function was studied using isoform-specific chemical inhibitors and monoclonal antibodies.
+Microsomes containing expressed CYP3A4 , CYP2D6 and CYP2C19 were also used to examine the formation of EDDP.
+The V max, Km, and CLint values for the formation of EDDP from rac-, (R)- and (S)-methadone were in the ranges of 20-77 nmol mg-1 protein h-1, 125-252 microm, and 91-494 ml h-1 g-1 protein.
+Km and CLint values for (R)- and (S)-methadone were not statistically significantly different (P >0.05), while V max values for (S)-methadone were 15% (P=0.045) lower than for (R)-methadone .
+There were no statistically significant differences in the inhibition observed between the three substrates.
+man liver microsomes were identified as R- and S-sulfoxide diastereomers based on liquid chromatography/mass spectrometry analysis, proton nuclear magnetic resonance, and cochromatography with standards.
+The N-demethylation of methadone in human liver microsomes is not markedly stereoselective, and is mediated mainly by CYP3A4 with the possible involvement of CYP2C9 and CYP2C19 .
+Thus, the large interindividual variation reported for methadone pharmacokinetics may be due to variability in the expression of these CYP isoforms, and the reported stereoselectivity in the systemic clearance of methadone in vivo is not due to stereoselectivity in N-demethylation.
+Expressed CYP3A4 and CYP2C19 showed similar reaction rates for both (R)- and (S)-methadone , while CYP2D6 did not catalyse this reaction.
+Selective chemical inhibitors of CYP3A (troleandomycin , ketoconazole) and monoclonal human CYP3A4 antibodies significantly inhibited (P<0.05) the formation of EDDP in a concentration dependent manner by up to 80%.
+Sulphaphenazole (CYP2C9) also significantly inhibited (P<0.05) EDDP formation (range 14-25%).
+Selective inhibitors of CYP1A2 (furafylline), CYP2A6 (coumarin), CYP2C19 ( (S)-mephenytoin ), CYP2D6 (quinidine ) and CYP2E1 (diethyldithiocarbamic acid sodium salt and monoclonal human CYP2E1 antibodies) had no significant (P >0.05) effect.
+Comparative in vitro and in vivo inhibition of cytochrome P450 CYP1A2 , CYP2D6 , and CYP3A by H2-receptor antagonists.
+The isozymes CYP1A2 , CYP2D6 , and CYP3A4/5 are involved in the majority of all cytochrome P450-mediated drug biotransformations.
+In this study we investigated the inhibition profiles of CYP1A2 (substrate: caffeine) CYP2D6 (substrate: dextromethorphan ), and CYP3A4/5 (substrate: dextrorphan ) by cimetidine , ranitidine , and the novel H2-receptor antagonist ebrotidine in human liver microsomes.
+The inhibition of CYP3A4/5 enzyme activity by ebrotidine was competitive.
+To test whether the inhibitory effect of ebrotidine in CYP3A activity was also found in vivo, we analyzed the biodisposition of midazolam in 8 healthy volunteers.
+Psychomotor performance analysis revealed no significant effect of the observed reduction on midazolam biodisposition.
+We concluded that patients who are receiving treatment with drugs metabolized through CYP3A may experience enhanced drug effects as a result of pharmacokinetic interaction when treated concomitantly with cimetidine .
+In contrast,the effect of ranitidine or ebrotidine on CYP3A activity in vivo seems to have little clinical significance.
+ The inhibitory effect of the drugs on the enzymes activities were as follows: CYP1A2 : cimetidine > ranitidine = ebrotidine; CYP2D6 : cimetidine > ranitidine = ebrotidine ; CYP3A4/5: ebrotidine > cimetidine > ranitidine .
+Midazolam biodisposition was significantly reduced when administered together with cimetidine (P < .05), whereas no significant inhibition was observed with ebrotidine or ranitidine compared with placebo.
+Metabolism of benzene in human liver microsomes: individual variations in relation to CYP2E1 expression.
+None of these metabolic rates correlated with immunochemically determined levels of CYP1A2 , 2C9 , and 3A4 nor oxidation of 7-ethoxyresorufin , tolbutamide , and nifedipine .
+Benzene oxidation to water-soluble metabolites was characterized by typical Michaelis-Menten kinetics.
+The different benzene K(m) values seen in individual human microsomal samples were not correlated with the level or activity of CYP1A2 , 2C9 , 2E1 , and 3A4 but could be due to CYP2E1 microheterogeneity.
+The lowest K(m) for benzene oxidation could be related to C/D and/or c1/c2 polymorphism of CYP2E1 gene.
+Covalent binding of benzene reactive metabolites to microsomal proteins was also correlated with the CYP2E1 metabolic rates and immunochemical levels.
+At high concentrations of benzene covalent binding was inversely related to benzene concentrations (as well as to formation of water-soluble metabolites) in agreement with the view that secondary metabolites, mainly benzoquinone , are responsible for the covalent binding.
+In human liver microsomes the oxidations of benzene , chlorzoxazone , aniline , dimethylformamide , and 4-nitrophenol were significantly correlated with each other and with the level of cytochrome P450 (CYP) 2E1 estimated by immunoblotting.
+Moreover, benzene oxidation to water-soluble metabolites was suppressed by 0.1 mM diethyldithiocarbamate , supposedly a specific inhibitor of CYP2E1 at this level.
+Structure-related inhibition of human hepatic caffeine N3-demethylation by naturally occurring flavonoids.
+The effects of flavonoids on caffeine N3-demethylation, a marker activity of CYP1A2 , in human liver microsomes were investigated to elucidate the inhibition mechanism and the structure-activity relationship.
+Others had IC50 values ranging from 1 to more than 500 microM.
+Kinetic analysis revealed that the mechanism of inhibition varied among the flavonoids.
+The inhibitory effect was postulated to be governed by factors such as the number of hydroxyl groups and glycosylation of these free hydroxyl groups.
+An increase in the number of free hydroxyl groups reduced the inhibitory effect on P450 activity.
+Analysis of the quantitative structure-activity relationship (QSAR) showed that the volume to surface area ratio was the most effective factor on the inhibition of caffeine N3-demethylation, and the electron densities on the C3 and C4' atoms exercised significant influence on the inhibitory effect.
+The calculated inhibitory effect of flavonoids on CYP1A2 activity was highly correlated with the antimutagenicity of flavonoids in 2-amino-3,4-dimethylimidazo[4,5-flquinoline (MelQ)-induced umu response.
+Caffeine N3-demethylase activity was inhibited by the presence of various flavonoids, whose structures seem to be closely related to the degree of inhibition.
+Among twenty-one compounds tested, the most active was chrysin with an IC50 value of 0.2 microM.
+Human cytochrome P450 3A (CYP3A) mediated midazolam metabolism : the effect of assay conditions and regioselective stimulation by alpha-naphthoflavone , terfenadine and testosterone .
+The effect of ionic strength, assay constituents, alpha-naphthoflavone (aNF) , terfenadine and testosterone on human CYP3A mediated midazolam (MDZ) 1'-hydroxylation (MDZ 1'-OH) and 4-hydroxylation (MDZ 4-OH) in vitro was examined.
+Increasing concentration of Tris-HCl (Tris) and sodium phosphate (PO4) buffers differentially affected MDZ 1'-OH and MDZ 4-OH formation rates and had a different effect on MDZ metabolism mediated by microsomes containing CYP3A4 versus CYP3A4 and CYP3A5 .
+MDZ metabolism was not affected by PO4 buffer concentration when cumene hydroperoxide (CUOOH) was used as the source of reactive oxygen.
+Interestingly, the ammonium ion present in the solution of glucose 6-phosphate dehydrogenase was found to inhibit MDZ metabolism .
+The addition of MgCl2 up to 50 mM and CaCl2 (5-30 mM) had no affect or inhibited MDZ metabolism , respectively.
+These studies indicate that because assay conditions can substantially alter the catalytic activity of CYP3A , caution should be exerted when extrapolating results between in vitro and in vivo, and when results from different laboratories are compared.
+Further, these results suggest that the stimulation of CYP3A4 may also occur in vivo and, consequently, may have clinical importance.
+Formation of MDZ 1'-OH by microsomes from adult and fetal liver and expressed CYP3A4 was regioselectively stimulated by aNF (10 microM).
+In human hepatocytes, aNF stimulated MDZ 1'-OH formation (up to 100%).
+Terfenadine (20 microM) regioselectively stimulated MDZ 1'-OH formation in Tris (1-200 mM) and PO4 (1-10 mM) buffers by up to 159%.
+Surprisingly, with expressed CYP3A4 , terfenadine (20 microM) inhibited MDZ 1'-OH formation.
+Terfenadine (20 microM) had little effect on MDZ 1'-OH formation by fetal liver microsomes.
+Testosterone (10 and 100 microM) regioselectively stimulated (up to 269%) MDZ 4-OH formation by adult liver microsomes and expressed CYP3A4 .
+Testosterone (100 microM) inhibited (> 40%) MDZ 1'-OH and MDZ 4-OH formation by fetal liver microsomes.
+With adult liver microsomes, aNF and terfenadine had little effect on the Km for MDZ 1'-OH formation.
+However, the Km for MDZ 4-OH formation was decreased (up to 94%) by 100 microM testosterone .
+In the presence of CUOOH, no stimulation of MDZ metabolism was observed by aNF , terfenadine or testosterone in adult liver microsomes.
+Identification of CYP3A4 as the major enzyme responsible for 25-hydroxylation of 5beta-cholestane-3alpha,7alpha,12alpha-triol in human liver microsomes.
+Human liver microsomes catalyze an efficient 25-hydroxylation of 5beta-cholestane-3alpha,7alpha,12alpha-triol .
+The hydroxylation is involved in a minor, alternative pathway for side-chain degradation in the biosynthesis of cholic acid.
+The enzyme responsible for the microsomal 25-hydroxylation has been unidentified.
+In the present study, recombinant expressed human P-450 enzymes have been used to screen for 25-hydroxylase activity towards 5beta-cholestane-3alpha, 7alpha,12alpha-triol.
+High activity was found with CYP3A4 , but also with CYP3A5 and to a minor extent with CYP2C19 and CYP2B6 .
+Small amounts of 23- and 24-hydroxylated products were also formed by CYP3A4 .
+The Vmax for 25-hydroxylation by CYP3A4 and CYP3A5 was 16 and 4.5 nmol/(nmolxmin), respectively.
+The Km was 6 microM for CYP3A4 and 32 microM for CYP3A5 .
+Cytochrome b5 increased the hydroxylase activities.
+Human liver microsomes from ten different donors, in which different P-450 marker activities had been determined, were incubated with 5beta-cholestane-3alpha,7alpha, 12alpha-triol.
+A strong correlation was observed between formation of 25-hydroxylated 5beta-cholestane-3alpha,7alpha,12alpha-triol and CYP3A levels (r2=0.96).
+No correlation was observed with the levels of CYP2C19 .
+From these results, it can be concluded that CYP3A4 is the predominant enzyme responsible for 25-hydroxylation of 5beta-cholestane-3alpha, 7alpha,12alpha-triol in human liver microsomes.
+Troleandomycin , a specific inhibitor of CYP3A4 and 3A5 , inhibited the 25-hydroxylase activity of pooled human liver microsomes by more than 90% at 50 microM.
+Tranylcypromine , an inhibitor of CYP2C19 , had very little effect on the conversion.
+ Fluvoxamine inhibits the CYP2C19-catalysed metabolism of proguanil in vitro.
+The potent CYP1A2 inhibitor fluvoxamine has recently been shown also to be an effective inhibitor of the CYP2C19-mediated metabolism of the antimalarial drug proguanil in vivo.
+The purpose of the present study was to confirm this interaction in vitro.
+A high-performance liquid chromatography (HPLC) method was developed to assay 4-chlorophenylbiguanide (4-CPBG) and cycloguanil formed from proguanil by microsomes prepared from human liver.
+The limit of detection was 0.08 nmol mg-'.h-I.
+This notion was confirmed by the lack of potent inhibition by four CYP3A4 inhibitors : ketoconazole , bromocriptine , midazolam and dihydroergotamine .
+The combination of fluvoxamine and proguanil can not be recommended.
+The formation of 4-CPBG and cycloguanil could be described by one-enzyme kinetics, indicating that the formation of the two metabolites is almost exclusively catalysed by a single enzyme, i.e. CYP2C19 within the concentration range used, or that the contribution of an alternative low-affinity enzyme,probably CYP3A4 , is very low.
+Fluvoxamine was a very effective inhibitor of the oxidation of proguanil , displaying Ki values of 0.69 micromol x l(-1) for the inhibition of cycloguanil formation and 4.7 micromol x l(-1) for the inhibition of 4-CPBG formation.
+As expected, the CYP2C19 substrate omeprazole inhibited the formation of both metabolites with an IC50 of 10 micromol x l(-1).
+Norfluoxetine and sulfaphenazole inhibited proguanil oxidation with Ki values of 7.3-16 micromol x l(-1), suggesting that the two compounds are moderate inhibitors of CYP2C19 .
+Fluvoxamine is a fairly potent inhibitor of CYP2C19 and it has the potential for causing drug-drug interactions with substrates for CYP2C19 such as imipramine , clomipramine , amitriptyline and diazepam.

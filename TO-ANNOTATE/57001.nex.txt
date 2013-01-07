@@ -1,0 +1,229 @@
+Effects of two atypical neuroleptics, olanzapine and risperidone , on the function of the urinary bladder and the external urethral sphincter in anesthetized rats
+Background
+A previous report showed that the atypical neuroleptic clozapine resulted in marked changes in urodynamic parameters and greatly inhibited the activity of the external urethral sphincter in anesthetized rats. Such findings may help explain the high incidence of urinary disturbances reported during clozapine therapy. In an effort to extend our observations to other atypical neuroleptic agents, the present study investigated the effects of two newer atypical antipsychotics, olanzapine and risperidone, on the bladder and external urethral sphincter during cystometry in anesthetized rats.
+Results
+At a dose of 0.1 mg/kg (i.v.), olanzapine decreased the micturition volume and increased the residual volume. In addition, olanzapine decreased the expulsion time and the amplitude of the high frequency oscillations observed during the expulsion phase. Larger doses (1 mg/kg) had a greater effect. Olanzapine also reduced the activity recorded from the external urethral sphincter, and the bursting observed during the expulsion phase was abolished by 1.0 mg/kg. Risperidone had similar effects although the maximal effects were smaller than those observed with olanzapine. The amplitude of bladder contractions elicited by electrical stimulation of the pelvic nerve was reduced by olanzapine but not risperidone suggesting a possible anti-muscarinic peripheral effect of olanzapine.
+Conclusions
+Olanzapine and risperidone significantly altered several voiding parameters and decreased the activity of the external urethral sphincter in the anesthetized rat. We propose that these effects are due to the central action of these drugs and not to peripheral effects. These findings may explain some of the clinical reports of urinary incontinence with risperidone and may predict similar occurrences with olanzapine therapy.
+Background
+The lower urinary tract serves to store and periodically eliminate urine. The activity of the urinary bladder and the external urethral sphincter must be properly coordinated in order for continence to be maintained and timely micturition to occur. Effective micturition requires the coordination of central and peripheral nervous system structures that activate sympathetic, parasympathetic and somatic motor pathways innervating the bladder and the urethra (for a recent review see [ 1 ]). Pathophysiological conditions and pharmacological manipulations that affect central and/or peripheral nervous system structures involved in micturition may alter the function of these two organs [ 2 ].
+Atypical antipsychotic (neuroleptic) agents are favored over traditional antipsychotic medication (e.g. haloperidol) because of their lower incidence of extrapyramidal side effects, their greater efficacy in improving negative symptoms of schizophrenia, and their effectiveness in treating schizophrenic patients not responding to conventional neuroleptics [ 3 ]. However, side effects continue to pose a challenge to effective treatment [ 4 ]. These novel neuroleptics display a complex pharmacological profile with affinities for several receptor systems but are generally characterized by a greater affinity for the 5-HT2A receptor than for the target of the traditional neuroleptics, the D2 receptor [ 4 , 5 ].
+We have shown recently that the atypical antipsychotic clozapine, and to a lesser extent haloperidol, markedly influenced several micturition parameters in anesthetized rats [ 6 ]. Clozapine decreased the micturition volume while increasing bladder capacity, thus increasing residual volume [ 7 ]. Moreover, clozapine profoundly depressed the activity of the external urethral sphincter (EUS). Clozapine abolished the electromyogram (EMG) recorded from the EUS during the rising phase of a bladder contraction before urine is voided (similar to the "guarding reflex" [ 8 , 9 ]). In addition, clozapine also abolished the high frequency oscillations in the bladder pressure and accompanying bursts in the external urethral sphincter EMG, that are present during the expulsion phase of the micturition profile of the rat [ 7 ]. In the clinical literature, clozapine therapy is associated with a high incidence (up to 44% in a recent study [ 10 ]) of urinary incontinence and enuresis.
+Olanzapine is a newer atypical antipsychotic agent with a pharmacological profile very similar to that of clozapine [ 11 ]. In human brain tissue, olanzapine displays very high affinity for the H1 histamine receptor, high affinity for 5-HT2A and 5-HT2C receptors [ 12 ]. In addition it also shows affinity for D2, muscarinic, and alpha1 receptors, with lower affinity for alpha2, 5-HT1D and 5-HT1A receptors (Table 1 [ 12 ]).
+Olanzapine therapy is associated with a number of side effects, including somnolence, agitation, nervousness, headaches, dizziness, weight gain, constipation and dry mouth [ 5 ]. Olanzapine, however, does not produce extrapyramidal side effects, postural hypotension or hemotoxicity (a particular problem for patients on clozapine therapy [ 13 ]). Although urinary retention as a result of olanzapine therapy may be predicted from binding studies due to olanzapine's antimuscarinic activity [ 12 ] only 1 case report of micturition disturbance associated with olanzapine has recently appeared [ 14 ]. On the other hand, several reports of urinary disturbances due to clozapine can be found in the clinical literature [ 3 , 10 , 15 ].
+Risperidone, another novel atypical neuroleptic, shows very high affinity for 5HT-2A receptors with lower affinity for D2 receptors. In terms of profile risperidone binds 5HT2A>>alpha1=H1>D2>alpha2 (Table 1 [ 12 , 16 ]). Risperidone displays little or no affinity for the muscarinic receptor [ 11 , 12 , 16 ] and yet risperidone therapy has been associated with urinary incontinence (28% in some cases [ 17 - 19 ]).
+We undertook this study to examine the effects of olanzapine and risperidone on the cystometrogram of anesthetized rats. These two novel atypical neuroleptic compounds are used in clinical practice and it might be important to identify possible side effects that may have an impact on compliance to therapy or adversely affect the patient's quality of life (e.g. persistent urinary incontinence). Based on our previous findings with clozapine, and given the similarity in pharmacological profiles between olanzapine and clozapine, we hypothesized that olanzapine might also result in changes in urodynamic variables and/or external urethral sphincter EMG. Risperidone provides an interesting comparison to olanzapine since it has a similar pharmacological profile to olanzapine but without the antimuscarinic activity. In this study olanzapine had greater effects than risperidone but both decreased micturition volume and increased residual volume in anesthetized rats. In addition, they inhibited the activity of the external urethral sphincter. Olanzapine, but not risperidone, also had peripheral effects that reduced bladder contraction amplitude to electrical stimulation of the pelvic nerve.
+Results
+Effects of olanzapine and risperidone on single cystometry parameters (Tables 2 and 3 )
+Effects of cumulative doses of risperidone on urodynamic and EMG parameters in anesthetized rats. Values are Mean ± S.E.M.
+  Urodynamic parameters  
+  EUS EMG parameters  
+
+
+ Dose 
+ BC (ml) 
+ MV (ml) 
+ RV (%) 
+ PT 
+ PP 
+ CT (sec) 
+ ET (sec) 
+ HFO 
+ Phase 1 
+ Phase 2 
+ Phase 3 
+ Burst 
+ (mg/kg) 
+ (mm Hg) 
+ (mm Hg) 
+ (mm Hg) 
+ (%) 
+ (%) 
+ (%) 
+ Amp. 
+ (%) 
+Control
+0.35
+0.27
+21
+2.4
+11.5
+18.5
+3.6
+1.6
+100
+100
+100
+100
+(±0.097)
+(±0.072)
+(±5.6)
+(±0.62)
+(±0.95)
+(±1.43)
+(±0.83)
+(±0.19)
+ 0.01 
+0.38
+0.17
+ 47 **  
+2.8
+11.7
+19.3
+2.7
+1.3
+100
+76
+91 (±8.4)
+105
+(±0.080)
+(±0.033)
+ (±9.2) 
+(±0.72)
+(±1.0)
+(±1.97)
+(±0.49)
+(±0.12)
+(±11.5)
+(±14.7)
+(±3.4)
+ 0.1 
+0.38
+ 0.10 *  
+ 70 **  
+3.4
+11.7
+19.4
+ 1.5 **  
+ 1.0 *  
+84
+ 50 *  
+ 78 *  
+80
+(±0.055)
+ (±0.019) 
+ (±7.8) 
+(±0.44)
+(±0.82)
+(±1.94)
+ (±0.34) 
+ (±0.22) 
+(±11.7)
+ (±12.3) 
+ (±10.1) 
+(±19.6)
+ 1 
+0.40
+ 0.12 **  
+ 67 **  
+ 5.0 *  
+12.4
+18.6
+ 1.4 **  
+ 0.9 **  
+74
+ 47 *  
+ 68 **  
+76
+(±0.060)
+ (±0.016) 
+ (±5.8) 
+ (±1.02) 
+(±1.16)
+(±2.6)
+ (±0.35) 
+ (±0.18) 
+(±13.2)
+ (±12.7) 
+ (±8.0) 
+(±14.0)
+ 10 
+ 0.54 
+0.19
+ 60 **  
+ 5.8 **  
+ 13.7 **  
+17.2
+ 2.2 *  
+ 1.1 *  
+81
+71 (±22)
+ 73 **  
+84
+ (±0.080) 
+(±0.036)
+ (±7.7) 
+ (±1.02) 
+ (±1.34) 
+(±0.96)
+ (±0.46) 
+ (±0.22) 
+(±15.2)
+ (±9.0) 
+(±14.6)
+  *  
+ * p < 0.05; ** p < 0.01
+Olanzapine had no effect on bladder capacity (Fig 3A ) and risperidone increased BC only at the highest dose (10 mg/kg; Fig 2I,J ; 3A ) when the bladder capacity was 0.54 ml (S.E.M = ±0.08; Table 3 ) compared to 0.35 ml (±0.097) for vehicle-injected control.
+Representative traces of the effects of cumulative intravenous doses of olanzapine on the cystometrograms (CMG) and external urethral sphincter EMG of anesthetized rats (n = 5). Top panel presents bladder pressure during CMG while bottom panel is integrated EMG recorded from the external urethral sphincter. Panels A and B also show the different parameters recorded from the CMG: BC = amount of fluid infused to elicit a contraction; PT = pressure at which contraction begins; PP = maximal pressure during contraction; CT= contraction time; ET = time between peak pressure and end of high frequency oscillations. The EMG activity was examined by dividing the bladder contraction into three phases in a modification of the technique of Chien et al. [ 32 ] a contraction phase (phase 1); an expulsion phase (phase 2) and a closing phase (phase 3). A) CMG following administration of control (saline). (B) Expanded time scale showing the expulsion phase and the high frequency oscillations (HFO) in the bladder record, with accompanying bursting in the EMG. C & D) 0.01 mg/kg of olanzapine does not have an effect on the CMG or the external urethral sphincter EMG. E & F) After 0.1 mg/kg of olanzapine, the amplitude of the HFO is diminished and the expulsion time is shortened. G & H) 1 mg/kg of olanzapine abolished HFO, there is no discernible expulsion time and the EMG record shows no bursting and a much lower level of activity compared to control. Calibration bar: A,C,E,G = 1 min; B,D,F,H = 1 sec.
+Representative traces of the effects of cumulative doses of risperidone on the CMG and external urethral sphincter EMG of anesthetized rats (n = 7). A & B) CMG after saline administration. C & D) 0.01 mg/kg of risperidone did not affect expulsion time although residual volume was significantly increased (Table 3 ; Fig 3C ). E & F) At 0.1 mg/kg, risperidione caused a reduction in the amplitude of the HFO and the expulsion time. Larger doses of risperidone (1 mg/kg, G & H; 10 mg/kg, I & J) continued to depress the expulsion time and reduced the external urethral sphincter EMG. Note that the HFO were not abolished, unlike the results obtained with olanzapine. Calibration bar: A,C,E,G,I = 1 min; B,D,F,H,J = 1 sec.
+Effects of cumulative doses of olanzapine and risperidone on bladder capacity, micturition volume and residual. A) Only the highest dose of risperidone (10 mg/kg) increased bladder capacity. Olanzapine had no effect. B) Both olanzapine and risperidone significantly decreased the micturition volume (0.1 and 1.0 mg/kg). C) All doses of risperidone increased the residual volume whereas olanzapine resulted in significant increases at 0.1 and 1.0 mg/kg. * = p < 0.05; ** = p < 0.01
+Micturition volume, however, was decreased by both olanzapine and risperidone. The mean micturition volume in the olanzapine group after administration of vehicle was 0.2 ml (±0.0.37). However, after 0.1 and 1.0 mg/kg the micturition volume dropped to 0.08 ml (±0.014) and 0.04 ml (±0.006), respectively (Fig. 3B ; Table 2 ). Similarly, the risperidone group had a mean micturition volume of 0.27 ml (±0.072) after vehicle injection, but there was a significant decrease to 0.1 ml (±0.019) and 0.12 ml (±0.016) after 0.1 and 1.0 mg/kg of risperidone (Fig. 3B ; Table 3 ). At 10 mg/kg of risperidone, the micturition volume was 0.19 ml (± 0.036) which was not statistically different from the control values.
+Consequently, the residual volume showed significant increases after 0.1 and 1 mg/kg doses of olanzapine (76 ± 5.3 and 89 ± 2.4%, respectively; Fig 3C ) and after all doses of risperidone (maximal effect at 0.1 mg/kg; 70 ± 7.8%; Fig. 3C ).
+Olanzapine had no effect on pressure threshold; however, risperidone at 1 and 10 mg/kg resulted in a significant increase in the pressure threshold (5.0 ± 1.02 and 5.8 ± 1.02 mm Hg, respectively; Fig. 4A ) compared to the value observed during administration of vehicle (2.4 ± 0.62 mm Hg). The peak pressure during contraction was not changed by any of the doses of olanzapine tested in this study (Fig. 4B ). Interestingly, 10 mg/kg of risperidone showed a modest, but statistically significant increase in peak contraction pressure (13.7 ± 1.34 mm Hg compared to control value of 11.5 ± 0.95 mm Hg; Fig. 4B ).
+Effects of cumulative doses of olanzapine and risperidone on pressure threshold and peak pressure during cystometrograms. A) Olanzapine had no significant effects on the pressure threshold. Risperidone, however, increased PT at 1 and 10 mg/kg. B) Olanzapine had no effect on peak pressure. Risperidone significantly increased PP only at the highest dose (10 mg/kg). * = p < 0.05; ** = p < 0.01
+The contraction time was not affected by either olanzapine or risperidone (Fig. 5A ) but the expulsion time (the time during which the HFO occur) was significantly decreased by both (Fig. 1 ; Fig. 2 ; Fig. 5B ). Olanzapine decreased the expulsion time from 2.6 (±0.55) sec after vehicle injection to 0.9 (±0.38) and 0 sec after 0.1 and 1.0 mg/kg, respectively (Fig. 5B ). The risperidone group had an expulsion time of 3.6 (±0.83) sec after control and it decreased to 1.5 (±0.34) and 1.4 (±0.35) sec after 0.1 and 1 mg/kg of risperidone (Fig 5B ). At 10 mg/kg of risperidone, the expulsion time was 2.2 (± 0.46) sec.
+Effects of cumulative doses of olanzapine and risperidone on contraction time, expulsion time and the amplitude of the high frequency oscillations. A) Neither olanzapine nor risperidone significantly changed the contraction time. B) The expulsion time was significantly decreased by both olanzapine and risperidone. Olanzapine abolished the expulsion time at 1.0 mg/kg. C) The amplitude of the HFO was significantly decreased by both olanzapine and risperidone. Olanzanpine had a greater effect, abolishing the HFO at 1.0 mg/kg, whereas risperidone decreased the amplitude to approximately 50% of control values. * = p < 0.05; ** = p < 0.01
+Similarly, olanzapine significantly decreased the amplitude of high frequency oscillations (HFO) from a control value of 1.6 (±0.19) to 1.0 (±0.38) mm Hg at 0.1 mg/kg and abolished the HFO in all animals tested at 1 mg/kg (Fig. 1 ; 5C ). Risperidone also reduced the amplitude of the HFO from 1.6 (±0.19) to 1.0 (±0.22), 0.9 (±0.18) and 1.1 (± 0.22) mm Hg after 0.1, 1 and 10 mg/kg of risperidone (Fig. 2 ; 5C ).
+Effects of olanzapine and risperidone on the external urethral sphincter (Tables 2 and 3 )
+The EMG recorded from the urethral sphincter during bladder contractions also showed changes after risperidone or olanzapine. Phase 1 of the EMG, occurring during the initial rise in bladder pressure during a contraction, was significantly decreased by olanzapine at 0.1 and 1 mg/kg to 76 (±1.9) and 47 (±6.0) percent of the control value (Fig. 1F;1H ; 6A ). However, risperidone had no significant effect on the EMG during phase 1 (Fig 6A ).
+Effects of olanzapine and risperidone on the integrated EMG recorded from the external urethral sphincter. A) The EMG during Phase 1, which may be analogous to the "guarding reflex" was significantly decreased by olanzapine (0.1 and 1.0 mg/kg). Risperidone had no effect. B) Both olanzapine and risperidone had a significant effect on the EMG during Phase 2. Olanzapine had greater effects, essentially abolishing the bursting pattern of the EMG after 1.0 mg/kg. C) Both olanzapine and risperidone decreased the EMG during phase 3. However, olanzapine had a greater effect (0.1 and 1.0 mg/kg) than risperidone. D) The amplitude of the individual bursts of EMG observed during phase 2 were not significantly affected by risperidone. Olanzapine had no effect at 0.1 mg/kg but at 1.0 mg/kg abolished the bursting pattern.
+Phase 2, which corresponds to the occurrence of high frequency oscillations, showed significant decreases in the integrated EMG following olanzapine or risperidone administration. 0.1 mg/kg of olanzapine significantly decreased the overall EMG during this phase to 42 (±11.4)% of the control value, and 1.0 mg/kg of olanzapine abolished the bursting pattern of EMG (Fig 1G;1H ; Fig 6B ). While risperidone also decreased the Phase 2 EMG, the maximal decrease was 47 (±12.7)% at 1.0 mg/kg when compared to control (Fig 6B ) and the bursting pattern was not abolished. At 10 mg/kg of risperidone, the phase 2 EMG was 71 (± 22) % and was not significantly different from vehicle.
+Phase 3 of the EMG during a bladder contraction also showed significant changes following olanzapine or risperidone (Fig 6C ). Both drugs significantly decreased the amount of integrated EMG but 0.1 mg/kg olanzapine had a more profound effect (Fig 6C ), reducing the EMG to 35 (±5.2) % of the control value at 1.0 mg/kg compared to 68 (±8.0) % of control after a similar dose of risperidone. At 10 mg/kg of risperidone the EMG was 73 (± 9.0) % of vehicle.
+Finally, while risperidone had no effect on the amplitude of the EMG bursts occurring the expulsion phase (Fig 1 ; Fig 6D ), olanzapine abolished bursting of the EMG at 1.0 mg/kg in all animals tested (Fig 1H ; 6D ).
+Effects of olanzapine and risperidone on blood pressure
+Both olanzapine and risperidone decreased mean arterial pressure (MAP) in anesthetized rats (Fig. 7 ). Risperidone produced significant effects at all the doses tested, with a maximum drop in MAP of approximately 46 mm Hg at 1 mg/kg (Mean = 44 mm Hg; SEM ±1.37). Olanzapine showed a significant decrease in MAP at 1.0 mg/kg with a maximum drop of approximately 26 mm Hg (Mean = 55 ± 3.76 mm Hg). In two animals where olanzapine was administered at 10 mg/kg, there was no further reduction in MAP (Mean = 57 ± 4.95 mm Hg), however, significant respiratory depression was observed and therefore we excluded this dose for the remaining animals receiving olanzapine.
+Mean arterial pressure changes as a result of olanzapine and risperidone. Both of these drugs caused a marked drop in mean arterial pressure (MAP), with risperidone having a larger effect than olanzapine. All doses of risperidone resulted in significant decreases in MAP, whereas only the highest dose of olanzapine (1.0 mg/kg) caused a significant decrease in MAP. * = p < 0.05; ** = p < 0.01.
+Effects of olanzapine and risperidone on bladder contractions elicited by electrical stimulation of the pelvic nerve
+Prolonged electrical stimulation of the pelvic nerve elicits a sustained bladder contraction with two components. An initial rise in bladder pressure (Phase I; Fig. 8A ) that is resistant to muscarinic blockade and a sustained part of the contraction (Phase II or plateau phase) that is very sensitive to anti-muscarinic agents [ 20 , 21 ]. Olanzapine at 1 and 10 mg/kg reduced the amplitude of Phase I to 79 and 74% of the control values, respectively (Fig. 8A;B ). Risperidone, on the other hand, significantly increased the amplitude of phase I after 10 mg/kg (116% of control).
+Peripheral anti-muscarinic effects of olanzapine and risperidone. A) Prolonged (60 sec) electrical stimulation of the cut distal end of the pelvic nerve results in a bladder contraction. The amplitude of the initial rise of the contraction (Phase I) is resistant to muscarinic blockade. The plateau phase (Phase II), however, is very sensitive to anti-muscarinic agents. After 10 mg/kg of olanzapine, Phase I is somewhat decreased, but phase II is markedly reduced. After 10 mg/kg of risperidone, Phase I is larger than control, while phase II is unchanged. B) Phase I amplitude as a function of cumulative doses of olanzapine and risperidone. Olanzapine decreased the amplitude at 1 and 10 mg/kg. Risperidone did not reduce the amplitude but it significantly increased the amplitude at 10 mg/kg. C) Phase II amplitude was markedly reduced by 1 and 10 mg/kg of olanzapine whereas risperidone had no effect. * = p < 0.05; ** = p < 0.01.
+The plateau phase, or phase II of the pelvic nerve induced bladder contraction was significantly reduced by olanzapine (Fig. 8A ; 6C ). At 1 and 10 mg/kg, the response was 47 and 33% of the control values, respectively. Risperidone had no effect on Phase II amplitude (Fig. 8A; 8C ).
+Discussion
+Similar to our findings with clozapine [ 7 ], olanzapine and to a lesser extent risperidone, altered several urodynamic parameters measured during cystometry and also inhibited the EMG recorded from the external urethral sphincter.
+Effects of olanzapine and risperidone on urodynamic parameters and the external sphincter EMG
+Both olanzapine and risperidone are compounds with relatively high oral bioavailability. Clinically effective doses of olanzapine (10–15 mg/day; 18.4–30.6 ng/ml plasma concentration [ 22 - 24 ]) or risperidone (3–6 mg/day; 15–30.8 ng/ml combined plasma concentration of risperidone and 9-hydroxy-risperidone [ 25 ]) correspond well with the dose of 1.0 mg/kg (equivalent to 12.5 ng/ml) in the present study.
+Both neuroleptics markedly decreased the micturition volume, expulsion time, and amplitude of the HFO while residual volume increased. Most of the effects of either neuroleptic occurred at doses of 0.1 and 1.0 mg/kg. Olanzapine appeared to have a greater maximal effect than risperidone. At the highest dose of risperidone (10 mg/kg) there was less of an effect for the urodynamic parameters mentioned above. This is an interesting observation that was not explored further in the present study. The physiological significance is unclear since the 10 mg/kg dose is well above the clinically effective doses of risperidone.
+Olanzapine did not have an effect on bladder capacity or pressure threshold while risperidone increased both although only at the highest doses. Clozapine, on the other hand, was observed previously to increase bladder capacity and pressure threshold [ 6 , 7 ]. Olanzapine had no effect on bladder peak pressure during contraction and only the highest dose of risperidone showed an increase in pressure (119% of control). The increase in pressure after the highest dose of risperidone was interesting and was also observed following electrical stimulation of the pelvic nerve suggesting a possible peripheral mechanism.
+Olanzapine, but not risperidone, decreased the integrated EMG recorded during the beginning of a bladder contraction (Phase 1; comparable to the guarding reflex). Both neuroleptics decreased the EMG during phase 2, where high frequency oscillations occur in the bladder pressure along with bursting in the EUS, with the highest dose of olanzapine (1.0 mg/kg) abolishing the HFO and the bursting pattern. The integrated EMG recorded during the end of the bladder contraction (Phase 3) was also decreased by both neuroleptics, with olanzapine reducing it to 69% and 35% at 0.1 and 1.0 mg/kg, respectively, whereas the maximal effect for risperidone was observed at 1 mg/kg (68%).
+Finally, neither neuroleptic decreased the amplitude of the individual bursts of EMG recorded during phase 2, except for the largest dose of olanzapine (1 mg/kg) that abolished the bursting pattern.
+Therefore, as was the case for urodynamic parameters, although both neuroleptics decreased the activity of the external urethral sphincter (as reflected in the integrated EMG), it appears that the effects of olanzapine were greater than those of risperidone. As was the case for some urodynamic parameters, the highest dose of risperidone showed a parabolic effect for some of the EMG parameters.
+Blockade of the external urethral sphincter in anesthetized rats results in a disappearance of the HFO from the bladder pressure recording as well as a disappearance of the bursting pattern of the EUS EMG observed during HFO [ 26 - 28 ]. In addition, there is a decreased ability of the bladder to empty as evidenced by a decreased micturition volume and an increased residual volume [ 26 , 27 , 29 ]. Therefore, inhibition of the external urethral sphincter, as was the case for the two neuroleptics in the present study and also for clozapine in our earlier study [ 7 ], might provide an important mechanism by which the bladder is rendered less effective in emptying and therefore altering other urodynamic variables resulting in decreased micturition volume and increased residual volume in rats.
+Possible neuropharmacological mechanisms for the effect of olanzapine and risperidone on the lower urinary tract
+We tested for peripheral antimuscarinic actions of both neuroleptics by examining their effects on bladder contractions elicited by electrical stimulation of the pelvic nerve. In this preparation, olanzapine but not risperidone reduced the initial contraction amplitude (Phase I) somewhat and markedly depressed the prolonged contraction phase (Phase II; Fig. 8 ) that is thought to be mediated by muscarinic receptors [ 20 , 21 ]. During cystometry, however, neither olanzapine nor risperidone affected the peak pressure during bladder contraction. Therefore, although olanzapine had a peripheral effect on bladder contraction amplitude, as might be expected from its antimuscarinic effects, this effect is not reflected in the peak contraction pressures observed during cystometry. This discrepancy is probably due to the fact that during a bladder contraction against a closed outlet (electrical stimulation of the pelvic nerve) higher pressures were developed than were observed during cystometry when the outlet was not obstructed. Since the clinically effective dose of olanzapine (10–15 mg/day; 18.4–30.6 ng/ml plasma concentration [ 22 - 24 ]) is greater than the first dose observed to produce significant peripheral antimuscarinic effects in this study (1.0 mg/kg; equivalent to 12.5 ng/ml plasma concentration) a possible peripheral anti-muscarinic on the bladder during olanzapine therapy remains a concern.
+Muscarinic blockade with atropine decreased micturition pressure and micturition volume, while increasing residual volume [ 30 ] and bladder capacity [ 31 ]. Similarly, central administration of atropine decreased peak pressure and voiding efficiency while increasing bladder capacity in awake rats [ 32 ]. Thus it is possible that central and/or peripheral muscarinic blockade by olanzapine may have contributed to some of the changes observed in these parameters in the present study.
+Muscarinic blockade was also reported to decrease the EUS EMG in all phases of the bladder contraction [ 33 ]. However, another study showed no effect on the EUS EMG following muscarinic antagonism [ 34 ]. Therefore, the exact role of muscarinic blockade on the activity of the EUS in the rat is unclear.
+It is tempting to propose that the greater effect of olanzapine on the EUS may be due to its antimuscarinic activity, which risperidone does not have. In fact, clozapine has a greater affinity for muscarinic receptors than olanzapine [ 11 ] and clozapine was also able to decrease the EMG and abolish the bursting pattern during phase 2.
+Whether muscarinic blockade affects the activity of the EUS by acting on central or peripheral sites remains to be determined. A direct inhibitory action of olanzapine on the EUS muscle itself is not expected and was not seen with clozapine [ 7 ]. However, antimuscarinic effects alone cannot account for all of the effects of olanzapine on the EUS, since risperidone had a similar effect although not quite as pronounced and risperidone has little or no affinity for muscarinic receptors [ 16 ]. Therefore, antagonism of other transmitter systems, e.g. D2, alpha1, 5-HT2, remains as an explanation of the effects of these neuroleptics on urodynamic variables [ 6 ].
+Selective antagonism of D2 receptors only modestly reduced the amplitude of HFO without affecting any other urodynamic parameters [ 6 , 35 ]. Therefore, it is possible that olanzapine and risperidone decrease the amplitude of the HFO, at least partly, through antagonism of D2 receptors.
+In anesthetized rats, doxazosin (alpha 1 adrenergic receptor antagonist) administered systemically, increased micturition volume, bladder capacity, residual volume and micturition frequency while decreasing peak pressure [ 36 ]. Only an increase in the micturition frequency was observed after spinal administration of doxazosin [ 37 ]. Both olanzapine and risperidone have moderate affinity for the alpha 1 adrenergic receptor (Table 1 ), therefore it is possible that some of the effects observed in the present study were due to central and/or peripheral antagonism of alpha 1 adrenergic receptors by these drugs. The decreases observed in MAP suggest a possible peripheral alpha1 effect. However, we did not observe a decrease in the peak pressure as would have been predicted from previous studies using selective alpha 1 antagonism [ 36 ]. In addition, bladder capacity was not affected except at the highest dose of risperidone tested. Urinary incontinence as a result of olanzapine [ 12 ] or clozapine [ 15 ] therapy was treated effectively with ephedrine (alpha adrenergic receptor agonist), suggesting a possible alpha1 effect. However, alpha1a-adrenoceptor gene polymorphism was found to play no role in clozapine-induced urinary incontinence [ 38 ].
+In terms of the effects on the EUS, alpha 1 antagonists have been shown to inhibit the EUS in the cat [ 39 - 41 ] but not in the anesthetized rat [ 42 ].
+Finally, both olanzapine and risperidone posses affinities to several serotonin receptor subtypes (Table 1 ). In cats, serotonin antagonists caused a decrease in bladder capacity [ 43 ] however in anesthetized rats, serotonin antagonism did not have an effect on micturition [ 44 ]. Recently, a selective 5-HT1A receptor antagonist (WAY-100635) was reported to inhibit bladder contractions in rats [ 45 ] yet another report only observed an increase in the pressure threshold [ 46 ]. Olanzapine and risperidone have only low to modest affinity for the 5-HT1A receptor, and higher affinities for the 5-HT2A and 5-HT2C receptors [ 11 , 12 ]. Serotonin 5-HT2 and 5-HT3 receptors facilitate pudendal reflexes in the cat [ 47 , 48 ], therefore it is possible that antagonism of these receptors may block the EUS in the anesthetized rat. Given the modest role of serotonin receptors in micturition in anesthetized rats, it remains to be determined whether the effects observed here were due to anti-serotonergic effects of these neuroleptics.
+Clinical implications
+While there are several reports of urinary disturbances following clozapine therapy [ 3 , 10 , 15 ], there are relatively few reports of urinary incontinence with risperidone or olanzapine. In one report, twenty-eight (28%) of patients on risperidone developed at least transient urinary incontinence, compared to 13% before starting treatment [ 18 ]. Other reports also suggest urinary incontinence associated with risperidone therapy [ 17 , 19 ].
+To date, only one case report of urinary incontinence with olanzapine therapy that resolved with ephredrine was found in the literature [ 14 ]. In the present study, olanzapine had more profound effects on urodynamic parameters and the EUS than risperidone and therefore the incidence of urinary disturbances in clinical practice would be predicted to be higher. Olanzapine is a newer compound than clozapine or risperidone and therefore, a larger incidence of urinary symptoms with olanzapine therapy may await a larger sampling.
+Finally, possible side effects of neuroleptics, such as urinary retention, may be predicted from binding studies using human brain tissue [ 12 ] if antimuscarinic affinities will correspond to antimuscarinic effects on the bladder. However, olanzapine and risperidone may also result in urinary disturbances by their influence on central pathways mediating bladder contractions or coordinating external urethral sphincter, as may have been the case in the present study. Such effects may not be readily apparent or predictable from receptor binding studies.
+Conclusions
+Olanzapine and to a lesser extent risperidone, altered several micturition parameters and they inhibited the external urethral sphincter in the anesthetized rat. These effects resulted in a decreased effectiveness of the bladder to empty as evidenced by a decreased micturition volume and an increase in the residual volume, and a decreased activity of the external urethral sphincter. Although olanzapine also showed peripheral anti-muscarinic effects on bladder contractions, risperidone did not. Therefore, peripheral anti-muscarinic effects alone cannot explain all the changes observed with these drugs and they might reflect central effects on micturition pathways.
+Materials and Methods
+The experiments were conducted in compliance with the USDA Animal Welfare Act and amendments thereto and the revised Guide for the Care and use of Laboratory Animals DHEW (NIH) and were approved by the Animal Studies Subcommittee of the Bay Pines Veterans Administration Medical Center.
+Surgical procedures have been described in detail elsewhere [ 7 ]. Briefly, rats (female Sprague-Dawley; n = 20; 200–250 g; Harlan; IN) were anesthetized with halothane and placed on a heating pad. A catheter (PE-50) was introduced into the jugular vein to administer urethane (1.1 g/kg) over a period of 20 minutes while decreasing the level of halothane to prevent respiratory depression. After an abdominal incision, both ureters were exteriorized (PE 10) and a catheter (PE-90) was introduced into the bladder dome and tied in place with a purse string suture. A catheter (PE-50) was introduced into the right femoral artery for blood pressure recording. Stainless-steel wires (0.003 in.; A-M Systems; WA) insulated except at the tip were introduced into the external urethral sphincter for EMG recording.
+Urodynamic Studies
+The bladder was emptied and allowed to equilibrate to air pressure for 5 minutes before beginning each cystometrogram. Room temperature saline was infused into the bladder (0.11 ml/min) while recording bladder pressure and the infusion was stopped when a contraction occurred. Volume expelled was determined by placing cotton gauze at the urinary meatus and weighing before and after micturition. External urethral sphincter EMG (EUS-EMG) was recorded throughout the cystometrogram and for sometime after the filling had stopped. Cumulative doses of olanzapine (provided as a courtesy by Ely Lilly, Indianapolis; vehicle, 0.01, 0.1, 1 mg/kg; n = 5) and risperidone (RBI; vehicle, 0.01, 0.1, 1, 10 mg/kg; n = 7) were administered i.v. at approximately 10 minute intervals. The plasma half-life of olanzapine and risperidone are 2.5 and 15 hr, respectively [ 25 , 49 ]. Both drugs were dissolved in a minimal amount of 0.1 N HCl, and brought up to volume with saline (final pH = 6). Cystometrograms were started approximately 3 minutes after each drug administration.
+Bladder contractions induced by pelvic nerve stimulation
+In order to determine the direct peripheral effects of these drugs on the bladder, the distal end of a pelvic nerve was stimulated electrically to elicit a bladder contraction (n = 8). Both hypogastric and pelvic nerves were cut before they entered the major pelvic ganglion and a tie was placed around the urinary meatus to preserve isovolumetric conditions. After infusing 0.1–0.2 ml into the bladder the distal, cut end of the pelvic nerve was stimulated with a long train (5 Hz; 1 msec pulse width; 60 sec train; 30–300 (uamps) to elicit a prolonged contraction displaying two phases: Phase I, a rapid contraction and Phase II, a plateau phase [ 20 , 21 ]. Phase I is resistant to atropine, and therefore is mostly due to non-adrenergic, non-cholinergic activation, whereas Phase II is highly sensitive to muscarinic blockade [ 21 ]. Olanzapine (n = 4) and risperidone (n = 4) were administered (0.01,0.1,1 and 10 mg/kg; i.v.) and the stimulations were repeated at 10 minutes intervals. At the end of each experiment, all rats were overdosed with urethane i.v.
+Data analysis
+Bladder pressure and EUS-EMG during the cystometrograms were displayed in an electronic chart recorder (RC Electronics; Goleta, CA) and analyzed off-line (Dataview, W.J. Heitler, U. St Andrews, Scotland). The following parameters were examined from the cystometrogram as described in detail earlier [ 7 ]: bladder capacity (amount of fluid infused to elicit a contraction); micturition volume (amount of fluid expelled); residual volume ([bladder capacity – micturition volume]/ [bladder capacity]); pressure threshold (pressure at which contraction begins); peak pressure (maximal pressure during contraction); contraction time; expulsion time (time between peak pressure and end of high frequency oscillations); amplitude of high frequency oscillations. The EMG activity was examined by dividing the bladder contraction into three phases in a modification of the technique of Chien et al. [ 33 ] a contraction phase (phase 1); an expulsion phase (phase 2) and a closing phase (phase 3).
+The raw EMG was rectified, integrated (0.5 second bin) and the area under curve of the EMG corresponding to each phase of the bladder contraction was measured (Sigma Scan/Image; Jandel Scientifics, San Rafael, Ca). Drug effects were calculated as percent of control.
+In the case of bladder contractions induced by pelvic nerve stimulation, the amplitude of phase A and Phase B were compared to drug free control values.
+Values are presented as Mean ± S.E.M. Repeated measures ANOVA (GB Stat; Dynamic Microsystems; MD) were performed on all parameters and when statistical significance (p < 0.05) was obtained, comparisons between control and different drug dosages were made using Fisher's protected t-test [ 50 ].
+Abbreviations
+EMG = electromyogram EUS = external urethral sphincter MAP = mean arterial pressure CMG = cystometrogram BC = bladder capacity PT = pressure threshold PP = peak pressure ET = expulsion time HFO = high frequency oscillations MV = micturition volume RV = residual volume CT = contraction time
