@@ -4,11 +4,10 @@ The code is pure Clojure but nothing stops you from using the uberjar from other
 
 ## Usage
 This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and potentially install the jar manually in order to use it.
-Download the jars from here:
+Download the jars from here if you want to try it out:
 
- <a href="annotator-clj/tree/master/bin/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2)</a> ,
- 
- <a href="annotator-clj/tree/master/bin/PAnnotator.jar">Slim jar (jar-v0.2)</a> 
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2)</a> 
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2)</a> 
 
 There are 3 ways of using this. Refer to instructions.txt or the in-program documentation for more details...
 
