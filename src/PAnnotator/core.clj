@@ -1,6 +1,7 @@
 (ns PAnnotator.core
   (:use [clojure.tools.cli :only [cli]]
-        [clojure.set :only [union]]))
+        [clojure.set :only [union]]
+        [clojure.string :only [split-lines]]))
 
 
 (defn string->data
@@ -48,11 +49,10 @@
                :file+dics [[\"train/invitro_train-raw.txt\" \"train/invitro-train-names-distinct.txt\"] 
                            [\"train/invivo_train-raw.txt\"  \"train/invivo-train-names-distinct.txt\"]]})"
 (^String [^String f ^String entity-type dics ^String op-tag ^String mi-tag ^String cl-tag]
-  (let [dic (combine-dicts (mapv (comp (fn [untrimmed] (mapv #(.trim ^String %) untrimmed)) 
-                                      clojure.string/split-lines 
-                                      slurp) dics))]    
-         ;(fn [file dic]  
-           (println (str "Queueing document: " f)) 
+  (let [dic (combine-dicts (mapv (comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
+                                      split-lines 
+                                      slurp) dics))]      
+       (println (str "Queueing document: " f)) 
            (loop [text  (slurp f)
                   names dic ]
   	     (if-let [name1 (first names)] 
@@ -60,7 +60,7 @@
               (.replaceAll 
         	(re-matcher 
                 (re-pattern (str "(?i)\\b+" (java.util.regex.Pattern/quote name1) "+\\b")) text)  
-             (str op-tag entity-type mi-tag (un-capitalize name1) cl-tag)) 
+             (str op-tag entity-type mi-tag name1 cl-tag)) 
              (catch java.util.regex.PatternSyntaxException _ 
              (do (println (str "--- CANNOT BE PROCESSED! --->" name1)) text)))
              (rest names)) text)) 
