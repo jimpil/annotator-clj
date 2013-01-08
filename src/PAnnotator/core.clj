@@ -2,7 +2,11 @@
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
         [clojure.string :only [split-lines]]))
-
+               
+        
+#_(defprotocol StringOps
+(normalise [this]
+(trimd [this])))
 
 (defn string->data
 "Read the file f back on memory safely. 
@@ -34,6 +38,11 @@
   (let [Cfirst (subs s 0 1)
         Crest  (subs s 1) ]
   (str (.toLowerCase Cfirst) Crest))))
+  
+#_(extend-type String
+StringOps
+(normalise [this] (un-capitalize this))
+(trimd [this] (.trim this)))  
 
 (defn- annotate 
  "Overloaded function. 
