@@ -76,7 +76,8 @@ StringOps
    )) 
 ([{:keys [files+dics entity-type target op-tag cl-tag mi-tag]
    :or {entity-type "default" target "target-file.txt" op-tag "<START:" mi-tag "> "  cl-tag " <END>"}}]
- (let [annotations (pmap #(space-out (annotate (first %) entity-type  (rest %) op-tag mi-tag cl-tag)) files+dics)] ;will return a list of (annotated) strings
+ (let [annotations (pmap #(space-out (annotate (first %) entity-type  (rest %) op-tag mi-tag cl-tag)) 
+                       (string->data files+dics))] ;will return a list of (annotated) strings
   (doseq [a annotations]
    (spit target a :append true)
    (spit target "\n" :append true)))) );;append new line per document (for the adaptive feature generator)
@@ -119,7 +120,7 @@ StringOps
       (System/exit 0))
   (do (-process {:entity-type  (:entity-type opts)  
                  :target       (:target opts)
-                 :files+dics   (string->data (:data opts))
+                 :files+dics   (:data opts)
                  :op-tag       (:op-tag opts)
                  :mi-tag       (:mi-tag opts)
                  :cl-tag       (:cl-tag opts)})
