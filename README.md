@@ -2,12 +2,15 @@
 A parallel, dictionary-based, annotator for Text-mining & other NLP-related tasks. You provide raw text files (.txt) and the corresponding dictionaries and the annotator will produce a new .txt file with the concatenation the annotated documents delimited by a blank line.
 The code is pure Clojure but nothing stops you from using the uberjar from other JVM-based languages. You can even use it directly from the command-line...
 
+## Motivation
+Text-mining and NLP researchers who require massive amounts of annotated documents to train their probabilistic classifiers, often resort to non-free solutions for high-performance annotation of potentially thousands or millions documents (e.g www.thintek.com). Of course you might think..."Hang on a minute - the best annotation takes place when you involve human-experts and not dictionaries". Well yes, but nonetheless people still rely on dictionaries as a cheaper alternative with acceptable outcome. To that end I put together this tiny library to help people do their annotations easily, efficiently and more importantly freely. You just provide the cpu-cores and sit back watching them getting hot! You don't have to be a programmer to use this...A simple but fully functional command-line interface is provided. If you are a programmer however you may be pleased to find out that the source code is in the jar archives!
+
 ## Usage
 This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and potentially install the jar manually in order to use it.
 Download the jars from here if you want to try it out:
 
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2)</a>    
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2)</a> 
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2.1)</a>    
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2.1)</a> 
 
 There are 3 ways of using this. Refer to instructions.txt or the in-program documentation for more details...
 
@@ -33,7 +36,7 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 import java.util.HashMap;
 import java.util.Map; 
 
-// you need the 'PAnnotator-uber.jar' on your classpath or the PAnnotator.jar + clojure 1.4 and above
+// you need the 'PAnnotator-uber.jar' on your classpath OR the PAnnotator.jar + clojure 1.4 and above
 
 public class PANN {
 	//first we need the map with the appropriate arguments
@@ -48,7 +51,7 @@ public class PANN {
 		parameters.put(clojure.lang.Keyword.intern("op-tag"), " <END>");
 
 	 Annotator.process(parameters); //finally call the static void method process(Map m);
-	 clojure.lang.Agent.shutdown(); //gracefully shutdown the thread pool
+	 clojure.lang.Agent.shutdown(); //gracefully shut-down the thread pool
 	 System.out.println("\n\nSUCCESS!\n");
 	 System.exit(0);
 	}
@@ -64,8 +67,8 @@ If you see some of your cores becoming idle after a while (and potentially firin
 You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across the data-set and achieve good concurrency. Those massive 5 ones will clog up the system. If you find yourself with such an 'irregular' dataset at hand, you basically have 2 options. You can either group all the 'irregularities' together so they are not mixed in with lighter tasks, or you can run the Annotator on 2 different datasets - one containing the roughly equally-sized 'light' tasks and another containing the roughly equally-sized 'heavy' tasks.  
 
 **The software assumes it's working with real-world scientific papers (full/abstracts) and dictionaries.**   
-That is to say that even though you can use it as a toy (really small documents and dictionaries), you shouldn't be expecting incredible performance. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially - there is no point in spawning and managing all these threads. However, if you've got proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
-As a side-note, the algorithm does basic normalision (un-capitalisation unless all characters are upper-case) of the entries found in the dictionaries.
+That is to say that even though you can use it as a toy (really small documents and dictionaries), you shouldn't be expecting incredible performance. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially - there is no point in spawning and managing all these threads. However, if you have proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
+As a side-note, the algorithm does basic normalisation (un-capitalisation unless all characters are upper-case) of the entries found in the dictionaries.
 
 ## License
 
