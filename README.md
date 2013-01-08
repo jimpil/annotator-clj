@@ -13,7 +13,7 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 
 ### 1. Directly from the command-line (you need the entire uberjar):
 
->java -cp PAnnotator-uber.jar Annotator -d data-file.txt 
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt  
 					-t target-file.txt 
 					-e drug 
 					-o `"<START:"` 
@@ -46,7 +46,19 @@ parameters.put(clojure.lang.Keyword.intern("mi-tag"), "> ");
 parameters.put(clojure.lang.Keyword.intern("op-tag"), " <END>");
 
 Annotator.process(parameters); //finally call the static void method process(java.util.Map m);
-```  
+```
+
+## Notes on parallelism
+
+### In order to experience as much parallelism as possible, you need to consider a few things first. 
+
+--- *It is suggested that all the elements in dataset (the data-file.txt) are more or less of equal size.*  
+If you see some of your cores becoming idle after a while (and potentially firing up again later), that is a good indication that some tasks (documents or dictionaries or both) are considerably 'heavier' than others.
+You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across the data-set and achieve good concurrency. Those massive 5 ones will clog up the system. If you find yourself with such an 'irregular' dataset at hand, you basically have 2 options. You can either group all the 'irregularities' together so they are not mixed in with lighter tasks, or you can run the Annotator on 2 different datasets - one containing the roughly equally-sized 'light' tasks and another containing the roughly equally-sized 'heavy' tasks. If you see some of your cores becoming idle after a while (and potentially firing up again later), that is a good indication that some tasks (documents or dictionaries or both) are considerably 'heavier' than others.  
+
+--- *The software assumes it's working with real-world scientific papers and dictionaries.*   
+That is to say that even though you can use it as a toy (really small documents and dictionaries), you shouldn't be expecting incredible performance. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially - there is no point in spawning and managing all these threads. However, if you've got proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
+As a side-note, the algorithm does basic normalision (un-capitalisation unless all characters are upper-case) of the entries found in the dictionaries.
 
 ## License
 
