@@ -13,12 +13,7 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 
 ### 1. Directly from the command-line (you need the entire uberjar):
 
->java -cp PAnnotator-uber.jar Annotator -d data-file.txt  
-					-t target-file.txt 
-					-e drug 
-					-o `"<START:"` 
-					-m `"> "`
-					-c `" <END>"`  
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -e drug -o `"<START:"` -m `"> "` -c `" <END>"`  
 
 ### 2. From your own Clojure project (exposed function '-process' does all the work):
 
