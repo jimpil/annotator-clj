@@ -30,17 +30,29 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 ### 3. From your own Java project (exposed function '-process' does all the work): 
 
 ```java
-import Annotator; // you need the 'PAnnotator-uber.jar' on your classpath or the PAnnotator.jar plus clojure.jar
+import java.util.HashMap;
+import java.util.Map; 
 
-private Map parameters = new new HashMap<clojure.lang.Keyword, String>();    //first we need the map with the appropriate arguments
-parameters.put(clojure.lang.Keyword.intern("target"), "target-file.txt");    //example target-file
-parameters.put(clojure.lang.Keyword.intern("files+dics"), "data-file.txt"); //example data-file
-parameters.put(clojure.lang.Keyword.intern("entity-type"), "drug"); //this arg is optional ("default" will be used if missing)
-parameters.put(clojure.lang.Keyword.intern("op-tag"), "<START:");
-parameters.put(clojure.lang.Keyword.intern("mi-tag"), "> ");
-parameters.put(clojure.lang.Keyword.intern("op-tag"), " <END>");
+// you need the 'PAnnotator-uber.jar' on your classpath or the PAnnotator.jar + clojure 1.4 and above
 
-Annotator.process(parameters); //finally call the static void method process(java.util.Map m);
+public class PANN {
+	//first we need the map with the appropriate arguments
+	private static final Map<clojure.lang.Keyword, String> parameters =  new HashMap<clojure.lang.Keyword, String>(); 
+
+	public static void main(String... args){
+		parameters.put(clojure.lang.Keyword.intern("target"), "target-file.txt");    //example target-file
+		parameters.put(clojure.lang.Keyword.intern("files+dics"), "data-file.txt"); //example data-file
+		parameters.put(clojure.lang.Keyword.intern("entity-type"), "drug"); //this is optional ("default" will be used if missing)
+		parameters.put(clojure.lang.Keyword.intern("op-tag"), "<START:"); 
+		parameters.put(clojure.lang.Keyword.intern("mi-tag"), "> ");
+		parameters.put(clojure.lang.Keyword.intern("op-tag"), " <END>");
+
+	 Annotator.process(parameters); //finally call the static void method process(Map m);
+	 clojure.lang.Agent.shutdown(); //gracefully shutdown the thread pool
+	 System.out.println("\n\nSUCCESS!\n");
+	 System.exit(0);
+	}
+}
 ```
 
 ## Notes on parallelism
