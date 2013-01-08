@@ -19,12 +19,12 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 
 ```clojure
 (use '(PAnnotator.core :only [-process, string->data]))
-(-process {:entity-type  "protein"  
-           :target       "some-target-file.txt"
-           :files+dics   (string->data "some-data-file.txt")
-           :op-tag       (:op-tag opts)
-           :mi-tag       (:mi-tag opts)
-           :cl-tag       (:cl-tag opts)})
+(-process {:entity-type  "protein"  ;;the default entity-type is "default" 
+           :target       "some-target-file.txt"  ;;the default target is "target-file.txt"
+           :files+dics   (string->data "some-data-file.txt") ;;the default data file is "data-file.txt"
+           :op-tag       "<START:"  ;;opening tag in openNLP (default)
+           :mi-tag       "> "       ;;closing part of opening tag in openNLP (default)
+           :cl-tag       " <END>"}) ;;closing tag in openNLP (default)
 ```           
 
 ### 3. From your own Java project (exposed function '-process' does all the work): 
