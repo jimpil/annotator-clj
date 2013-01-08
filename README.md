@@ -1,9 +1,9 @@
 # PAnnotator
-A parallel, dictionary-based annotator for Text-mining & other NLP-related tasks.
-The code is pure Clojure but nothing stops you from using the uberjar from other JVM-based languages.
+A parallel, dictionary-based, annotator for Text-mining & other NLP-related tasks. You provide raw text files (.txt) and the corresponding dictionaries and the annotator will produce a new .txt file with the concatenation the annotated documents delimited by a blank line.
+The code is pure Clojure but nothing stops you from using the uberjar from other JVM-based languages. You can even use it directly from the command-line...
 
 ## Usage
-This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and install the jar manually in order to use it.
+This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and potentially install the jar manually in order to use it.
 Download the standalone jar from here: 
 
 There are 3 ways of using this. Refer to instructions.txt or the in-program documentation for more details...
