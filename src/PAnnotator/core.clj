@@ -1,14 +1,12 @@
 (ns PAnnotator.core
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
-        [clojure.string :only [split-lines]]))
+        [clojure.string :only [split-lines]])
+  (:import PAnnotator.java.MString)
+)     
                
-        
-#_(defprotocol StringOps
-(normalise [this]
-(trimd [this])))
 
-(defn string->data
+(defn- string->data
 "Read the file f back on memory safely. 
  Contents of f should be a clojure data-structure. Not allowed to execute arbitrary code (per #=)." 
 [f]
@@ -23,7 +21,6 @@
    (let [set-views (map set ds)]
      (apply union set-views)) (first ds))) 
     
- ;;(mapv combine-dicts dicts)
  
 (defn- space-out 
 "Given some text, find all the sgml tags that are not surrounded by spaces and put spaces around them." 
@@ -38,11 +35,6 @@
   (let [Cfirst (subs s 0 1)
         Crest  (subs s 1) ]
   (str (.toLowerCase Cfirst) Crest))))
-  
-#_(extend-type String
-StringOps
-(normalise [this] (un-capitalize this))
-(trimd [this] (.trim this)))  
 
 (defn- annotate 
  "Overloaded function. 
