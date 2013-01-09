@@ -8,6 +8,7 @@
   :jvm-opts ["-Xmx1g" "-server" "-XX:+UseCompressedOops"]
   :jar-name "PAnnotator.jar"          ; name of the jar produced by 'lein jar'
   :uberjar-name "PAnnotator-uber.jar" ; same for 'lein uberjar'
+  :java-source-paths ["src/java"]
   ;:aot []
   :main PAnnotator.core
   )
