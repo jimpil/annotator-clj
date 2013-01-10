@@ -16,7 +16,7 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 
 ### 1. Directly from the command-line (you need the entire uberjar):
 
->java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -e drug -o `"<START:"` -m `"> "` -c `" <END>"`  
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -e drug -o `"<START:"` -m `"> "` -c `" <END>"` -p 
 
 ### 2. From your own Clojure project (exposed function '-process' does all the work):
 
@@ -27,31 +27,35 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
            :files+dics   "some-data-file.txt"    ;;the default data file is "data-file.txt"
            :op-tag       "<START:"  ;;opening tag in openNLP (default)
            :mi-tag       "> "       ;;closing part of opening tag in openNLP (default)
-           :cl-tag       " <END>"}) ;;closing tag in openNLP (default)
+           :cl-tag       " <END>"   ;;closing tag in openNLP (default)
+           :strategy     :parallel}) ;;run each task in parallel
 ```           
 
 ### 3. From your own Java project (exposed function '-process' does all the work): 
 
 ```java
 import java.util.HashMap;
-import java.util.Map; 
+import java.util.Map;
+import clojure.lang.Keyword;
+import clojure.lang.Agent; 
 
 // you need the 'PAnnotator-uber.jar' on your classpath OR the PAnnotator.jar + clojure 1.4 and above
 
 public class PANN {
 	//first we need the map with the appropriate arguments
-	private static final Map<clojure.lang.Keyword, String> parameters =  new HashMap<clojure.lang.Keyword, String>(); 
+	private static final Map<Keyword, String> parameters =  new HashMap<Keyword, String>(); 
 
 	public static void main(String... args){
-		parameters.put(clojure.lang.Keyword.intern("target"), "target-file.txt");    //example target-file
-		parameters.put(clojure.lang.Keyword.intern("files+dics"), "data-file.txt"); //example data-file
-		parameters.put(clojure.lang.Keyword.intern("entity-type"), "drug"); //this is optional ("default" will be used if missing)
-		parameters.put(clojure.lang.Keyword.intern("op-tag"), "<START:"); 
-		parameters.put(clojure.lang.Keyword.intern("mi-tag"), "> ");
-		parameters.put(clojure.lang.Keyword.intern("op-tag"), " <END>");
+		parameters.put(Keyword.intern("target"), "target-file.txt");    //example target-file
+		parameters.put(Keyword.intern("files+dics"), "data-file.txt"); //example data-file
+		parameters.put(Keyword.intern("entity-type"), "drug"); //this is optional ("default" will be used if missing)
+		parameters.put(Keyword.intern("op-tag"), "<START:"); 
+		parameters.put(Keyword.intern("mi-tag"), "> ");
+		parameters.put(Keyword.intern("op-tag"), " <END>");
+		parameters.put(Keyword.intern("strategy"), Keyword.intern("parallel");
 
 	 Annotator.process(parameters); //finally call the static void method process(Map m);
-	 clojure.lang.Agent.shutdown(); //gracefully shut-down the thread pool
+	 Agent.shutdown(); //gracefully shut-down the thread pool
 	 System.out.println("\n\nSUCCESS!\n");
 	 System.exit(0);
 	}
@@ -64,10 +68,10 @@ public class PANN {
 
 **It is suggested that all the elements in dataset (the data-file.txt) are more or less of equal size.**  
 If you see some of your cores becoming idle after a while (and potentially firing up again later), that is a good indication that some tasks (documents or dictionaries or both) are considerably 'heavier' than others.
-You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across the data-set and achieve good concurrency. Those massive 5 ones will clog up the system. If you find yourself with such an 'irregular' dataset at hand, you basically have 2 options. You can either group all the 'irregularities' together so they are not mixed in with lighter tasks, or you can run the Annotator on 2 different datasets - one containing the roughly equally-sized 'light' tasks and another containing the roughly equally-sized 'heavy' tasks.  
+You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across the data-set and achieve good concurrency. Those massive 5 ones will clog up the system. If you find yourself with such an 'irregular' dataset at hand, you basically have 2 options. You can either group all the 'irregularities' together so they are not mixed in with lighter tasks, or you can run the Annotator on 2 different datasets - one containing the roughly equally-sized 'light' tasks and another containing the roughly equally-sized 'heavy' tasks. 
 
 **The software assumes it's working with real-world scientific papers (full/abstracts) and dictionaries.**   
-That is to say that even though you can use it as a toy (really small documents and dictionaries), you shouldn't be expecting incredible performance. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially - there is no point in spawning and managing all these threads. However, if you have proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
+That is to say that even though you can use it as a toy (really small documents and dictionaries), you shouldn't be expecting incredible performance. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially (without the -p flag) - there is no point in spawning and managing all these threads. However, if you have proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
 As a side-note, the algorithm does basic normalisation (un-capitalisation unless all characters are upper-case) of the entries found in the dictionaries.
 
 ## License
