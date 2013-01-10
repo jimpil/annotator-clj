@@ -78,9 +78,10 @@
              (do (println (str "--- CANNOT BE PROCESSED! --->" name1)) text)))
              (rest names)) text)) 
    )) 
-([{:keys [files+dics entity-type target op-tag cl-tag mi-tag]
+([{:keys [files+dics entity-type target op-tag cl-tag mi-tag strategy]
    :or {entity-type "default" target "target-file.txt" op-tag "<START:" mi-tag "> "  cl-tag " <END>"}}]
- (let [annotations (pmap #(space-out (annotate (first %) entity-type  (rest %) op-tag mi-tag cl-tag)) 
+ (let [annotations ((if (= strategy :parallel) pmap map) 
+                      #(space-out (annotate (first %) entity-type  (rest %) op-tag mi-tag cl-tag)) 
                        (string->data files+dics))] ;will return a list of (annotated) strings
   (doseq [a annotations]
    (spit target a :append true)
@@ -118,6 +119,7 @@
              ["-o" "--op-tag" "REQUIRED: Specify the opening tag." :default "<START:"]
              ["-m" "--mi-tag" "REQUIRED: Specify the end of the opening tag." :default "> "]
              ["-c" "--cl-tag" "REQUIRED: Specify the closing tag."  :default " <END>"]
+             ["-p" "--parallel" "Run jobs in parallel" :flag true :default false]
              )]
     (when (:help opts)
       (println HELP_MESSAGE "\n\n" banner)
@@ -127,7 +129,8 @@
                  :files+dics   (:data opts)
                  :op-tag       (:op-tag opts)
                  :mi-tag       (:mi-tag opts)
-                 :cl-tag       (:cl-tag opts)})
+                 :cl-tag       (:cl-tag opts)
+                 :strategy (if (:parallel opts) :parallel :serial)})
     (println "--------------------------------------------------------\n"
              "SUCCESS! Look for a file called" (str "'" (:target opts) "'.\n"))              
     (shutdown-agents) 
