@@ -2,9 +2,21 @@
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
         [clojure.string :only [split-lines]])
-  (:import PAnnotator.java.MString)
-)     
-               
+  (:import ;[PAnnotator.java.MString]
+           [java.util.regex Pattern PatternSyntaxException]
+           ;[java.util.concurrent Executors ExecutorCompletionService]
+  )
+)
+     
+;(def cpu-no (.. Runtime getRuntime availableProcessors))
+;(Executors/newFixedThreadPool cpu-no)
+(def exec-service clojure.lang.Agent/pooledExecutor)
+
+(defn pool-map "A saner version of pmap." [f coll]
+ (let [;exec (Executors/newFixedThreadPool cpu-no)
+       ;pool (ExecutorCompletionService. exec-service)
+       futures (for [x coll] (.submit exec-service #(f x)))]
+   (for [e futures] (.get e))))               
 
 (defn- string->data
 "Read the file f back on memory safely. 
@@ -53,16 +65,16 @@
   (let [dic (combine-dicts (mapv (comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
                                       split-lines 
                                       slurp) dics))]      
-       (println (str "Queueing document: " f)) 
+       (println (str "Processing document: " f)) 
            (loop [text  (slurp f)
                   names dic ]
   	     (if-let [name1 (first names)] 
            (recur (try ;(do (println (str "ANNOTATING " name1)) ;then clause
               (.replaceAll 
         	(re-matcher 
-                (re-pattern (str "(?i)\\b+" (java.util.regex.Pattern/quote name1) "+\\b")) text)  
+                (re-pattern (str "(?i)\\b+" (Pattern/quote name1) "+\\b")) text)  
              (str op-tag entity-type mi-tag name1 cl-tag)) 
-             (catch java.util.regex.PatternSyntaxException _ 
+             (catch PatternSyntaxException _ 
              (do (println (str "--- CANNOT BE PROCESSED! --->" name1)) text)))
              (rest names)) text)) 
    )) 
@@ -119,5 +131,6 @@
     (println "--------------------------------------------------------\n"
              "SUCCESS! Look for a file called" (str "'" (:target opts) "'.\n"))              
     (shutdown-agents) 
+    ;(.shutdown exec-service)
     (System/exit 0)) ))
     
