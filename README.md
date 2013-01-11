@@ -16,7 +16,7 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 
 ### 1. Directly from the command-line (you need the entire uberjar):
 
->java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -e drug -o `"<START:"` -m `"> "` -c `" <END>"` -p 
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -e drug -o `"<START:"` -m `"> "` -c `" <END>"` -p serial
 
 ### 2. From your own Clojure project (exposed function '-process' does all the work):
 
@@ -28,7 +28,8 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
            :op-tag       "<START:"  ;;opening tag in openNLP (default)
            :mi-tag       "> "       ;;closing part of opening tag in openNLP (default)
            :cl-tag       " <END>"   ;;closing tag in openNLP (default)
-           :strategy     :parallel}) ;;run each task in parallel
+           :strategy     :lazy-parallel}) ;;run each task in a semi-lazy, parallel fashion (using pmap)
+           			          ;;other strategies include :serial, :lazy & :pool-parallel (bounded thread-pool)
 ```           
 
 ### 3. From your own Java project (exposed function '-process' does all the work): 
@@ -52,7 +53,7 @@ public class PANN {
 		parameters.put(Keyword.intern("op-tag"), "<START:"); 
 		parameters.put(Keyword.intern("mi-tag"), "> ");
 		parameters.put(Keyword.intern("op-tag"), " <END>");
-		parameters.put(Keyword.intern("strategy"), Keyword.intern("parallel");
+		parameters.put(Keyword.intern("strategy"), Keyword.intern("pool-parallel");
 
 	 Annotator.process(parameters); //finally call the static void method process(Map m);
 	 Agent.shutdown(); //gracefully shut-down the thread pool
