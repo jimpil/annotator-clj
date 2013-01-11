@@ -81,14 +81,14 @@ It may well be the case that the predefined tagging schemes are not useful to yo
 >java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -ct "{:opening \"_\" :closing \"_\" :middle \":\" :order [:entity :token]}"
 
 the above will produce tags of the following form: 
->_DRUG:aspirin_   
+>`_DRUG:aspirin_`   
 
 Obviously, if you want the token before the token-type just reverse the values supplied in the :order key like this:
 
 >java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -ct "{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}" 
 
 this will produce the following form:
->_aspirin:DRUG_ 
+>`_aspirin:DRUG_` 
 
 ## Notes on parallelism
 
