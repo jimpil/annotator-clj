@@ -69,7 +69,7 @@ The 2 most popular Java NLP packages are openNLP and stanfordNLP. The API can pr
 On the other hand if you're going to consume the annotations from stanfordNLP, then you need a bit of preprocessing first.
 You need to run this on a bare Linux terminal for all your raw-text files (replacing some-file.txt with the actual name of the file).
 
->for TOKEN in `cat some-file.txt`; do echo -e $TOKEN '\tO' >> some-file.txt.tok; done
+>for TOKEN in \`cat some-file.txt\` ; do echo -e $TOKEN '\tO' >> some-file.txt.tok; done
 
 Now make up your data-file.txt using the paths of the files just created and feed those into my annotator. Finally, use 'map = word=0,answer=1' in your properties file (as suggested here http://nlp.stanford.edu/software/crf-faq.shtml#a). This is important as the procedure I'm describing will leave orphan 'O's in the third column of your training data. It is imperative that the stanford-CRF trainer looks for the correct answer in the second column. 
 
