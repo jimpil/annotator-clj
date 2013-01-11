@@ -9,14 +9,14 @@ Text-mining and NLP researchers who require massive amounts of annotated documen
 This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and potentially install the jar manually in order to use it.
 Download the jars from here if you want to try it out:
 
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2.1)</a>    
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2.1)</a> 
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2.7)</a>    
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2.7)</a> 
 
 There are 3 ways of using this. Refer to instructions.txt or the in-program documentation for more details...
 
 ### 1. Directly from the command-line (you need the entire uberjar):
 
->java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -e drug -o `"<START:"` -m `"> "` -c `" <END>"` -p serial
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -fl openNLP-NER -par serial
 
 ### 2. From your own Clojure project (exposed function '-process' does all the work):
 
@@ -25,11 +25,10 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 (-process {:entity-type  "protein"  ;;the default entity-type is "default" 
            :target       "some-target-file.txt"  ;;the default target is "target-file.txt"
            :files+dics   "some-data-file.txt"    ;;the default data file is "data-file.txt"
-           :op-tag       "<START:"  ;;opening tag in openNLP (default)
-           :mi-tag       "> "       ;;closing part of opening tag in openNLP (default)
-           :cl-tag       " <END>"   ;;closing tag in openNLP (default)
-           :strategy     :lazy-parallel}) ;;run each task in a semi-lazy, parallel fashion (using pmap)
-           			          ;;other strategies include :serial, :lazy & :pool-parallel (bounded thread-pool)
+           :consumer-lib "stanfordNLP-NER"
+           :write-mode   "per-file"  ;;write each task on a separate file under 'ANNOTATED/'
+           :strategy     "lazy-parallel"}) ;;run each task in a semi-lazy and parallel fashion (using pmap)
+           			           ;;other strategies include serial, lazy & pool-parallel (bounded thread-pool)
 ```           
 
 ### 3. From your own Java project (exposed function '-process' does all the work): 
@@ -49,11 +48,10 @@ public class PANN {
 	public static void main(String... args){
 		parameters.put(Keyword.intern("target"), "target-file.txt");    //example target-file
 		parameters.put(Keyword.intern("files+dics"), "data-file.txt"); //example data-file
-		parameters.put(Keyword.intern("entity-type"), "drug"); //this is optional ("default" will be used if missing)
-		parameters.put(Keyword.intern("op-tag"), "<START:"); 
-		parameters.put(Keyword.intern("mi-tag"), "> ");
-		parameters.put(Keyword.intern("op-tag"), " <END>");
-		parameters.put(Keyword.intern("strategy"), Keyword.intern("pool-parallel");
+		parameters.put(Keyword.intern("entity-type"), "PROTEIN"); //this is optional ("default" will be used if missing)
+		parameters.put(Keyword.intern("consumer-lib"), "plain-NER"); 
+		parameters.put(Keyword.intern("strategy"),  "pool-parallel"); //use a bounded thread-pool
+		parameters.put(Keyword.intern("write-mode"),"on-screen");  //write all annotations on a single file
 
 	 Annotator.process(parameters); //finally call the static void method process(Map m);
 	 Agent.shutdown(); //gracefully shut-down the thread pool
@@ -62,6 +60,32 @@ public class PANN {
 	}
 }
 ```
+
+## Predefined tagging schemes
+The 2 most popular Java NLP packages are openNLP and stanfordNLP. The API can produce annotations compatible with both. openNLP is the easiest to produce annotations for. If you're producing annotations to be consumed by openNLP then you can get away with typing very little as all the default values are for openNLP. Something like this would suffice (assuming of course that data-file.txt is where it should be):
+
+>java -cp PAnnotator-uber.jar Annotator -e DRUG
+
+On the other hand if you're going to consume the annotations from stanfordNLP, then you need a bit of preprocessing first.
+You need to run this on a bare Linux terminal for all your raw-text files (replacing some-file.txt with the actual name of the file).
+
+>for TOKEN in `cat some-file.txt`; do echo -e $TOKEN '\tO' >> some-file.txt.tok; done
+
+Now make up your data-file.txt using the paths of the files just created and feed those into my annotator. It should work fine now...
+
+
+## Customising the tagging scheme
+
+It may well be the case that the predefined tagging schemes are not useful to you but you shouldn't worry. There is a simple way of defining your own tags without diving into the API. To do this on the command-line use the -ct switch and supply a string containing a Clojure map...
+
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -ct "{:opening \"_\" :closing \"_\" :middle \":\" :order [:entity :token]}"
+
+the above will produce tags of the following form: 
+>_DRUG:aspirin_
+Obviously, if you want the token before the token-type just reverse the values supplied in the :order key like this:
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -ct "{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}"
+this will produce the following form:
+>_aspirin:DRUG_ 
 
 ## Notes on parallelism
 
