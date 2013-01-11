@@ -4,19 +4,20 @@
         [clojure.string :only [split-lines]])
   (:import ;[PAnnotator.java.MString]
            [java.util.regex Pattern PatternSyntaxException]
-           ;[java.util.concurrent Executors ExecutorCompletionService]
+           [java.util.concurrent Executors ExecutorCompletionService]
   )
 )
      
-;(def cpu-no (.. Runtime getRuntime availableProcessors))
-;(Executors/newFixedThreadPool cpu-no)
-(def exec-service clojure.lang.Agent/pooledExecutor)
+(def cpu-no (.. Runtime getRuntime availableProcessors))
 
-(defn pool-map "A saner version of pmap." [f coll]
- (let [;exec (Executors/newFixedThreadPool cpu-no)
-       ;pool (ExecutorCompletionService. exec-service)
-       futures (for [x coll] (.submit exec-service #(f x)))]
-   (for [e futures] (.get e))))               
+(defn pool-map 
+"A saner, more disciplined version of pmap. Not lazy. Don't use this if original ordering matters." 
+[f coll]
+ (let [exec (Executors/newFixedThreadPool cpu-no)
+       pool (ExecutorCompletionService. exec)
+       futures (for [x coll] (.submit pool #(f x)))]
+   (for [e futures] 
+     (.. pool take get))))               
 
 (defn- string->data
 "Read the file f back on memory safely. 
@@ -47,6 +48,13 @@
   (let [Cfirst (subs s 0 1)
         Crest  (subs s 1) ]
   (str (.toLowerCase Cfirst) Crest))))
+  
+(defn- mapping-fn [strategy]
+(case strategy
+  :serial mapv
+  :lazy map
+  :lazy-parallel pmap
+  :pool-parallel pool-map))  
 
 (defn- annotate 
  "Overloaded function. 
@@ -79,8 +87,13 @@
              (rest names)) text)) 
    )) 
 ([{:keys [files+dics entity-type target op-tag cl-tag mi-tag strategy]
-   :or {entity-type "default" target "target-file.txt" op-tag "<START:" mi-tag "> "  cl-tag " <END>"}}]
- (let [annotations ((if (= strategy :parallel) pmap map) 
+   :or {entity-type "default" 
+        target "target-file.txt" 
+        op-tag "<START:" 
+        mi-tag "> "  
+        cl-tag " <END>"
+        strategy :lazy-parallel}}]
+ (let [annotations ((mapping-fn strategy) 
                       #(space-out (annotate (first %) entity-type  (rest %) op-tag mi-tag cl-tag)) 
                        (string->data files+dics))] ;will return a list of (annotated) strings
   (doseq [a annotations]
@@ -100,14 +113,16 @@
                                                                              -e <ENTITY-TYPE>*** 
                                                                              -o <OPENING-TAG>****
                                                                              -c <CLOSING-TAG>****
-                                                                             -m <END OF OPENING-TAG>**** \n
+                                                                             -m <END OF OPENING-TAG>****
+                                                                             -p serial OR lazy-parallel OR pool-parallel***** \n
 *must be a file with a 2D clojure seqable of the form: [[input1 dic1 dic2 dic3 dic4] 
                                                         [input2 dic5 dic6 dic7] 
                                                         [input3 dic8 dic9]]
 *defaults to 'data-file.txt' 
 **defaults to 'target-file.txt'
 ***optional argument - defaults to \"default\"
-****optional arguments - they all default to the standard openNLP annotation tags.")
+****optional arguments - they all default to the standard openNLP annotation tags.
+*****optional argument - defaults to lazy-parallel.")
 
 (defn -main [& args]
   (let [[opts argus banner]
@@ -119,19 +134,24 @@
              ["-o" "--op-tag" "REQUIRED: Specify the opening tag." :default "<START:"]
              ["-m" "--mi-tag" "REQUIRED: Specify the end of the opening tag." :default "> "]
              ["-c" "--cl-tag" "REQUIRED: Specify the closing tag."  :default " <END>"]
-             ["-p" "--parallel" "Run jobs in parallel" :flag true :default false]
+             ["-p" "--parallelism" "Set level of parallelism" :default "lazy-parallel"]
              )]
     (when (:help opts)
       (println HELP_MESSAGE "\n\n" banner)
       (System/exit 0))
-  (do (println "\n\t\t====> PAnnotator v0.2.1 <====\t\t\n\t\t-----------------------------\n\n")
+  (do (println "\n\t\t====> PAnnotator v0.2.5 <====\t\t\n\t\t-----------------------------\n\n")
       (-process {:entity-type  (:entity-type opts)  
                  :target       (:target opts)
                  :files+dics   (:data opts)
                  :op-tag       (:op-tag opts)
                  :mi-tag       (:mi-tag opts)
                  :cl-tag       (:cl-tag opts)
-                 :strategy (if (:parallel opts) :parallel :serial)})
+                 :strategy (let [s (:parallelism opts)] 
+                             (case s 
+                             "lazy-parallel" (keyword s)
+                             "pool-parallel" (keyword s)
+                             "serial"        (keyword s)
+                             "lazy"          (keyword s)))})
     (println "--------------------------------------------------------\n"
              "SUCCESS! Look for a file called" (str "'" (:target opts) "'.\n"))              
     (shutdown-agents) 
