@@ -25,7 +25,7 @@ There are 3 ways of using this. Refer to instructions.txt or the in-program docu
 (-process {:entity-type  "protein"  ;;the default entity-type is "default" 
            :target       "some-target-file.txt"  ;;the default target is "target-file.txt"
            :files+dics   "some-data-file.txt"    ;;the default data file is "data-file.txt"
-           :consumer-lib "stanfordNLP-NER"
+           :consumer-lib "stanfordNLP-NER"       ;;ready-made template for stanfordNLP & openNLP
            :write-mode   "per-file"  ;;write each task on a separate file under 'ANNOTATED/'
            :strategy     "lazy-parallel"}) ;;run each task in a semi-lazy and parallel fashion (using pmap)
            			           ;;other strategies include serial, lazy & pool-parallel (bounded thread-pool)
@@ -81,9 +81,12 @@ It may well be the case that the predefined tagging schemes are not useful to yo
 >java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -ct "{:opening \"_\" :closing \"_\" :middle \":\" :order [:entity :token]}"
 
 the above will produce tags of the following form: 
->_DRUG:aspirin_
+>_DRUG:aspirin_   
+
 Obviously, if you want the token before the token-type just reverse the values supplied in the :order key like this:
->java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -ct "{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}"
+
+>java -cp PAnnotator-uber.jar Annotator -d data-file.txt -t target-file.txt -wm merge-all -e DRUG -ct "{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}" 
+
 this will produce the following form:
 >_aspirin:DRUG_ 
 
