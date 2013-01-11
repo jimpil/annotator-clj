@@ -71,7 +71,9 @@ You need to run this on a bare Linux terminal for all your raw-text files (repla
 
 >for TOKEN in `cat some-file.txt`; do echo -e $TOKEN '\tO' >> some-file.txt.tok; done
 
-Now make up your data-file.txt using the paths of the files just created and feed those into my annotator. It should work fine now...
+Now make up your data-file.txt using the paths of the files just created and feed those into my annotator. Finally, use 'map = word=0,answer=1' in your properties file (as suggested here http://nlp.stanford.edu/software/crf-faq.shtml#a). This is important as the procedure I'm describing will leave orphan 'O's in the third column of your training data. It is imperative that the stanford-CRF trainer looks for the correct answer in the second column. 
+
+You're done! It should work fine now...
 
 
 ## Customising the tagging scheme
