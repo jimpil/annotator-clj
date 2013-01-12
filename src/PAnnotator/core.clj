@@ -153,19 +153,19 @@
         consumer-lib "openNLP-NER"
         strategy   "lazy-parallel"
         write-mode "merge-all"}}]
- (let [annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
+ (let [;annotations 
+       wfn (file-write-mode (keyword write-mode))] ;will return a writing function       
+  (doseq [a ((mapping-fn (keyword strategy)) ;;will return a mapping function
                       #(space-out (annotate (first %) entity-type  (rest %) (keyword consumer-lib))) 
-                       (file->data files+dics)) ;will return a list of (annotated) strings
-       wfn         (file-write-mode (keyword write-mode))] ;will return a writing function       
-  (doseq [a annotations] 
+                       (file->data files+dics))] ;will return a list of (annotated) strings 
     (wfn target a)))) )
       
 (def -process annotate)
 
- (gen-class :name Annotator
-             :main true
-             :methods [^:static [process [java.util.Map] void]
-                       ^:static [process [String String java.util.List] String]])  
+(gen-class :name Annotator
+           :main true
+           :methods [^:static [process [java.util.Map] void]
+                     ^:static [process [String String java.util.List] String]])  
 
 
 (def HELP_MESSAGE 
