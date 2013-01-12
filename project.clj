@@ -7,7 +7,7 @@
                  [org.clojure/tools.cli "0.2.2"]]
   :jvm-opts ["-Xmx1g" "-server" 
              "-XX:+OptimizeStringConcat" 
-             "-XX:+UseCompressedOops" 
+             ;"-XX:+UseCompressedOops" 
              ;"-XX:+UseCompressedStrings"
              "-XX:+UseStringCache"]
   :jar-name "PAnnotator.jar"          ; name of the jar produced by 'lein jar'
