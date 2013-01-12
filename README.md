@@ -101,11 +101,14 @@ If you see some of your cores becoming idle after a while (and potentially firin
 You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across the data-set and achieve good concurrency. Those massive 5 ones will clog up the system. If you find yourself with such an 'irregular' dataset at hand, you basically have 2 options. You can either group all the 'irregularities' together so they are not mixed in with lighter tasks, or you can run the Annotator on 2 different datasets - one containing the roughly equally-sized 'light' tasks and another containing the roughly equally-sized 'heavy' tasks. 
 
 **The software assumes it's working with real-world scientific papers (full/abstracts) and dictionaries.**   
-That is to say that even though you can use it as a toy (really small documents and dictionaries), you shouldn't be expecting incredible performance. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially (without the -p flag) - there is no point in spawning and managing all these threads. However, if you have proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
+That is to say that even though you can use it as a toy (really small documents and dictionaries), in such cases you should revert to serial execution. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially (-par lazy) - there is no point in spawning and managing all these threads. However, if you have proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
 As a side-note, the algorithm does basic normalisation (un-capitalisation unless all characters are upper-case) of the entries found in the dictionaries.
 
+## Finally...
+
+If you are processing large amounts of documents and you are not using a lazy mapping strategy, make sure to provide enough memory to the JVM upon launch from the command-line. Use the following switch to the 'java' command: "-Xmx$g" where $ stands for the number of GB of RAM to provide. Use 2, 3, 4 etc depending on your load. The annotations are essentially being accumulated in a List of strings held on memory. Also if you're on Windows it is good to use the "-server" flag as well. Other JVM optimisations around strings are: "-XX:+OptimizeStringConcat", "-XX:+UseCompressedOops" and "-XX:+UseStringCache". Some of these require Java 6 u20 and above.   
+ 
 ## License
 
 Copyright © 2013 Dimitrios Piliouras
-
 Distributed under the Eclipse Public License, the same as Clojure.
