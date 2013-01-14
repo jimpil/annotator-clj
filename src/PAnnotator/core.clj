@@ -52,13 +52,16 @@
        (:closing @custom-NER-tags))))                                                                     
 
 (defn pool-map 
-"A saner, more disciplined version of pmap. Not lazy. Don't use this if original ordering matters." 
+"A saner, more disciplined version of pmap. Not lazy at all. 
+ Don't use if original ordering of 'coll' matters." 
 [f coll]
  (let [exec (Executors/newFixedThreadPool cpu-no)
        pool (ExecutorCompletionService. exec)
        futures (for [x coll] (.submit pool #(f x)))]
-   (for [e futures] 
-     (.. pool take get))))               
+(try 
+(doall (for [e futures]  (.. pool take get)))
+(finally (.shutdown exec))))) 
+              
 
 (defn- file->data
 "Read the file f back on memory safely. 
@@ -219,6 +222,5 @@
      "on-screen" (println "-----------------------------------------------------\n\n => THAT WAS IT...!\n") 
      (println "write-mode can be either 'merge-all' or 'per-file' or 'on-screen'..."))              
     (shutdown-agents) 
-    ;(.shutdown exec-service)
     (System/exit 0)) ))
     
