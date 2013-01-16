@@ -1,7 +1,8 @@
 (ns PAnnotator.core
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
-        [clojure.string :only [split-lines]])
+        [clojure.string :only [split-lines, split, join]])
+  (:require [clojure.core.reducers :as r])      
   (:import ;[PAnnotator.java.MString]
            [java.util.regex Pattern PatternSyntaxException]
            [java.util.concurrent Executors ExecutorCompletionService]
@@ -9,6 +10,8 @@
 )
      
 (def cpu-no (.. Runtime getRuntime availableProcessors))
+(def fj-chunk-size (atom 5))
+(def sentence-segmentation-regex #"(?<=[.!?]|[.!?][\\'\"])(?<!Mr\.|Mrs\.|Ms\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
 (def openNLP-NER-tags {:opening "<START:" 
                        :closing " <END>"
                        :middle  "> "
@@ -28,7 +31,14 @@
                      :middle  ": " 
                      :closing "_"
                      :order [:token :entity]
-                     })                          
+                     }) 
+                     
+(defn segment [^String s]
+(join "\n" 
+(split s sentence-segmentation-regex))) 
+
+(defn split-sentences [file]
+(segment (slurp file)) )                                            
                            
                            
 (defmulti format-tag  keyword)
@@ -52,16 +62,26 @@
        (:closing @custom-NER-tags))))                                                                     
 
 (defn pool-map 
-"A saner, more disciplined version of pmap. Not lazy at all. 
+"A saner, more disciplined version of pmap. 
+ Submits jobs eagerly but polls for results lazily. 
  Don't use if original ordering of 'coll' matters." 
 [f coll]
  (let [exec (Executors/newFixedThreadPool cpu-no)
        pool (ExecutorCompletionService. exec)
-       futures (for [x coll] (.submit pool #(f x)))]
-(try 
-(doall (for [e futures]  (.. pool take get)))
-(finally (.shutdown exec))))) 
-              
+       futures (try (doall (for [x coll] (.submit pool #(f x))))
+               (finally (.shutdown exec)))] 
+ (for [_ futures]  
+   (.. pool take get)) ))
+
+
+(defn fold-into-vec [chunk coll]
+"Provided a reducer, concatenate into a vector.
+ Same as (into [] coll), but parallel."
+  (r/fold chunk (r/monoid into vector) conj coll))
+
+(defn rmap 
+[f coll]
+(fold-into-vec @fj-chunk-size (r/map f coll)))             
 
 (defn- file->data
 "Read the file f back on memory safely. 
@@ -102,9 +122,10 @@
 [strategy]
 (case strategy
   :serial mapv
-  :lazy map
+  :lazy   map
   :lazy-parallel pmap
-  :pool-parallel pool-map))
+  :pool-parallel pool-map
+  :fork-join     rmap))
   
   
 (defn- file-write-mode 
@@ -148,7 +169,7 @@
                (format-fn entity-type name1)) 
              (catch PatternSyntaxException _ 
              (do (println (str "--- COULD NOT BE PROCESSED! --->" name1)) text)))
-             (rest names)) text)) 
+             (next names)) (segment text))) 
    )) 
 ([{:keys [files+dics entity-type target consumer-lib strategy write-mode]
    :or {entity-type "default" 
@@ -156,11 +177,11 @@
         consumer-lib "openNLP-NER"
         strategy   "lazy-parallel"
         write-mode "merge-all"}}]
- (let [;annotations 
+ (let [annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
+                                 #(space-out (annotate (first %) entity-type  (next %) (keyword consumer-lib))) 
+                                  (file->data files+dics)) 
        wfn (file-write-mode (keyword write-mode))] ;will return a writing function       
-  (doseq [a ((mapping-fn (keyword strategy)) ;;will return a mapping function
-                      #(space-out (annotate (first %) entity-type  (rest %) (keyword consumer-lib))) 
-                       (file->data files+dics))] ;will return a list of (annotated) strings 
+  (doseq [a annotations] ;will return a list of (annotated) strings 
     (wfn target a)))) )
       
 (def -process annotate)
@@ -189,21 +210,28 @@
 *****optional argument - defaults to 'merge-all'")
 
 (defn -main [& args]   
-  (let [[opts argus banner]
+  (let [[opts argus banner] 
         (cli args
       ["-h" "--help" "Show help/instructions." :flag true :default false]
       ["-d" "--data" "REQUIRED: The data-file (e.g. \"data.txt\")" :default "data-file.txt"]
       ["-e" "--entity-type" "REQUIRED: The type of entity in question (e.g. \"river\")" :default "default"]
       ["-t" "--target" "REQUIRED: The target-file (e.g. \"target.txt\")" :default "target-file.txt"] 
       ["-ct" "--custom-tags" "Specify your own tags. (e.g \"{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}\")"]
-      ["-par" "--parallelism" "Set level of parallelism (other options are: serial, lazy & pool-parallel)." :default "lazy-parallel"]
+      ["-par" "--parallelism" "Set level of parallelism (other options are: serial, lazy, pool-parallel & fork-join)." :default "lazy-parallel"]
+      ["-chu" "--chunking" "Specify the point where recursive tree splitting should stop in a fork-join task. An integer value (defaults to 5)" :default 5]
       ["-wm" "--write-mode" "Set file-write mode (other options are: per-file & on-screen)." :default "merge-all"]
 ["-fl" "--for-lib" "Select a predefined tagging format (other options are: stanfordNLP-NER, plain-NER & custom-NER)." :default "openNLP-NER"]
       )]
     (when (:help opts)
       (println HELP_MESSAGE "\n\n" banner)
-      (System/exit 0))  
-  (do (println "\n\t\t====> PAnnotator v0.2.7 <====\t\t\n\t\t-----------------------------\n\n")
+      (System/exit 0))
+    (when-let [cs (:chunking opts)] 
+      (reset! fj-chunk-size cs))    
+  (do (println "\n\t\t====> PAnnotator v0.2.9 <====\t\t\n\t\t-----------------------------\n\n")
+      (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts) "\n--Target-File:" (:target opts) 
+                                    "\n--Data-File:" (:data opts)  "\n--Mapping strategy:" (:parallelism opts) 
+                                    "\n--Fork-join tree leaf-size:" @fj-chunk-size "\n--For library:" (:for-lib opts) 
+                                    "\n--Write-Mode:" (:write-mode opts) "\n--Custom-tags:" (:custom-tags opts) "\n\n")
       (-process {:entity-type  (:entity-type opts)  
                  :target       (:target opts)
                  :files+dics   (:data opts)
