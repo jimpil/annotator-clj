@@ -1,4 +1,4 @@
-(defproject PAnnotator "0.2.9"
+(defproject PAnnotator "0.3.1"
   :description "A parallel, dictionary-based annotator for Text-mining & NLP-related tasks."
   :url "https://github.com/jimpil/annotator-clj"
   :license {:name "Eclipse Public License"
