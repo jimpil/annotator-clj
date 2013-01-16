@@ -9,8 +9,8 @@ Text-mining and NLP researchers who require massive amounts of annotated documen
 This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and potentially install the jar manually in order to use it.
 Download the jars from here if you want to try it out:
 
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2.9)</a>    
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2.9)</a> 
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.3.1)</a>    
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.3.1)</a> 
 
 There are 3 ways of using this. Refer to instructions.txt or the in-program documentation for more details...
 
@@ -39,7 +39,7 @@ import java.util.Map;
 import clojure.lang.Keyword;
 import clojure.lang.Agent; 
 
-// you need the 'PAnnotator-uber.jar' on your classpath OR the PAnnotator.jar + clojure 1.4 and above
+// you need the 'PAnnotator-uber.jar' on your classpath OR the PAnnotator.jar + Clojure 1.4 and above
 
 public class PANN {
 	//first we need the map with the appropriate arguments
@@ -73,8 +73,15 @@ You need to run this on a bare Linux terminal for all your raw-text files (repla
 
 Now make up your data-file.txt using the paths of the files just created and feed those into my annotator. Finally, use 'map = word=0,answer=1' in your properties file (as suggested here http://nlp.stanford.edu/software/crf-faq.shtml#a). This is important as the procedure I'm describing will leave orphan 'O's in the third column of your training data. It is imperative that the stanford-CRF trainer looks for the correct answer in the second column. 
 
-You're done! It should work fine now...
+You're done! It should work fine now...  
 
+## Process an entire directory
+
+To do this you only need to slightly modify your data-file. Instead of providing a 2d vector (where the inner vectors are the documents+dictionaries), provide a 1d vector which holds the path-string of the directory as the first item and the paths to the global dictionaries following. Example follows:
+
+`["TO-ANNOTATE", "DRUGBANK/DRUGBANK-TERMS.txt", "PK-GOLD/invitro-test-names-distinct.txt", "PK-GOLD/invitro-train-names-distinct.txt"]`
+
+By putting this in your data-file.txt you're telling PAnnotator to process all the documents under the folder TO-ANNOTATE/ using these 3 global dictionaries.
 
 ## Customising the tagging scheme
 
@@ -124,5 +131,5 @@ As a bonus, the text in the files that will be produced by PAnnotator, will have
  
 ## License
 
-Copyright © 2013 Dimitrios Piliouras
+Copyright © 2013 Dimitrios Piliouras  
 Distributed under the Eclipse Public License, the same as Clojure.
