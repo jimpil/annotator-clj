@@ -9,8 +9,8 @@ Text-mining and NLP researchers who require massive amounts of annotated documen
 This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and potentially install the jar manually in order to use it.
 Download the jars from here if you want to try it out:
 
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2.7)</a>    
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2.7)</a> 
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.2.9)</a>    
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.2.9)</a> 
 
 There are 3 ways of using this. Refer to instructions.txt or the in-program documentation for more details...
 
@@ -92,21 +92,35 @@ Obviously, if you want the token before the token-type just reverse the values s
 this will produce the following form:
 >`_aspirin:DRUG_` 
 
+In case all these back-slashes and double-quotes are confusing you, consider using native Clojure characters (simply prepend a back-slash instead of double-quoting):
+
+>java -cp PAnnotator-uber.jar Annotator -e DRUG -ct "{:opening `\_` :closing `\_` :middle `\:` :order [:token :entity]}"
+
+You will need at least one pair of double-quotes following the `-ct` switch to signal to your reader not to touch what is inside. As long as you pass valid Clojure data you shouldn't need any further double-quotes (with their escape-counterpart) within the outer ones. The one above is a good example. I am only passing in a Clojure map literal `{...}` which contains Clojure keywords `:x` for keys and character `\x` or vector `[...]` literals (which as you see contain another 2 keywords) for values. Clojure will have no problem evaluating any of that (after all they are its own literals). But the outer double-quotes have to be there otherwise your terminal will complain as it won't be able to understand those symbols in that order! Take care when providing custom tags. It is perfectly feasible as long as you stick to these simple rules... :)
+
 ## Notes on parallelism
 
 ### In order to experience as much parallelism as possible, you need to consider a few things first. 
 
-**It is suggested that all the elements in dataset (the data-file.txt) are more or less of equal size when using lazy-parallel strategy.**  
-If you see some of your cores becoming idle after a while (and potentially firing up again later) with the lazy-parallel strategy, that is a good indication that some tasks (documents or dictionaries or both) are considerably 'heavier' than others.
-You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across the data-set and achieve good lazy-parallelism. Those massive 5 ones will block processing the small ones. If you find yourself with such an 'irregular' dataset at hand and you absolutely have to use lazy-parallel mapping, you basically have 2 options. You can either group all the 'irregularities' together so they are not mixed in with lighter tasks, or you can run the Annotator on 2 different datasets - one containing the roughly equally-sized 'light' tasks and another containing the roughly equally-sized 'heavy' tasks. Alternatively consider using 'pool-parallel' instead. 
+* `serial` : This strategy, as the name implies will do a non-lazy, serial execution of tasks. Since all the annotations are accumulated on memory before final writing to the disk beware of memory limitations and if you insist on using a non-lazy approach tune your JVM accordingly.  
+*  `lazy`  : This strategy is again serial but lazy which means that you can process as many documents as you like with a fixed amount of memory. 
+*  `lazy-parallel`  : This is generally a good choice. It will utilise the default `pmap` implementation in `clojure.core`. It is semi-lazy in that computation stays ahead of consumption but can be easily abused/misused. `pmap` assumes that each task is rather heavyweight and so it dedicates 1 future per task! On a normal pc you can immediately see what would happen when processing a very large collection of documents. Nobody wants 1000 threads on dual-core or a quad-core cpu. In these cases, you still want to be lazy but you can be clever by at least recycling your resources. This is where `pool-parallel` comes in.    
+*  `pool-parallel`  :  This is very similar to `lazy-parallel` but with the difference that it will only allow a fixed number of threads active depending on your cpu. This will allow you to do thousands and thousands of documents lazily while having eliminated any thread coordination overhead. 
+*  `fork-join`  :  This is the heavy machinery...IN order to use this you will need to have Java 7 installed as it is fork-join based. The Fork-Join framework was a great addition to the Java platform and it basically implements clever work-stealing algorithms. In theory you can have very irregularly-sized datasets but if you divide and conquer at the right pace you can get maximum performance. It is brilliant work but requires a bit of tuning depending on your load. In other words you need to specify a workload that is fine to run serially. This will be the workload of every thread essentially and it will be of course executed serially. I 've set the default to 5 documents per thread but you should think/experiment to find the right size for your use-case.
 
-**The software assumes it's working with real-world scientific papers (full/abstracts) and dictionaries.**   
-That is to say that even though you can use it as a toy (really small documents and dictionaries), in such cases you should revert to serial execution. In other words the thread coordination overhead will dominate, unless each annotation process takes a while. If for instance you're annotating 3 abstracts using dictionaries with only 3 or 4 entries each then you might as well do it serially (-par lazy OR serial) - there is no point in spawning and managing all these threads. However, if you have proper dictionaries with thousands or millions of entries then the process immediately becomes demanding even for abstracts (small documents).  
-As a side-note, the algorithm does basic normalisation (un-capitalisation unless all characters are upper-case) of the entries found in the dictionaries.
+**It is generally suggested that all the elements in dataset (the data-file.txt) are more or less of equal size when using lazy-parallel or pool-parallel strategies.**  
+If you see some of your cores becoming idle after a while (and potentially firing up again later) with the lazy-parallel strategy, that is a good indication that some tasks (documents or dictionaries or both) are considerably 'heavier' than others.
+You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across the data-set and achieve good lazy-parallelism. Those massive 5 ones will block processing the small ones. If you find yourself with such an 'irregular' dataset at hand and you absolutely have to use lazy mapping, you basically have 2 options. You can either group all the 'irregularities' together so they are not mixed in with lighter tasks, or you can run the Annotator on 2 different datasets - one containing the roughly equally-sized 'light' tasks and another containing the roughly equally-sized 'heavy' tasks. Alternatively consider using 'fork-join' instead. 
 
 ## Finally...
 
-If you are processing large amounts of documents and you are not using a lazy mapping strategy ('lazy', 'lazy-parallel'), make sure to provide enough memory to the JVM upon launch from the command-line. Use the following switch to the 'java' command: "-Xmx$g" where $ stands for the number of GB of RAM to provide. Use 2, 3, 4 etc depending on your load. The annotations are essentially being accumulated eagerly on memory. Also if you're on Windows it is good to use the "-server" flag as well. Other JVM optimisations around strings are: "-XX:+OptimizeStringConcat", "-XX:+UseCompressedOops" and "-XX:+UseStringCache". Some of these require Java 6 u20 and above.   
+#### JVM String optimisations
+
+If you are processing large amounts of documents and you are not using a lazy mapping strategy ('lazy', 'lazy-parallel'), make sure to provide enough memory to the JVM upon launch from the command-line. Use the following switch to the 'java' command: "-Xmx$g" where $ stands for the number of GB of RAM to provide. Use 2, 3, 4 etc depending on your load. The annotations are essentially being accumulated eagerly on memory. Also if you're on Windows it is good to use the "-server" flag as well. Other JVM optimisations around strings are: "-XX:+OptimizeStringConcat", "-XX:+UseCompressedOops" and "-XX:+UseStringCache". Some of these require Java 6 u20 and above. 
+
+#### Sentence-detection and basic normalisation
+
+As a bonus, the text in the files that will be produced by PAnnotator, will have been sentence-split. There will be 1 sentence per line and in case you 've chosen to merge the annotations, then there will be a blank line between the separately annotated files. This is how most parsers/trainers expect the input to be...In addition, the tagging occurs after the entries have been normalised to the lower case form (unless all characters are capital in which case it is some sort of acronym).  
  
 ## License
 
