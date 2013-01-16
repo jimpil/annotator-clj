@@ -189,12 +189,12 @@
         write-mode "merge-all"}}]
  (let [annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
                                  #(space-out (annotate (first %) entity-type  (next %) (keyword consumer-lib))
-                                        (case consumer-lib 
+                                        #_(case consumer-lib 
                                           "openNLP-NER" openNLP-NER-tags
                                           "stanfordNLP-NER" stanfordNLP-NER-tags
                                           "plain-NER" plain-NER-tags
                                           "custom-NER" @custom-NER-tags) 
-                                            #_(var-get (resolve (symbol (str consumer-lib "-tags"))))) 
+                                            (var-get (ns-resolve 'PAnnotator.core (symbol (str consumer-lib "-tags"))))) 
                                (cond (string? files+dics) (file->data files+dics) 
                                      (vector? files+dics)  files+dics 
                                    :else (throw (IllegalArgumentException. "Weird data-format encountered! Cannot proceed..."))) )
