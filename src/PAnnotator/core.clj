@@ -1,8 +1,10 @@
 (ns PAnnotator.core
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
-        [clojure.string :only [split-lines, split, join]])
-  (:require [clojure.core.reducers :as r])      
+        [clojure.pprint :only [pprint]]
+        [clojure.string :only [split-lines, split, join, blank?]])
+  (:require [clojure.core.reducers :as r] 
+            [clojure.java.io :as io])      
   (:import ;[PAnnotator.java.MString]
            [java.util.regex Pattern PatternSyntaxException]
            [java.util.concurrent Executors ExecutorCompletionService]
@@ -11,6 +13,7 @@
      
 (def cpu-no (.. Runtime getRuntime availableProcessors))
 (def fj-chunk-size (atom 5))
+(def global-dic    (atom nil))
 (def sentence-segmentation-regex #"(?<=[.!?]|[.!?][\\'\"])(?<!Mr\.|Mrs\.|Ms\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
 (def openNLP-NER-tags {:opening "<START:" 
                        :closing " <END>"
@@ -27,9 +30,9 @@
                            
 (def custom-NER-tags (atom {})) 
 
-(def plain-NER-tags {:opening "_" 
+(def plain-NER-tags {:opening "__" 
                      :middle  ": " 
-                     :closing "_"
+                     :closing "__"
                      :order [:token :entity]
                      }) 
                      
@@ -55,7 +58,7 @@
 (defmethod format-tag :custom-NER [o]
 (if (= (first (:order @custom-NER-tags)) :token)
  #(str (:opening @custom-NER-tags) %2 
-       (:middle  @custom-NER-tags) % 
+       (:middle  @custom-NER-tags) %  
        (:closing @custom-NER-tags))
  #(str (:opening @custom-NER-tags) % 
        (:middle  @custom-NER-tags) %2 
@@ -66,7 +69,7 @@
  Submits jobs eagerly but polls for results lazily. 
  Don't use if original ordering of 'coll' matters." 
 [f coll]
- (let [exec (Executors/newFixedThreadPool cpu-no)
+ (let [exec (Executors/newFixedThreadPool (inc cpu-no))
        pool (ExecutorCompletionService. exec)
        futures (try (doall (for [x coll] (.submit pool #(f x))))
                (finally (.shutdown exec)))] 
@@ -79,7 +82,8 @@
  Same as (into [] coll), but parallel."
   (r/fold chunk (r/monoid into vector) conj coll))
 
-(defn rmap 
+(defn rmap
+"A fork-join based mapping function that pours the results in a vector." 
 [f coll]
 (fold-into-vec @fj-chunk-size (r/map f coll)))             
 
@@ -101,14 +105,15 @@
  
 (defn- space-out 
 "Given some text, find all the openNLP sgml tags that are not surrounded by spaces and put spaces around them." 
-^String [^String text]
-(-> (re-matcher (re-pattern "(?<! )<STA")
-(-> (re-matcher (re-pattern "END>(?! )") text)
+^String [^String text t-scheme]
+(when-not (or (blank? (:opening t-scheme)) (blank? (:closing t-scheme)))
+(-> (re-matcher (re-pattern (str "(?<! )" (:opening t-scheme)) )                          ;"(?<! )<STA")  
+(-> (re-matcher (re-pattern (str (apply str (next (:closing t-scheme))) "(?! )")) text)   ;"END>(?! )"
    (.replaceAll "$0 ")))
-(.replaceAll " $0"))) 
+(.replaceAll " $0")))) 
 
 (defn-  un-capitalize ^String [^String s]
-(if (every? #(Character/isUpperCase %) s) s 
+(if (every? #(Character/isUpperCase ^Character %) s) s 
   (let [Cfirst (subs s 0 1)
         Crest  (subs s 1) ]
   (str (.toLowerCase Cfirst) Crest))))
@@ -118,7 +123,7 @@
   
 (defn- mapping-fn
 "Returns a fn that will take care mapping with this stratefy. 
- Supported options include :serial, :lazy, :lazy-parallel & pool-parallel." 
+ Supported options include :serial, :lazy, :lazy-parallel, :pool-parallel & :fork-join." 
 [strategy]
 (case strategy
   :serial mapv
@@ -138,7 +143,13 @@
   :per-file     #(let [fname (str "ANNOTATED/" (gensym "pann") ".txt")]
                    (create-folder "ANNOTATED") 
                    (spit fname %2))
-  :on-screen    #(println %2 "\n")))    
+  :on-screen    #(println %2 "\n"))) 
+  
+(defn normaliser []
+(comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
+      split-lines 
+      slurp))  
+      
 
 (defn- annotate 
  "Overloaded function. 
@@ -154,13 +165,12 @@
                :file+dics [[\"train/invitro_train-raw.txt\" \"train/invitro-train-names-distinct.txt\"] 
                            [\"train/invivo_train-raw.txt\"  \"train/invivo-train-names-distinct.txt\"]]})"
 (^String [^String f ^String entity-type dics lib]
-  (let [dic (combine-dicts (mapv (comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
-                                      split-lines 
-                                      slurp) dics))
+  (let [dic (if-let [gb @global-dic] gb
+            (combine-dicts (mapv (normaliser) dics)))
         format-fn  (format-tag lib)]      
        (println (str "Processing document: " f)) 
            (loop [text  (slurp f)
-                  names dic ]
+                  names dic]
   	     (if-let [name1 (first names)] 
            (recur (try ;(do (println (str "ANNOTATING " name1)) ;then clause
               (.replaceAll 
@@ -178,11 +188,30 @@
         strategy   "lazy-parallel"
         write-mode "merge-all"}}]
  (let [annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
-                                 #(space-out (annotate (first %) entity-type  (next %) (keyword consumer-lib))) 
-                                  (file->data files+dics)) 
+                                 #(space-out (annotate (first %) entity-type  (next %) (keyword consumer-lib))
+                                        (case consumer-lib 
+                                          "openNLP-NER" openNLP-NER-tags
+                                          "stanfordNLP-NER" stanfordNLP-NER-tags
+                                          "plain-NER" plain-NER-tags
+                                          "custom-NER" @custom-NER-tags) 
+                                            #_(var-get (resolve (symbol (str consumer-lib "-tags"))))) 
+                               (cond (string? files+dics) (file->data files+dics) 
+                                     (vector? files+dics)  files+dics 
+                                   :else (throw (IllegalArgumentException. "Weird data-format encountered! Cannot proceed..."))) )
        wfn (file-write-mode (keyword write-mode))] ;will return a writing function       
   (doseq [a annotations] ;will return a list of (annotated) strings 
     (wfn target a)))) )
+    
+(defn sort-input [data-s]
+(let [data-seq (-> data-s slurp read-string)
+      fitem (first data-seq)]
+(if (sequential? fitem) data-s ;;the usual happens
+  (let [directory (io/file fitem) ;;the whole directory
+        f-seq (.listFiles directory)
+        f-seq-names (for [f f-seq :when #(.isFile ^java.io.File f)] (.getPath ^java.io.File f))]
+ (reset! global-dic (combine-dicts (mapv (normaliser) (next data-seq))))     
+ (mapv #(vec (concat (list %) (next data-seq))) f-seq-names)))) ) ;;build the new 2d vector
+    
       
 (def -process annotate)
 
@@ -196,7 +225,7 @@
 "\nINSTRUCTIONS: java -cp PAnnotator-uberjar.jar Annotator  -d <DATA-FILE>* 
                                                          -t <TARGET-FILE>** 
                                                          -e <ENTITY-TYPE>*** 
-                                                         -par serial OR lazy OR lazy-parallel OR pool-parallel****
+                                                         -par serial OR lazy OR lazy-parallel OR pool-parallel OR fork-join****
                                                          -wm  merge-all OR per-file OR on-screen*****
                                                          -fl  \"openNLP-NER\" OR \"stanfordNLP-NER\" OR \"plain-NER\"
                                                          -ct  \"{:opening \"_\" :closing \"_\" :middle \":\"}\" \n
@@ -218,7 +247,7 @@
       ["-t" "--target" "REQUIRED: The target-file (e.g. \"target.txt\")" :default "target-file.txt"] 
       ["-ct" "--custom-tags" "Specify your own tags. (e.g \"{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}\")"]
       ["-par" "--parallelism" "Set level of parallelism (other options are: serial, lazy, pool-parallel & fork-join)." :default "lazy-parallel"]
-      ["-chu" "--chunking" "Specify the point where recursive tree splitting should stop in a fork-join task. An integer value (defaults to 5)" :default 5]
+      ["-chu" "--chunking" "Specify the point where recursive tree splitting should stop in a fork-join task. An integer value (defaults to 4)" :default 4]
       ["-wm" "--write-mode" "Set file-write mode (other options are: per-file & on-screen)." :default "merge-all"]
 ["-fl" "--for-lib" "Select a predefined tagging format (other options are: stanfordNLP-NER, plain-NER & custom-NER)." :default "openNLP-NER"]
       )]
@@ -226,19 +255,22 @@
       (println HELP_MESSAGE "\n\n" banner)
       (System/exit 0))
     (when-let [cs (:chunking opts)] 
-      (reset! fj-chunk-size cs))    
-  (do (println "\n\t\t====> PAnnotator v0.2.9 <====\t\t\n\t\t-----------------------------\n\n")
+      (reset! fj-chunk-size (Integer/valueOf cs)))    
+  (do (println "\n\t\t====> PAnnotator v0.3.1 <====\t\t\n\t\t-----------------------------\n\n")
       (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts) "\n--Target-File:" (:target opts) 
                                     "\n--Data-File:" (:data opts)  "\n--Mapping strategy:" (:parallelism opts) 
-                                    "\n--Fork-join tree leaf-size:" @fj-chunk-size "\n--For library:" (:for-lib opts) 
+                                    "\n--Fork-join tree leaf-size:" @fj-chunk-size "(potentially irrelevant for this run)" 
+                                    "\n--For library:" (:for-lib opts) "(potentially irrelevant for this run)"
                                     "\n--Write-Mode:" (:write-mode opts) "\n--Custom-tags:" (:custom-tags opts) "\n\n")
       (-process {:entity-type  (:entity-type opts)  
                  :target       (:target opts)
-                 :files+dics   (:data opts)
+                 :files+dics   (sort-input (:data opts))
                  :strategy     (:parallelism opts)
                  :write-mode   (:write-mode opts)
                  :consumer-lib (if-let [cu (:custom-tags opts)]  
-                                 (do (swap! custom-NER-tags merge (read-string cu)) "custom-NER") 
+                                 (do (swap! custom-NER-tags merge (read-string cu))
+                                     ;(reset! curr-tags @custom-NER-tags)  
+                                     "custom-NER")  
                                  (:for-lib opts))})
     (case (:write-mode opts)
     "merge-all"              
