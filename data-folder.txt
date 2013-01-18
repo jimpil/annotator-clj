@@ -1,0 +1,1 @@
+["TO-ANNOTATE" "DRUGBANK/DRUGBANK-TERMS.txt" "PK-GOLD/invitro-test-names-distinct.txt" "PK-GOLD/invitro-train-names-distinct.txt"]
