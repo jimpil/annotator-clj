@@ -153,7 +153,7 @@
   :per-file     #(let [fname (str "ANNOTATED/" (gensym "pann") ".txt")]
                    (create-folder "ANNOTATED") 
                    (spit fname %2))
-  :on-screen    #(println %2 "\n"))) 
+  :on-screen    #(print %2 "\n\n"))) 
   
 (defn normaliser []
 (comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
