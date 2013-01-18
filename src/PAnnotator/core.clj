@@ -14,7 +14,8 @@
 (def cpu-no (.. Runtime getRuntime availableProcessors))
 (def fj-chunk-size (atom 5))
 (def global-dic    (atom nil))
-(def sentence-segmentation-regex #"(?<=[.!?]|[.!?][\\'\"])(?<!Mr\.|Mrs\.|Ms\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
+(def sentence-segmentation-regex 
+#"(?<=[.!?]|[.!?][\\'\"])(?<!e\.g\.|i\.e\.|vs\.|p\.m\.|a\.m\.|Mr\.|Mrs\.|Ms\.|St\.|Fig\.|fig\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
 (def token-regex #"\w+")
 (def openNLP-NER-tags {:opening "<START:" 
                        :closing " <END>"
