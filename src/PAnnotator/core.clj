@@ -15,6 +15,7 @@
 (def fj-chunk-size (atom 5))
 (def global-dic    (atom nil))
 (def sentence-segmentation-regex #"(?<=[.!?]|[.!?][\\'\"])(?<!Mr\.|Mrs\.|Ms\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
+(def token-regex #"\w+")
 (def openNLP-NER-tags {:opening "<START:" 
                        :closing " <END>"
                        :middle  "> "
@@ -36,12 +37,20 @@
                      :order [:token :entity]
                      }) 
                      
-(defn segment [^String s]
+(defn segment "Segments the given string into distinct sentences delimited by a newline." 
+[^String s]
 (join "\n" 
 (split s sentence-segmentation-regex))) 
 
 (defn split-sentences [file]
-(segment (slurp file)) )                                            
+(segment (slurp file)) )
+
+(defn simple-tokenize 
+"An extremely simple tokenizer.
+ Returns a lazy-seq of whole-word tokens. Special characters (including punctuation) are not preserved."
+[sentence & {:keys [rgx] 
+             :or {rgx token-regex}}]
+(re-seq rgx sentence))                                     
                            
                            
 (defmulti format-tag  keyword)
@@ -148,7 +157,17 @@
 (defn normaliser []
 (comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
       split-lines 
-      slurp))  
+      slurp))
+      
+(defn sort-input [data-s]
+(let [data-seq (-> data-s slurp read-string)
+      fitem (first data-seq)]
+(if (sequential? fitem) data-s ;;the usual happens
+  (let [directory (io/file fitem) ;;the whole directory
+        f-seq (.listFiles directory)
+        f-seq-names (for [f f-seq :when #(.isFile ^java.io.File f)] (.getPath ^java.io.File f))]
+ (reset! global-dic (combine-dicts (mapv (normaliser) (next data-seq))))     
+ (mapv #(vec (concat (list %) (next data-seq))) f-seq-names)))) ) ;;build the new 2d vector        
       
 
 (defn- annotate 
@@ -187,7 +206,8 @@
         consumer-lib "openNLP-NER"
         strategy   "lazy-parallel"
         write-mode "merge-all"}}]
- (let [annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
+ (let [f+ds (sort-input files+dics)
+       annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
                                  #(space-out (annotate (first %) entity-type  (next %) (keyword consumer-lib))
                                         #_(case consumer-lib 
                                           "openNLP-NER" openNLP-NER-tags
@@ -195,22 +215,12 @@
                                           "plain-NER" plain-NER-tags
                                           "custom-NER" @custom-NER-tags) 
                                             (var-get (ns-resolve 'PAnnotator.core (symbol (str consumer-lib "-tags"))))) 
-                               (cond (string? files+dics) (file->data files+dics) 
-                                     (vector? files+dics)  files+dics 
+                               (cond (string? f+ds) (file->data f+ds) 
+                                     (vector? f+ds)  f+ds 
                                    :else (throw (IllegalArgumentException. "Weird data-format encountered! Cannot proceed..."))) )
        wfn (file-write-mode (keyword write-mode))] ;will return a writing function       
   (doseq [a annotations] ;will return a list of (annotated) strings 
     (wfn target a)))) )
-    
-(defn sort-input [data-s]
-(let [data-seq (-> data-s slurp read-string)
-      fitem (first data-seq)]
-(if (sequential? fitem) data-s ;;the usual happens
-  (let [directory (io/file fitem) ;;the whole directory
-        f-seq (.listFiles directory)
-        f-seq-names (for [f f-seq :when #(.isFile ^java.io.File f)] (.getPath ^java.io.File f))]
- (reset! global-dic (combine-dicts (mapv (normaliser) (next data-seq))))     
- (mapv #(vec (concat (list %) (next data-seq))) f-seq-names)))) ) ;;build the new 2d vector
     
       
 (def -process annotate)
@@ -264,7 +274,7 @@
                                     "\n--Write-Mode:" (:write-mode opts) "\n--Custom-tags:" (:custom-tags opts) "\n\n")
       (-process {:entity-type  (:entity-type opts)  
                  :target       (:target opts)
-                 :files+dics   (sort-input (:data opts))
+                 :files+dics   (:data opts)
                  :strategy     (:parallelism opts)
                  :write-mode   (:write-mode opts)
                  :consumer-lib (if-let [cu (:custom-tags opts)]  
