@@ -20,7 +20,7 @@
 ;(def language    (atom "english"))
 (def sentence-segmentation-regex 
 #"(?<=[.!?]|[.!?][\\'\"])(?<!e\.g\.|i\.e\.|vs\.|p\.m\.|a\.m\.|Mr\.|Mrs\.|Ms\.|St\.|Fig\.|fig\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
-(def token-regex #"\w+")
+(def token-regex #"[\w\d/]+|[\-\,\.\?\!\(\)]")
 
 (defprotocol Stemmable
   (getRoot [this] [this lang]))
@@ -113,7 +113,7 @@
 
 (defn simple-tokenize 
 "An extremely simple tokenizer that splits on any non-alphanumeric character.
- Special characters (including punctuation) are not preserved.  Returns a lazy-seq of whole-word tokens. 
+ Inline punctuation is mostly preserved.  Returns a lazy-seq of whole-word tokens. 
  Optionally, you can apply stemming to all the returned tokens. Strings know how to stem themselves. Simply use the 'getRoot' fn.
  usage: (simple-tokenize \"the fox jumped over the lazy dog\" :stemmer getRoot)   OR 
         (simple-tokenize \"Wir besuchen meine Tante in Berlin.\" :stemmer #(getRoot % \"german\")) 
