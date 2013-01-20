@@ -8,19 +8,83 @@
   (:import ;[PAnnotator.java.MString]
            [java.util.regex Pattern PatternSyntaxException]
            [java.util.concurrent Executors ExecutorCompletionService]
+           [org.tartarus.snowball.ext EnglishStemmer DanishStemmer DutchStemmer FinnishStemmer FrenchStemmer German2Stemmer GermanStemmer
+           HungarianStemmer ItalianStemmer KpStemmer LovinsStemmer NorwegianStemmer PorterStemmer PortugueseStemmer RomanianStemmer
+           RussianStemmer SpanishStemmer SwedishStemmer TurkishStemmer] [org.tartarus.snowball SnowballProgram]
   )
 )
      
 (def cpu-no (.. Runtime getRuntime availableProcessors))
 (def fj-chunk-size (atom 5))
 (def global-dic    (atom nil))
+;(def language    (atom "english"))
 (def sentence-segmentation-regex 
 #"(?<=[.!?]|[.!?][\\'\"])(?<!e\.g\.|i\.e\.|vs\.|p\.m\.|a\.m\.|Mr\.|Mrs\.|Ms\.|St\.|Fig\.|fig\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
 (def token-regex #"\w+")
+
+(defprotocol Stemmable
+  (getRoot [this] [this lang]))
+  
+(defn- porter-stemmer ^SnowballProgram 
+[^String lang]
+(case lang
+	"danish"  (DanishStemmer.) 
+	"dutch"   (DutchStemmer.)
+	"english" (EnglishStemmer.) 
+	"finnish" (FinnishStemmer.) 
+	"french"  (FrenchStemmer.) 
+	"german2" (German2Stemmer.) 
+	"german"  (GermanStemmer.) 
+	"hungarian" (HungarianStemmer.) 
+	"italian"   (ItalianStemmer.) 
+	"kp"        (KpStemmer.)
+	"lovins"    (LovinsStemmer.) 
+	"norwegian" (NorwegianStemmer.) 
+	"porter"    (PorterStemmer.) 
+	"postugese" (PortugueseStemmer.) 
+	"romanian"  (RomanianStemmer.) 
+	"russian"   (RussianStemmer.) 
+	"spanish"   (SpanishStemmer.) 
+	"swedish"   (SwedishStemmer.) 
+	"turskish"  (TurkishStemmer.)
+ (throw 
+  (IllegalArgumentException. "Language NOT supported...Stemming cannot continue!")))) 
+   
+(extend-type String
+ Stemmable
+ (getRoot 
+  ([this] (getRoot this "english"))
+  ([this lang]
+     (let [stemmer (porter-stemmer lang)]
+        (doto stemmer 
+                (.setCurrent this) 
+                (.stem)) 
+          (.getCurrent stemmer)))))
+    
+(extend-type clojure.lang.IPersistentCollection
+  Stemmable
+  (getRoot
+  ([this] (getRoot this "english"))
+  ([this lang]
+    (let [stemmer (porter-stemmer lang)]
+      (map #(do 
+              (doto stemmer 
+                  (.setCurrent %) 
+                  (.stem))
+              (.getCurrent stemmer)) this)))))
+
+(extend-type nil
+  Stemmable
+  (getRoot 
+  ([_] nil)
+  ([_ _] nil)))
+                       
+
 (def openNLP-NER-tags {:opening "<START:" 
                        :closing " <END>"
                        :middle  "> "
                        :order [:entity :token]})
+                       
 ;for TOKEN in `cat some-file.txt`; do echo $TOKEN; done
 ;for TOKEN in `cat some-file.txt.txt`; do echo -e $TOKEN '\tO' >> some-file.txt.tok; done
                      
@@ -38,20 +102,73 @@
                      :order [:token :entity]
                      }) 
                      
-(defn segment "Segments the given string into distinct sentences delimited by a newline." 
+(defn segment 
+"Segments the given string into distinct sentences delimited by a newline." 
 [^String s]
-(join "\n" 
-(split s sentence-segmentation-regex))) 
+ (join "\n" 
+  (split s sentence-segmentation-regex))) 
 
 (defn split-sentences [file]
-(segment (slurp file)) )
+(segment (slurp file)))
 
 (defn simple-tokenize 
-"An extremely simple tokenizer.
- Returns a lazy-seq of whole-word tokens. Special characters (including punctuation) are not preserved."
-[sentence & {:keys [rgx] 
+"An extremely simple tokenizer that splits on any non-alphanumeric character.
+ Special characters (including punctuation) are not preserved.  Returns a lazy-seq of whole-word tokens. 
+ Optionally, you can apply stemming to all the returned tokens. Strings know how to stem themselves. Simply use the 'getRoot' fn.
+ usage: (simple-tokenize \"the fox jumped over the lazy dog\" :stemmer getRoot)   OR 
+        (simple-tokenize \"Wir besuchen meine Tante in Berlin.\" :stemmer #(getRoot % \"german\")) 
+ in case you want to specify a language other than English."
+[sentence & {:keys [rgx stemmer] 
              :or {rgx token-regex}}]
-(re-seq rgx sentence))                                     
+(let [tokens (re-seq rgx sentence)]
+  (if stemmer (stemmer tokens) tokens)))
+
+
+(defn ngrams
+ "Create ngrams from a seq s. 
+  Pass a single string for character n-grams or a seq of strings for word n-grams."
+  [s number]
+  (when (>= (count s) number)
+    (lazy-seq 
+      (cons (take number s) (ngrams (rest s) number)))))
+      
+(defn n-grams-count
+  "Used to create n-grams with the specified numbers
+  A seq of numbers for the ngrams to create. 
+  The documents to process with the ngrams 
+*returns*
+  A map of the ngrams"
+  [numbers documents]
+  (reduce (fn [counts number]
+             (reduce (fn [counts document]
+                       (reduce (fn [counts freqs]
+                                 (let [ngram (first freqs)]
+                                   (if-let [val  (counts ngram)]
+                                     (assoc counts ngram (+ val (second freqs)))
+                                     (assoc counts ngram (second freqs)))))
+                               counts (frequencies (ngrams document number))))
+                     counts documents)) {} (if (sequential? numbers) numbers (list numbers))))
+
+(defn add-ngrams-to-document
+  "Used to add ngrams to the document.
+
+*numbers*
+  The number of ngrams to create. <br />
+*document*
+  The document to process. <br />
+*processed-document*
+  The processed-document to add the ngrams too. <br />
+*ngrams-count*
+  The ngrams map. <br />
+*return*
+  The processed document with the added ngrams"
+  [numbers document processed-document ngrams-count]
+  (reduce (fn [processed-document ngram]
+            (if (contains? ngrams-count (first ngram))
+              (assoc processed-document :counts
+                (assoc (:counts processed-document) (first ngram) (second ngram))
+                :number-of-words (+ (:number-of-words processed-document) (second ngram)))
+              processed-document)) processed-document (n-grams-count numbers (list document))))                                           
                            
                            
 (defmulti format-tag  keyword)
@@ -128,7 +245,8 @@
         Crest  (subs s 1) ]
   (str (.toLowerCase Cfirst) Crest))))
   
-(defn- create-folder [^String path]
+(defn- create-folder "Creates a folder at the specified path." 
+[^String path]
 (.mkdir (java.io.File. path)))  
   
 (defn- mapping-fn
@@ -159,6 +277,7 @@
 (comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
       split-lines 
       slurp))
+      
       
 (defn sort-input [data-s]
 (let [data-seq (-> data-s slurp read-string)
@@ -239,7 +358,8 @@
                                                          -par serial OR lazy OR lazy-parallel OR pool-parallel OR fork-join****
                                                          -wm  merge-all OR per-file OR on-screen*****
                                                          -fl  \"openNLP-NER\" OR \"stanfordNLP-NER\" OR \"plain-NER\"
-                                                         -ct  \"{:opening \"_\" :closing \"_\" :middle \":\"}\" \n
+                                                         -ct  \"{:opening \"_\" :closing \"_\" :middle \":\"}\"
+                                                         -chu an integer value typically from 2 to 6 \n
 *must be a file with a 2D clojure seqable of the form: [[input1 dic1 dic2 dic3 dic4] 
                                                         [input2 dic5 dic6 dic7] 
                                                         [input3 dic8 dic9]]
@@ -257,21 +377,29 @@
       ["-e" "--entity-type" "REQUIRED: The type of entity in question (e.g. \"river\")" :default "default"]
       ["-t" "--target" "REQUIRED: The target-file (e.g. \"target.txt\")" :default "target-file.txt"] 
       ["-ct" "--custom-tags" "Specify your own tags. (e.g \"{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}\")"]
-      ["-par" "--parallelism" "Set level of parallelism (other options are: serial, lazy, pool-parallel & fork-join)." :default "lazy-parallel"]
-      ["-chu" "--chunking" "Specify the point where recursive tree splitting should stop in a fork-join task. An integer value (defaults to 4)" :default 4]
+      ["-par" "--parallelism" "Set a parallelisation strategy (other options are: serial, lazy, pool-parallel & fork-join)." :default "lazy-parallel"]
+      ["-chu" "--chunking" "Specify the number where recursive tree splitting should stop in a fork-join task (defaults to 4)." :default 4]
       ["-wm" "--write-mode" "Set file-write mode (other options are: per-file & on-screen)." :default "merge-all"]
-["-fl" "--for-lib" "Select a predefined tagging format (other options are: stanfordNLP-NER, plain-NER & custom-NER)." :default "openNLP-NER"]
+      ["-fl" "--for-lib" "Apply a predefined tagging format (other options are: stanfordNLP-NER, plain-NER & custom-NER)." :default "openNLP-NER"]
+      ["-tok" "--tokens" "Extracts (and optionally stems) tokens from the supplied string or file. Activate stemming with the -ste flag."]
+      ["-ste" "--stemming" "Activates porter-stemming. Only useful when paired with the -tok switch which returns the tokens." :flag true :default false]
+      ["-lang" "--language" "Set the stemming language. Only useful when paired with the -tok and -ste switches." :default "english"]
       )]
     (when (:help opts)
       (println HELP_MESSAGE "\n\n" banner)
       (System/exit 0))
+    (when-let [ss (:tokens opts)]  
+      (if (:stemming opts) 
+      (pprint (simple-tokenize (if (string? ss) ss (slurp ss)) :stemmer #(getRoot % (:language opts)))) 
+      (pprint (simple-tokenize (if (string? ss) ss (slurp ss))))) 
+      (System/exit 0))
     (when-let [cs (:chunking opts)] 
-      (reset! fj-chunk-size (Integer/valueOf cs)))    
-  (do (println "\n\t\t====> PAnnotator v0.3.1 <====\t\t\n\t\t-----------------------------\n\n")
+      (reset! fj-chunk-size (Integer/valueOf ^Integer cs)))    
+  (do (println "\n\t\t====> PAnnotator v0.3.2 <====\t\t\n\t\t-----------------------------\n\n")
       (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts) "\n--Target-File:" (:target opts) 
                                     "\n--Data-File:" (:data opts)  "\n--Mapping strategy:" (:parallelism opts) 
                                     "\n--Fork-join tree leaf-size:" @fj-chunk-size "(potentially irrelevant for this run)" 
-                                    "\n--For library:" (:for-lib opts) "(potentially irrelevant for this run)"
+                                    "\n--Consumer library:" (:for-lib opts) "(potentially irrelevant for this run)"
                                     "\n--Write-Mode:" (:write-mode opts) "\n--Custom-tags:" (:custom-tags opts) "\n\n")
       (-process {:entity-type  (:entity-type opts)  
                  :target       (:target opts)
