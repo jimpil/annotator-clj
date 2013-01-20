@@ -121,13 +121,29 @@ You can't expect to have 100 files of 0.5MB and 5 files of 10MB scattered across
 
 ## Finally...
 
-#### JVM String optimisations
-
-If you are processing large amounts of documents and you are not using a lazy mapping strategy ('lazy', 'lazy-parallel'), make sure to provide enough memory to the JVM upon launch from the command-line. Use the following switch to the 'java' command: "-Xmx$g" where $ stands for the number of GB of RAM to provide. Use 2, 3, 4 etc depending on your load. The annotations are essentially being accumulated eagerly on memory. Also if you're on Windows it is good to use the "-server" flag as well. Other JVM optimisations around strings are: "-XX:+OptimizeStringConcat", "-XX:+UseCompressedOops" and "-XX:+UseStringCache". Some of these require Java 6 u20 and above. 
-
 #### Sentence-detection and basic normalisation
 
-As a bonus, the text in the files that will be produced by PAnnotator, will have been sentence-split. There will be 1 sentence per line and in case you 've chosen to merge the annotations, then there will be a blank line between the separately annotated files. This is how most parsers/trainers expect the input to be...In addition, the tagging occurs after the entries have been normalised to the lower case form (unless all characters are capital in which case it is some sort of acronym).  
+As a bonus, the text in the files that will be produced by PAnnotator, will have been sentence-split. There will be 1 sentence per line and in case you 've chosen to merge the annotations, then there will be a blank line between the separately annotated files. This is how most parsers/trainers expect the input to be...In addition, the tagging occurs after the entries have been normalised to the lower case form (unless all characters are capital in which case it is some sort of acronym). 
+
+#### Very simple tokenizer with support for stemming (Porter's algorithm).
+
+I often find that I want to quickly tokenize a sentence or perhaps an file just to check something. The same with stemming...To that end, I have included a very basic tokenizer which will do stemming as well (should you choose to activate it). Example follows:
+
+Without stemming, only simple-tokenizing:
+>java -cp PAnnotator-uber.jar Annotator -tok "the fox jumped over the lazy dog (twice)"    
+("the" "fox" "jumped" "over" "the" "lazy" "dog" "twice")
+
+With stemming (requires tokens):
+>java -cp PAnnotator-uber.jar Annotator -tok "the fox jumped over the lazy dog (twice)" -ste    
+("the" "fox" "jump" "over" "the" "lazi" "dog" "twice")
+
+With stemming in a different language:
+>java -cp PAnnotator-uber.jar Annotator -tok "Wir besuchen meine Tante in Berlin" -lang german -ste    
+("Wir" "besuch" "mein" "Tant" "in" "Berlin") 
+
+#### JVM String optimisations
+
+If you are processing large amounts of documents and you are not using a lazy mapping strategy ('lazy', 'lazy-parallel'), make sure to provide enough memory to the JVM upon launch from the command-line. Use the following switch to the 'java' command: `-Xmx$g` where $ stands for the number of GB of RAM to provide. Use 2, 3, 4 etc depending on your load. The annotations are essentially being accumulated eagerly on memory. Also if you're on Windows it is good to use the `-server` flag as well. Other JVM optimisations around strings are: `-XX:+OptimizeStringConcat`, `-XX:+UseCompressedOops` and `-XX:+UseStringCache`. Some of these require Java 6 u20 and above. 
  
 ## License
 
