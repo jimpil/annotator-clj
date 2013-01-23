@@ -1,4 +1,6 @@
-(ns PAnnotator.core
+(ns PAnnotator.core 
+   #^{:author "Dimitrios Piliouras 2012/13"
+      :doc    "PAnnotator's core namespace."}
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
         [clojure.pprint :only [pprint]]
