@@ -50,11 +50,11 @@ public class PANN {
 		parameters.put(Keyword.intern("files+dics"), "data-file.txt"); //example data-file
 		parameters.put(Keyword.intern("entity-type"), "PROTEIN"); //this is optional ("default" will be used if missing)
 		parameters.put(Keyword.intern("consumer-lib"), "plain-NER"); 
-		parameters.put(Keyword.intern("strategy"),  "pool-parallel"); //use a bounded thread-pool
+		parameters.put(Keyword.intern("strategy"),  "lazy-parallel"); //use an unbounded thread-pool
 		parameters.put(Keyword.intern("write-mode"),"on-screen");  //write all annotations on a single file
 
 	 Annotator.process(parameters); //finally call the static void method process(Map m);
-	 Agent.shutdown(); //gracefully shut-down the thread pool
+	 Agent.shutdown(); //gracefully shut-down the agent thread pool
 	 System.out.println("\n\nSUCCESS!\n");
 	 System.exit(0);
 	}
@@ -79,7 +79,7 @@ You're done! It should work fine now...
 
 To do this you only need to slightly modify your data-file. Instead of providing a 2d vector (where the inner vectors are the documents+dictionaries), provide a 1d vector which holds the path-string of the directory as the first item and the paths to the global dictionaries following. Example follows:
 
-`["TO-ANNOTATE", "DRUGBANK/DRUGBANK-TERMS.txt", "PK-GOLD/invitro-test-names-distinct.txt", "PK-GOLD/invitro-train-names-distinct.txt"]`
+>["TO-ANNOTATE", "DRUGBANK/DRUGBANK-TERMS.txt", "PK-GOLD/invitro-test-names-distinct.txt", "PK-GOLD/invitro-train-names-distinct.txt"]
 
 By putting this in your data-file.txt you're telling PAnnotator to process all the documents under the folder TO-ANNOTATE/ using these 3 global dictionaries.
 
@@ -113,7 +113,7 @@ You will need at least one pair of double-quotes following the `-ct` switch to s
 *  `lazy`  : This strategy is again serial but lazy which means that you can process as many documents as you like with a fixed amount of memory. 
 *  `lazy-parallel`  : This is generally a good choice. It will utilise the default `pmap` implementation in `clojure.core`. It is semi-lazy in that computation stays ahead of consumption but can be easily abused/misused. `pmap` assumes that each task is rather heavyweight and so it dedicates 1 future per task! On a normal pc you can immediately see what would happen when processing a very large collection of documents. Nobody wants 1000 threads on dual-core or a quad-core cpu. In these cases, you still want to be lazy but you can be clever by at least recycling your resources. This is where `pool-parallel` comes in.    
 *  `pool-parallel`  :  This is very similar to `lazy-parallel` but with the difference that it will only allow a fixed number of threads active depending on your cpu. This will allow you to do thousands and thousands of documents lazily while having eliminated any thread coordination overhead. 
-*  `fork-join`  :  This is the heavy machinery...IN order to use this you will need to have Java 7 installed as it is fork-join based. The Fork-Join framework was a great addition to the Java platform and it basically implements clever work-stealing algorithms. In theory you can have very irregularly-sized datasets but if you divide and conquer at the right pace you can get maximum performance. It is brilliant work but requires a bit of tuning depending on your load. In other words you need to specify a workload that is fine to run serially. This will be the workload of every thread essentially and it will be of course executed serially. I 've set the default to 5 documents per thread but you should think/experiment to find the right size for your use-case.
+*  `fork-join`  :  This is the heavy machinery...In order to use this you will need to have Java 7 installed as it is fork-join based. The Fork-Join framework was a great addition to the Java platform and it basically implements clever work-stealing algorithms. In theory you can have very irregularly-sized datasets but if you divide and conquer at the right pace you can get maximum performance. It is brilliant work but requires a bit of tuning depending on your load. In other words you need to specify a workload that is fine to run serially. This will be the workload of every thread essentially and it will be of course executed serially. I've set the default to 5 documents per thread but you should think/experiment to find the right size for your use-case.
 
 **It is generally suggested that all the elements in dataset (the data-file.txt) are more or less of equal size when using lazy-parallel or pool-parallel strategies.**  
 If you see some of your cores becoming idle after a while (and potentially firing up again later) with the lazy-parallel strategy, that is a good indication that some tasks (documents or dictionaries or both) are considerably 'heavier' than others.
