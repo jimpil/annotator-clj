@@ -16,10 +16,9 @@
   )
 )
      
-(def cpu-no (.. Runtime getRuntime availableProcessors))
+(def ^:dynamic *cpu-no* (.. Runtime getRuntime availableProcessors))
 (def fj-chunk-size (atom 5))
 (def global-dic    (atom nil))
-;(def language    (atom "english"))
 (def sentence-segmentation-regex 
 #"(?<=[.!?]|[.!?][\\'\"])(?<!e\.g\.|i\.e\.|vs\.|p\.m\.|a\.m\.|Mr\.|Mrs\.|Ms\.|St\.|Fig\.|fig\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
 (def token-regex #"[\w\d/]+|[\-\,\.\?\!\(\)]")
@@ -198,7 +197,7 @@
  Submits jobs eagerly but polls for results lazily. 
  Don't use if original ordering of 'coll' matters." 
 [f coll]
- (let [exec (Executors/newFixedThreadPool (inc cpu-no))
+ (let [exec (Executors/newFixedThreadPool (inc *cpu-no*))
        pool (ExecutorCompletionService. exec)
        futures (try (doall (for [x coll] (.submit pool #(f x))))
                (finally (.shutdown exec)))] 
@@ -234,7 +233,7 @@
  
 (defn- space-out 
 "Given some text, find all the openNLP sgml tags that are not surrounded by spaces and put spaces around them." 
-^String [^String text t-scheme]
+ ^String [^String text t-scheme]
 (when-not (or (blank? (:opening t-scheme)) (blank? (:closing t-scheme)))
 (-> (re-matcher (re-pattern (str "(?<! )" (:opening t-scheme)) )                          ;"(?<! )<STA")  
 (-> (re-matcher (re-pattern (str (apply str (next (:closing t-scheme))) "(?! )")) text)   ;"END>(?! )"
@@ -266,12 +265,12 @@
 (defn- file-write-mode 
 "Returns a fn that will take care writing files in this mode. 
  Supported options include :merge-all, :per-file & :on-screen." 
-[mode]
+[mode target-f]
 (case mode
   :merge-all    #(do (spit % %2 :append true) 
                      (spit % "\n" :append true))
-  :per-file     #(let [fname (str "ANNOTATED/" (gensym "pann") ".txt")]
-                   (create-folder "ANNOTATED") 
+  :per-file     #(let [fname (str target-f "/"  %  ".pann")]
+                   (create-folder target-f) 
                    (spit fname %2))
   :on-screen    #(print %2 "\n\n"))) 
   
@@ -280,13 +279,20 @@
       split-lines 
       slurp))
       
+(defn file-filter [filter]
+(reify java.io.FileFilter
+ (accept [this f]
+  (boolean (re-find (re-pattern (str ".*" filter)) (.getName ^java.io.File f))))))      
       
-(defn sort-input [data-s]
+      
+(defn sort-input [data-s ffilter]
 (let [data-seq (-> data-s slurp read-string)
       fitem (first data-seq)]
 (if (sequential? fitem) data-s ;;the usual happens
   (let [directory (io/file fitem) ;;the whole directory
-        f-seq (.listFiles directory)
+        f-seq (if-let [ff ffilter] 
+                (.listFiles directory (file-filter ff)) 
+                (.listFiles directory))
         f-seq-names (for [f f-seq :when #(.isFile ^java.io.File f)] (.getPath ^java.io.File f))]
  (reset! global-dic (combine-dicts (mapv (normaliser) (next data-seq))))     
  (mapv #(vec (concat (list %) (next data-seq))) f-seq-names)))) ) ;;build the new 2d vector        
@@ -308,41 +314,41 @@
 (^String [^String f ^String entity-type dics lib]
   (let [dic (if-let [gb @global-dic] gb
             (combine-dicts (mapv (normaliser) dics)))
+        file-name (.getName (java.io.File. f))   
         format-fn  (format-tag lib)]      
        (println (str "Processing document: " f)) 
            (loop [text  (slurp f)
                   names dic]
   	     (if-let [name1 (first names)] 
-           (recur (try ;(do (println (str "ANNOTATING " name1)) ;then clause
-              (.replaceAll 
+           (recur (try ;(do (println (str "ANNOTATING " name1)) ;then clause 
+             (.replaceAll 
         	(re-matcher 
                 (re-pattern (str "(?i)\\b+" (Pattern/quote name1) "+\\b")) text)  
                (format-fn entity-type name1)) 
              (catch PatternSyntaxException _ 
              (do (println (str "--- COULD NOT BE PROCESSED! --->" name1)) text)))
-             (next names)) (segment text))) 
+             (next names)) [file-name (segment text)])) 
    )) 
-([{:keys [files+dics entity-type target consumer-lib strategy write-mode]
+([{:keys [files+dics entity-type target target-folder consumer-lib strategy write-mode file-filter]
    :or {entity-type "default" 
         target "target-file.txt"
+        target-folder "ANNOTATED"
         consumer-lib "openNLP-NER"
         strategy   "lazy-parallel"
         write-mode "merge-all"}}]
- (let [f+ds (sort-input files+dics)
+ (let [f+ds (sort-input files+dics file-filter)
        annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
-                                 #(space-out (annotate (first %) entity-type  (next %) (keyword consumer-lib))
-                                        #_(case consumer-lib 
-                                          "openNLP-NER" openNLP-NER-tags
-                                          "stanfordNLP-NER" stanfordNLP-NER-tags
-                                          "plain-NER" plain-NER-tags
-                                          "custom-NER" @custom-NER-tags) 
-                                            (var-get (ns-resolve 'PAnnotator.core (symbol (str consumer-lib "-tags"))))) 
+                       #(let [[f a] (annotate (first %) entity-type  (next %) (keyword consumer-lib))] 
+                            (vector f (space-out a (var-get (ns-resolve 'PAnnotator.core (symbol (str consumer-lib "-tags")))))))
                                (cond (string? f+ds) (file->data f+ds) 
                                      (vector? f+ds)  f+ds 
                                    :else (throw (IllegalArgumentException. "Weird data-format encountered! Cannot proceed..."))) )
-       wfn (file-write-mode (keyword write-mode))] ;will return a writing function       
-  (doseq [a annotations] ;will return a list of (annotated) strings 
-    (wfn target a)))) )
+       wfn (file-write-mode (keyword write-mode) target-folder) ;will return a writing function
+       wmd  (case write-mode
+                  "per-file"   identity
+                  "merge-all"  (constantly target) nil)]      
+  (doseq [[f a] annotations] ;will return a list of (annotated) strings 
+    (wfn (wmd f) a)))) )
     
       
 (def -process annotate)
@@ -377,11 +383,13 @@
       ["-h" "--help" "Show help/instructions." :flag true :default false]
       ["-d" "--data" "REQUIRED: The data-file (e.g. \"data.txt\")" :default "data-file.txt"]
       ["-e" "--entity-type" "REQUIRED: The type of entity in question (e.g. \"river\")" :default "default"]
-      ["-t" "--target" "REQUIRED: The target-file (e.g. \"target.txt\")" :default "target-file.txt"] 
+      ["-t" "--target" "REQUIRED: The target-file (e.g. \"target.txt\")" :default "target-file.txt"]
+      ["-tfo" "--target-folder" "Specify a target folder. Only useful if write-mode is set 'to per-file' (no defaults)."] 
       ["-ct" "--custom-tags" "Specify your own tags. (e.g \"{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}\")"]
       ["-par" "--parallelism" "Set a parallelisation strategy (other options are: serial, lazy, pool-parallel & fork-join)." :default "lazy-parallel"]
       ["-chu" "--chunking" "Specify the number where recursive tree splitting should stop in a fork-join task (defaults to 4)." :default 4]
-      ["-wm" "--write-mode" "Set file-write mode (other options are: per-file & on-screen)." :default "merge-all"]
+      ["-wm" "--write-mode" "Set file-write-mode (other options are: per-file & on-screen)." :default "merge-all"]
+      ["-ff" "--file-filter" "Specify a file-filter when processing an entire folder (there is NO default - all files will be processed)."]
       ["-fl" "--for-lib" "Apply a predefined tagging format (other options are: stanfordNLP-NER, plain-NER & custom-NER)." :default "openNLP-NER"]
       ["-tok" "--tokens" "Extracts (and optionally stems) tokens from the supplied string or file. Activate stemming with the -ste flag."]
       ["-ste" "--stemming" "Activates porter-stemming. Only useful when paired with the -tok switch which returns the tokens." :flag true :default false]
@@ -394,23 +402,25 @@
       (if (:stemming opts) 
       (pprint (simple-tokenize (if (string? ss) ss (slurp ss)) :stemmer #(getRoot % (:language opts)))) 
       (pprint (simple-tokenize (if (string? ss) ss (slurp ss))))) 
-      (System/exit 0))
+      (System/exit 0)) 
     (when-let [cs (:chunking opts)] 
       (reset! fj-chunk-size (Integer/valueOf ^Integer cs)))    
-  (do (println "\n\t\t====> PAnnotator v0.3.2 <====\t\t\n\t\t-----------------------------\n\n")
-      (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts) "\n--Target-File:" (:target opts) 
+  (do (println "\n\t\t====> PAnnotator v0.3.4 <====\t\t\n\t\t-----------------------------\n\n")
+      (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts) (when-not (:target-folder opts) "\n--Target-File:" (:target opts))
+                                    (when (:target-folder opts) "\n--Target-Folder:" (:target-folder opts))  
                                     "\n--Data-File:" (:data opts)  "\n--Mapping strategy:" (:parallelism opts) 
                                     "\n--Fork-join tree leaf-size:" @fj-chunk-size "(potentially irrelevant for this run)" 
                                     "\n--Consumer library:" (:for-lib opts) "(potentially irrelevant for this run)"
                                     "\n--Write-Mode:" (:write-mode opts) "\n--Custom-tags:" (:custom-tags opts) "\n\n")
       (-process {:entity-type  (:entity-type opts)  
                  :target       (:target opts)
+                 :target-folder (:target-folder opts)
                  :files+dics   (:data opts)
+                 :file-filter  (:file-filter opts)
                  :strategy     (:parallelism opts)
                  :write-mode   (:write-mode opts)
                  :consumer-lib (if-let [cu (:custom-tags opts)]  
-                                 (do (swap! custom-NER-tags merge (read-string cu))
-                                     ;(reset! curr-tags @custom-NER-tags)  
+                                 (do (swap! custom-NER-tags merge (read-string cu)) 
                                      "custom-NER")  
                                  (:for-lib opts))})
     (case (:write-mode opts)
@@ -419,7 +429,7 @@
              "SUCCESS! Look for a file called" (str "'" (:target opts) "'. \n"))
     "per-file" 
     (println "--------------------------------------------------------\n"
-             "SUCCESS! Look for the file(s) under folder ANNOTATED/ at the root of your classpath. \n") 
+             "SUCCESS! Look for the file(s) under folder" (str (or (:target-folder opts) "ANNOTATED") "/ at the root of your classpath. \n")) 
      "on-screen" (println "-----------------------------------------------------\n\n => THAT WAS IT...!\n") 
      (println "write-mode can be either 'merge-all' or 'per-file' or 'on-screen'..."))              
     (shutdown-agents) 
