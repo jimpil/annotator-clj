@@ -1,5 +1,5 @@
 (ns PAnnotator.core 
-   #^{:author "Dimitrios Piliouras 2012/13"
+   #^{:author "Dimitrios Piliouras 2012 (jimpil1985@gmail.com)"
       :doc    "PAnnotator's core namespace."}
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
@@ -7,14 +7,18 @@
         [clojure.string :only [split-lines, split, join, blank?]])
   (:require [clojure.core.reducers :as r] 
             [clojure.java.io :as io])      
-  (:import ;[PAnnotator.java.MString]
+  (:import ;[de.uni_leipzig.asv.unsupos UnsuPosTagger]
+           [java.io File FileFilter]
            [java.util.regex Pattern PatternSyntaxException]
            [java.util.concurrent Executors ExecutorCompletionService]
            [org.tartarus.snowball.ext EnglishStemmer DanishStemmer DutchStemmer FinnishStemmer FrenchStemmer German2Stemmer GermanStemmer
            HungarianStemmer ItalianStemmer KpStemmer LovinsStemmer NorwegianStemmer PorterStemmer PortugueseStemmer RomanianStemmer
            RussianStemmer SpanishStemmer SwedishStemmer TurkishStemmer] [org.tartarus.snowball SnowballProgram]
   )
-)
+)  
+
+
+
      
 (def ^:dynamic *cpu-no* (.. Runtime getRuntime availableProcessors))
 (def fj-chunk-size (atom 5))
@@ -275,7 +279,7 @@
   
 (defn- create-folder "Creates a folder at the specified path." 
 [^String path]
-(.mkdir (java.io.File. path)))  
+(.mkdir (File. path)))  
   
 (defn- mapping-fn
 "Returns a fn that will take care mapping with this stratefy. 
@@ -306,10 +310,19 @@
       split-lines 
       slurp))
       
+#_(defn pos-tagger [&{:keys [ignore-case? std-log err-log]
+                    :or {ignore-case? false}}]
+(UnsuPosTagger. "target-file.txt" ignore-case? "config/unsupos.conf" 
+  (PrintStream. (FileOutputStream. (File. (str "target-file.POS" ".sdtout")))) 
+  (PrintStream. (FileOutputStream. (File. (str "target-file.POS" ".sdterr")))) "\n")) 
+    
+#_(defn pos-tag [file ignore-case?]
+(.start (Thread. (pos-tagger ignore-case? true))))         
+      
 (defn file-filter [filter]
-(reify java.io.FileFilter
+(reify FileFilter
  (accept [this f]
-  (boolean (re-find (re-pattern (str ".*" filter)) (.getName ^java.io.File f))))))      
+  (boolean (re-find (re-pattern (str ".*" filter)) (.getName ^File f))))))      
       
       
 (defn sort-input [data-s ffilter]
@@ -320,7 +333,7 @@
         f-seq (if-let [ff ffilter] 
                 (.listFiles directory (file-filter ff)) 
                 (.listFiles directory))
-        f-seq-names (for [f f-seq :when #(.isFile ^java.io.File f)] (.getPath ^java.io.File f))]
+        f-seq-names (for [f f-seq :when #(.isFile ^File f)] (.getPath ^File f))]
  (reset! global-dic (combine-dicts (mapv (normaliser) (next data-seq))))     
  (mapv #(vec (concat (list %) (next data-seq))) f-seq-names)))) ) ;;build the new 2d vector        
       
@@ -404,8 +417,9 @@
 ****optional argument - defaults to 'lazy-parallel'
 *****optional argument - defaults to 'merge-all'")
 
-(defn -main [& args]   
-  (let [[opts argus banner] 
+(defn -main [& args]
+  (pos-tag "target-file.txt" true)   
+  #_(let [[opts argus banner] 
         (cli args
       ["-h" "--help" "Show help/instructions." :flag true :default false]
       ["-d" "--data" "REQUIRED: The data-file (e.g. \"data.txt\")" :default "data-file.txt"]
