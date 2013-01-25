@@ -119,8 +119,7 @@
                      (~d [(dec i#) (dec j#)])))))))
 
 (defn- levenshtein-distance* 
- "Calculates the amount of difference between two sequences.
-  Strings are sequences."
+ "Calculates the amount of difference between two strings."
 [seq1 seq2]
   (let [m (count seq1)
         n (count seq2)
