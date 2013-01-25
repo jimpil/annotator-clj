@@ -101,7 +101,34 @@
                      :middle  ": " 
                      :closing "__"
                      :order [:token :entity]
-                     }) 
+                     })
+                     
+(definline dist-step [pred d index]
+ `(let [[i# j#] ~index]
+    (assoc ~d [i# j#]
+      (cond
+        (zero? (min i# j#)) (max i# j#)
+        (~pred ~index) (~d [(dec i#) (dec j#)])
+        :else (inc (min
+                     (~d [(dec i#) j#])
+                     (~d [i# (dec j#)])
+                     (~d [(dec i#) (dec j#)])))))))
+
+(defn- levenshtein-distance* 
+ "Calculates the amount of difference between two sequences.
+  Strings are sequences."
+[seq1 seq2]
+  (let [m (count seq1)
+        n (count seq2)
+        pred (fn [index] (let [[i j] index]
+                           (=
+                             (get seq1 (dec i))
+                             (get seq2 (dec j)))))
+        step #(dist-step pred % %2)
+        dist (reduce step {} (for [j (range n) i (range m)] [i j]))]
+    (dist [(dec m) (dec n)]))) 
+    
+(def edit-distance levenshtein-distance*)  ;;very quick already but maybe some memoization?                       
                      
 (defn segment 
 "Segments the given string into distinct sentences delimited by a newline." 
