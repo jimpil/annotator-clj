@@ -6,13 +6,15 @@
   :dependencies [[org.clojure/clojure "1.5.0-RC1"]
                  [org.clojure/tools.cli "0.2.2"]
                  [org.apache.lucene/lucene-snowball "3.0.3"]]
-  :jvm-opts ["-Xmx1g" "-server" 
+  :jvm-opts ["-Xmx2g" "-server" 
              "-XX:+OptimizeStringConcat" 
              ;"-XX:+UseCompressedOops" 
              ;"-XX:+UseCompressedStrings"
-             "-XX:+UseStringCache"]
+             "-XX:+UseStringCache"
+             "-Dde.uni_leipzig.asv.medusa.config.ClassConfig=./config/medusa_config.xml"]
   :jar-name "PAnnotator.jar"          ; name of the jar produced by 'lein jar'
   :uberjar-name "PAnnotator-uber.jar" ; same for 'lein uberjar'
+  ;:resource-paths ["orphan-jars/*"]   ;all jars under orphan-jars (temp hack)
   ;:java-source-paths ["src/java"]
   ;:aot []
   ;:warn-on-reflection true
