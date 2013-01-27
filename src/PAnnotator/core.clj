@@ -6,9 +6,10 @@
         [clojure.pprint :only [pprint]]
         [clojure.string :only [split-lines, split, join, blank?]])
   (:require [clojure.core.reducers :as r] 
-            [clojure.java.io :as io])      
-  (:import ;[de.uni_leipzig.asv.unsupos UnsuPosTagger]
-           [java.io File FileFilter]
+            [clojure.java.io :as io]
+            [PAnnotator.allignment :as alli]
+            [PAnnotator.util :as ut])      
+  (:import [java.io File FileFilter]
            [java.util.regex Pattern PatternSyntaxException]
            [java.util.concurrent Executors ExecutorCompletionService]
            [org.tartarus.snowball.ext EnglishStemmer DanishStemmer DutchStemmer FinnishStemmer FrenchStemmer German2Stemmer GermanStemmer
@@ -29,6 +30,10 @@
 
 (defprotocol Stemmable
   (getRoot [this] [this lang]))
+(defprotocol Levenshtein
+  (getDistance [this other]))
+(defprotocol Allignable
+ (allignSW [this other]))    
   
 (defn- porter-stemmer ^SnowballProgram 
 [^String lang]
@@ -54,7 +59,9 @@
 	"turskish"  (TurkishStemmer.)
  (throw 
   (IllegalArgumentException. "Language NOT supported...Stemming cannot continue!")))) 
-   
+
+(declare levenshtein-distance*) 
+  
 (extend-type String
  Stemmable
  (getRoot 
@@ -64,7 +71,13 @@
         (doto stemmer 
                 (.setCurrent this) 
                 (.stem)) 
-          (.getCurrent stemmer)))))
+          (.getCurrent stemmer))))
+  Levenshtein
+  (getDistance [this other] 
+    (levenshtein-distance* this other))
+  Allignable
+   (allignSW [this other] 
+     (alli/smith_waterman this other)))
     
 (extend-type clojure.lang.IPersistentCollection
   Stemmable
@@ -106,30 +119,32 @@
                      :closing "__"
                      :order [:token :entity]
                      })
+                                                               
                      
 (definline dist-step [pred d index]
  `(let [[i# j#] ~index]
-    (assoc ~d [i# j#]
-      (cond
-        (zero? (min i# j#)) (max i# j#)
-        (~pred ~index) (~d [(dec i#) (dec j#)])
-        :else (inc (min
-                     (~d [(dec i#) j#])
-                     (~d [i# (dec j#)])
-                     (~d [(dec i#) (dec j#)])))))))
+    (assoc ~d ~index
+      (cond (zero? (min i# j#))  (max i# j#)
+            (~pred i# j#) (get ~d [(dec i#) (dec j#)])
+        :else   (min
+                     (inc (get ~d [(dec i#) j#])) ;+1 cost for deletion
+                     (inc (get ~d [i# (dec j#)])) ;+1 cost for insertion
+                     (+ 2 (get ~d [(dec i#) (dec j#)]))))))) ;+2 cost for substitution (per Juramfky's lecture-slides)
 
+       
 (defn- levenshtein-distance* 
  "Calculates the amount of difference between two strings."
-[seq1 seq2]
-  (let [m (count seq1)
-        n (count seq2)
-        pred (fn [index] (let [[i j] index]
-                           (=
-                             (get seq1 (dec i))
-                             (get seq2 (dec j)))))
-        step #(dist-step pred % %2)
-        dist (reduce step {} (for [j (range n) i (range m)] [i j]))]
-    (dist [(dec m) (dec n)]))) 
+[s1 s2]
+  (let [m (inc (count s1)) ; do not skip tha last character
+        n (inc (count s2)) ; do not skip tha last character
+        pred (fn [i j]  (=
+                          (get s1 (dec i))
+                          (get s2 (dec j))))
+       step #(dist-step pred %1 %2)
+       distance-matrix (reduce step {} (ut/matrix n m))]        
+ (get distance-matrix [(dec m) (dec n)])))      
+       
+        
     
 (def edit-distance levenshtein-distance*)  ;;very quick already but maybe some memoization?                       
                      
@@ -417,8 +432,8 @@
 *****optional argument - defaults to 'merge-all'")
 
 (defn -main [& args]
-  (pos-tag "target-file.txt" true)   
-  #_(let [[opts argus banner] 
+  ;(pos-tag "target-file.txt" true)   
+  (let [[opts argus banner] 
         (cli args
       ["-h" "--help" "Show help/instructions." :flag true :default false]
       ["-d" "--data" "REQUIRED: The data-file (e.g. \"data.txt\")" :default "data-file.txt"]
