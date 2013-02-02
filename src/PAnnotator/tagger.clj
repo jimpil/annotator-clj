@@ -1,6 +1,8 @@
 (ns PAnnotator.tagger
   (:use [clojure.java.io :only [reader writer]]
-))  
+))
+;;Code taken from http://www.cs.berkeley.edu/~aria42/pubs/typetagging.pdf
+;;Credits to Aria Haghighi  
   
 ;; Counter: Map from object to value, cache total
 (defrecord Counter [counts total])
@@ -28,7 +30,7 @@
 (defn get-count 
   "Retrieve count of k from counter - should not be negative."
   [counter k]                                              
-  {:post [(not (neg? %))]}
+  ;{:post [(not (neg? %))]}
   (get (:counts counter) k 0.0))  
 
 (defn inc-count 
@@ -64,8 +66,8 @@
   [w]
   {:hasInitCap (boolean (re-matches #"[A-Z].*" w))    
    :hasPunc (boolean (re-matches #".*\W.*" w))
-   :suffix  (let [suffix-length (min 3 (.length w))]
-              (.substring ^String w (- (.length w) suffix-length)))})              
+   :suffix  (let [suffix-length (min 3 (.length ^String w))]
+              (.substring ^String w (- (.length ^String w) suffix-length)))})              
 
 (defn new-word-info [word]
   (WordInfo. word 0 (get-feats word) (Counter. {} 0)))
@@ -187,14 +189,14 @@
    (map (fn [log-x] (Math/exp (- log-x log-sum))) log-xs)))
    
 (defn sample-from-scores [log-scores]
- (let [trg (.nextDouble +rand+)]
+ (let [trg (.nextDouble ^java.util.Random +rand+)]
   (loop [so-far 0.0
          posts (map-indexed vector (log-normalize log-scores))]
    (if-let [[i p] (first posts)]
      (cond
        (< trg (+ so-far p)) i
        :default (recur (+ so-far p) (rest posts)))
-     (throw (RuntimeException. "Impossible"))))))
+     (throw (RuntimeException. "Impossible to sample!"))))))
 
 (defn score-assign 
   "Log probability of assigning word to tag"
@@ -242,7 +244,7 @@
                (map-vals num-distinct))]
     (State.
       ; random word to tag assignment - also fix assignments to start/stop
-      (let [rand-assign (make-map (fn [_] (.nextInt +rand+ *K*)) (map :word *vocab*))]
+      (let [rand-assign (make-map (fn [_] (.nextInt ^java.util.Random +rand+ *K*)) (map :word *vocab*))]
         (assoc rand-assign "#start#" :start "#stop#" :stop))
       ; tag prior
       (new-dirichlet alpha *K*)
@@ -280,15 +282,15 @@
     (if (= iter num-iters) state      
         (recur (inc iter) (gibbs-sample-iter state)))))     
 
-(defn pos-tag 
+(defn pos-tag  
   "Main entry run with infile outfile num-iters K alpha beta
    infile: file with one sentence per-line tokenized so split on space gives tokens (no start/stop)
    outfile: file to write word to tag mapping after each iteration
    num-iters: number of gibbs sampling iters to run
-   K: number of tags to use
+   K: number of tags to use (Penn:36, BNC:58)
    alpha,beta: doubles representing smoothing (try 0.1 1)"
   [& {:keys [K iters outfile infile alpha beta] 
-      :or {K 200 iters 50 alpha 0.1 beta (double 1) outfile "pos-target.txt"}}]
+      :or {K 36 iters 10 alpha 0.1 beta (double 1) outfile "pos-target.txt"}}]
   (let [;[infile outfile num-iters K alpha beta] args        
         sents-fn #(map
                    (fn [line] (concat ["#start#"] (seq (.split #^String line "\\s+")) ["#stop#"]))
