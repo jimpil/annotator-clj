@@ -1,21 +1,29 @@
 (ns PAnnotator.core 
    #^{:author "Dimitrios Piliouras 2012 (jimpil1985@gmail.com)"
-      :doc    "PAnnotator's core namespace."}
+      :doc    "PAnnotator's core namespace. Strings in this namespace know how to stem themselves (Porter's stemmer), allign themselves (Smith-Waterman)
+               with other strings and also compare compute the edit-distance between themselves and other strings (Levenshtein)."}
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
         [clojure.pprint :only [pprint]]
-        [clojure.string :only [split-lines, split, join, blank?]])
+        [clojure.string :only [split-lines, split, blank?]])
   (:require [clojure.core.reducers :as r] 
             [clojure.java.io :as io]
             [PAnnotator.allignment :as alli]
-            [PAnnotator.util :as ut])      
-  (:import [java.io File FileFilter]
+            [PAnnotator.util :as ut]
+            [PAnnotator.scrapper :as scra])      
+  (:import [java.io File FileFilter OutputStreamWriter FileOutputStream BufferedWriter]
            [java.util.regex Pattern PatternSyntaxException]
+           [org.apache.pdfbox.pdmodel PDDocument] 
+           [org.apache.pdfbox.util PDFTextStripper]
            [java.util.concurrent Executors ExecutorCompletionService]
            [org.tartarus.snowball.ext EnglishStemmer DanishStemmer DutchStemmer FinnishStemmer FrenchStemmer German2Stemmer GermanStemmer
            HungarianStemmer ItalianStemmer KpStemmer LovinsStemmer NorwegianStemmer PorterStemmer PortugueseStemmer RomanianStemmer
            RussianStemmer SpanishStemmer SwedishStemmer TurkishStemmer] [org.tartarus.snowball SnowballProgram]
   )
+  (:gen-class :name Annotator
+              :main true
+              :methods [^:static [process [java.util.Map] void]
+                        ^:static [process [String String java.util.List] String]]) 
 )  
 
 
@@ -96,6 +104,22 @@
   (getRoot 
   ([_] nil)
   ([_ _] nil)))
+  
+
+(defn pdf->txt [^String src & {:keys [s-page e-page dest] 
+                               :or {s-page 1 dest (str (.substring src 0 (.lastIndexOf src ".")) ".txt")}}]
+ {:pre [(< 0 s-page) (.endsWith src ".pdf")]} 
+ (println "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m")
+ (with-open [pd (PDDocument/load (File. src))
+             wr (io/writer dest)]
+  (let [page-no (.getNumberOfPages pd)
+        stripper (doto (PDFTextStripper.)
+                  (.setStartPage s-page)
+                  (.setEndPage (or e-page page-no)))]                
+    (println " #Total pages =" page-no "\n" 
+             "#Selected pages =" (- (or e-page page-no) (dec s-page)))
+    (.writeText stripper pd wr)
+    (println "Raw content extracted and written to" dest "..."))))
                        
 
 (def openNLP-NER-tags {:opening "<START:" 
@@ -141,21 +165,20 @@
                           (get s1 (dec i))
                           (get s2 (dec j))))
        step #(dist-step pred %1 %2)
-       distance-matrix (reduce step {} (ut/matrix n m))]        
+       distance-matrix (reduce step {} (ut/matrix m n))]        
  (get distance-matrix [(dec m) (dec n)])))      
        
-        
-    
+  
 (def edit-distance levenshtein-distance*)  ;;very quick already but maybe some memoization?                       
                      
-(defn segment 
+(defn s-split 
 "Segments the given string into distinct sentences delimited by a newline." 
 [^String s]
- (join "\n" 
+ (ut/segment 
   (split s sentence-segmentation-regex))) 
 
 (defn split-sentences [file]
-(segment (slurp file)))
+(s-split  (slurp file)))
 
 (defn simple-tokenize 
 "An extremely simple tokenizer that splits on any non-alphanumeric character.
@@ -339,14 +362,14 @@
   (boolean (re-find (re-pattern (str ".*" filter)) (.getName ^File f))))))      
       
       
-(defn sort-input [data-s ffilter]
+(defn- sort-input [data-s ffilter]
 (let [data-seq (-> data-s slurp read-string)
       fitem (first data-seq)]
 (if (sequential? fitem) data-s ;;the usual happens
   (let [directory (io/file fitem) ;;the whole directory
         f-seq (if-let [ff ffilter] 
-                (.listFiles directory (file-filter ff)) 
-                (.listFiles directory))
+                (.listFiles ^File directory ^FileFilter (file-filter ff)) 
+                (.listFiles ^File directory))
         f-seq-names (for [f f-seq :when #(.isFile ^File f)] (.getPath ^File f))]
  (reset! global-dic (combine-dicts (mapv (normaliser) (next data-seq))))     
  (mapv #(vec (concat (list %) (next data-seq))) f-seq-names)))) ) ;;build the new 2d vector        
@@ -381,7 +404,7 @@
                (format-fn entity-type name1)) 
              (catch PatternSyntaxException _ 
              (do (println (str "--- COULD NOT BE PROCESSED! --->" name1)) text)))
-             (next names)) [file-name (segment text)])) 
+             (next names)) [file-name (s-split text)])) 
    )) 
 ([{:keys [files+dics entity-type target target-folder consumer-lib strategy write-mode file-filter]
    :or {entity-type "default" 
@@ -406,12 +429,6 @@
     
       
 (def -process annotate)
-
-(gen-class :name Annotator
-           :main true
-           :methods [^:static [process [java.util.Map] void]
-                     ^:static [process [String String java.util.List] String]])  
-
 
 (def HELP_MESSAGE 
 "\nINSTRUCTIONS: java -cp PAnnotator-uberjar.jar Annotator  -d <DATA-FILE>* 
@@ -449,10 +466,26 @@
       ["-tok" "--tokens" "Extracts (and optionally stems) tokens from the supplied string or file. Activate stemming with the -ste flag."]
       ["-ste" "--stemming" "Activates porter-stemming. Only useful when paired with the -tok switch which returns the tokens." :flag true :default false]
       ["-lang" "--language" "Set the stemming language. Only useful when paired with the -tok and -ste switches." :default "english"]
+      ["-allign" "--allignment" "Perform local allignement (Smith-Waterman) between 2 sequences."]
+      ["-distance" "--edit-distance" "Calculate the edit-distance (Levenshtein) between 2 words."]
+      ["-rpdf" "-ripdf" "Extract the contents from a pdf file and write them to a plain txt file."]
       )]
     (when (:help opts)
       (println HELP_MESSAGE "\n\n" banner)
       (System/exit 0))
+    (when-let [source (:ripdf opts)]
+      (pdf->txt source)
+      (System/exit 0))  
+    (when (:allignment opts)
+      (if (> 3 (count args))
+       (do (println "Less than 2 arguments detected! Please provide 2 sequences to allign...")
+        (System/exit 0))
+   (do (println (allignSW (second args) (nth args 2))) (System/exit 0))))
+   (when (:edit-distance opts)
+      (if (> 3 (count args))
+       (do (println "Less than 2 arguments detected! Please provide 2 words to compare...")
+        (System/exit 0))
+   (do (println "\nLevenshtein distance =" (getDistance (second args) (nth args 2))) (System/exit 0))))  
     (when-let [ss (:tokens opts)]  
       (if (:stemming opts) 
       (pprint (simple-tokenize (if (string? ss) ss (slurp ss)) :stemmer #(getRoot % (:language opts)))) 
