@@ -1,17 +1,21 @@
 (defproject PAnnotator "0.3.4"
-  :description "A parallel, dictionary-based annotator for Text-mining & NLP-related tasks."
+  :description "A parallel, dictionary-based annotator tool for text-mining & other NLP-related tasks."
   :url "https://github.com/jimpil/annotator-clj"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.0-RC1"]
+  :dependencies [[org.clojure/clojure "1.5.0-RC4"]
+ 		 [org.clojure/data.zip "0.1.1"]
+ 		 ;[weissjeffm/clojure.prxml "1.3.0-SNAPSHOT"]
                  [org.clojure/tools.cli "0.2.2"]
-                 [org.apache.lucene/lucene-snowball "3.0.3"]]
+                 [itsy "0.1.1"]
+                 [org.apache.lucene/lucene-snowball "3.0.3"]
+                 [org.apache.pdfbox/pdfbox "1.7.1"]]
   :jvm-opts ["-Xmx2g" "-server" 
              "-XX:+OptimizeStringConcat" 
-             ;"-XX:+UseCompressedOops" 
-             ;"-XX:+UseCompressedStrings"
+             "-XX:-UseCompressedOops" 
              "-XX:+UseStringCache"
-             "-Dde.uni_leipzig.asv.medusa.config.ClassConfig=./config/medusa_config.xml"]
+            ; "-Dde.uni_leipzig.asv.medusa.config.ClassConfig=./config/medusa_config.xml"
+            ]
   :jar-name "PAnnotator.jar"          ; name of the jar produced by 'lein jar'
   :uberjar-name "PAnnotator-uber.jar" ; same for 'lein uberjar'
   ;:resource-paths ["orphan-jars/*"]   ;all jars under orphan-jars (temp hack)
