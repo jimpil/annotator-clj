@@ -5,21 +5,20 @@
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
         [clojure.pprint :only [pprint]]
-        [clojure.string :only [split-lines, split, blank?]])
+        [clojure.string :only [split-lines split blank?]])
   (:require [clojure.core.reducers :as r] 
             [clojure.java.io :as io]
             [PAnnotator.allignment :as alli]
             [PAnnotator.util :as ut]
             [PAnnotator.scrapper :as scra])      
-  (:import [java.io File FileFilter OutputStreamWriter FileOutputStream BufferedWriter]
+  (:import [java.io File FileFilter]
            [java.util.regex Pattern PatternSyntaxException]
            [org.apache.pdfbox.pdmodel PDDocument] 
            [org.apache.pdfbox.util PDFTextStripper]
            [java.util.concurrent Executors ExecutorCompletionService]
            [org.tartarus.snowball.ext EnglishStemmer DanishStemmer DutchStemmer FinnishStemmer FrenchStemmer German2Stemmer GermanStemmer
            HungarianStemmer ItalianStemmer KpStemmer LovinsStemmer NorwegianStemmer PorterStemmer PortugueseStemmer RomanianStemmer
-           RussianStemmer SpanishStemmer SwedishStemmer TurkishStemmer] [org.tartarus.snowball SnowballProgram]
-  )
+           RussianStemmer SpanishStemmer SwedishStemmer TurkishStemmer] [org.tartarus.snowball SnowballProgram])
   (:gen-class :name Annotator
               :main true
               :methods [^:static [process [java.util.Map] void]
@@ -193,7 +192,7 @@
   (if stemmer (stemmer tokens) tokens)))
 
 
-(defn ngrams
+#_(defn ngrams
  "Create ngrams from a seq s. 
   Pass a single string for character n-grams or a seq of strings for word n-grams."
   [s number]
@@ -215,7 +214,7 @@
                                    (if-let [val  (counts ngram)]
                                      (assoc counts ngram (+ val (second freqs)))
                                      (assoc counts ngram (second freqs)))))
-                               counts (frequencies (ngrams document number))))
+                               counts (frequencies (ut/ngrams document number))))
                      counts documents)) {} (if (sequential? numbers) numbers (list numbers))))
 
 (defn add-ngrams-to-document
@@ -281,7 +280,16 @@
 (defn rmap
 "A fork-join based mapping function that pours the results in a vector." 
 [f coll]
-(fold-into-vec @fj-chunk-size (r/map f coll)))             
+(fold-into-vec @fj-chunk-size (r/map f coll))) 
+
+(defn mapr
+"A pretty basic map-reduce style function. Will partition the data according to p-size and assign a thread to partition."  
+([f coll p-size]
+  (let [partitions (partition-all p-size coll)
+        fs (doall (for [p partitions] (future (flatten (map f p)))))
+        sss (for [f fs] @f)] sss))  
+  ;(pmap f (partition-all p-size coll)))
+([f coll] (mapr f coll 4)))              
 
 (defn- file->data
 "Read the file f back on memory safely. 
@@ -314,7 +322,7 @@
         Crest  (subs s 1) ]
   (str (.toLowerCase Cfirst) Crest))))
   
-(defn- create-folder "Creates a folder at the specified path." 
+(defn- create-folder! "Creates a folder at the specified path." 
 [^String path]
 (.mkdir (File. path)))  
   
@@ -327,6 +335,7 @@
   :lazy   map
   :lazy-parallel pmap
   :pool-parallel pool-map
+  :map-reduce    mapr
   :fork-join     rmap))
   
   
@@ -335,31 +344,30 @@
  Supported options include :merge-all, :per-file & :on-screen." 
 [mode target-f]
 (case mode
-  :merge-all    #(do (spit % %2 :append true) 
-                     (spit % "\n" :append true))
-  :per-file     #(let [fname (str target-f "/"  %  ".pann")]
-                   (create-folder target-f) 
-                   (spit fname %2))
-  :on-screen    #(print %2 "\n\n"))) 
+  :merge-all   (fn [target content]
+                 (do (spit target content :append true) 
+                     (spit target "\n" :append true)))
+  :per-file   (fn [target content] 
+                (let [fname (str target-f "/"  target  ".pann")]
+                   (spit fname content)))
+  :on-screen   (fn [_ content] (print content "\n\n")) )) 
   
 (defn normaliser []
 (comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
       split-lines 
       slurp))
-      
-#_(defn pos-tagger [&{:keys [ignore-case? std-log err-log]
-                    :or {ignore-case? false}}]
-(UnsuPosTagger. "target-file.txt" ignore-case? "config/unsupos.conf" 
-  (PrintStream. (FileOutputStream. (File. (str "target-file.POS" ".sdtout")))) 
-  (PrintStream. (FileOutputStream. (File. (str "target-file.POS" ".sdterr")))) "\n")) 
     
-#_(defn pos-tag [file ignore-case?]
-(.start (Thread. (pos-tagger ignore-case? true))))         
       
 (defn file-filter [filter]
 (reify FileFilter
  (accept [this f]
-  (boolean (re-find (re-pattern (str ".*" filter)) (.getName ^File f))))))      
+  (boolean (re-find (re-pattern (str ".*" filter)) (.getName ^File f))))))  
+  
+   #_(->> filter 
+         (str  ".*")
+          re-pattern
+          re-find
+          boolean)    
       
       
 (defn- sort-input [data-s ffilter]
@@ -412,7 +420,8 @@
         target-folder "ANNOTATED"
         consumer-lib "openNLP-NER"
         strategy   "lazy-parallel"
-        write-mode "merge-all"}}]
+        write-mode "merge-all"
+        file-filter "txt"}}]
  (let [f+ds (sort-input files+dics file-filter)
        annotations ((mapping-fn (keyword strategy)) ;;will return a mapping function
                        #(let [[f a] (annotate (first %) entity-type  (next %) (keyword consumer-lib))] 
@@ -420,13 +429,12 @@
                                (cond (string? f+ds) (file->data f+ds) 
                                      (vector? f+ds)  f+ds 
                                    :else (throw (IllegalArgumentException. "Weird data-format encountered! Cannot proceed..."))) )
-       wfn (file-write-mode (keyword write-mode) target-folder) ;will return a writing function
-       wmd  (case write-mode
-                  "per-file"   identity
-                  "merge-all"  (constantly target) nil)]      
-  (doseq [[f a] annotations] ;will return a list of (annotated) strings 
+       wfn  (do (when (= write-mode "per-file") (create-folder! target-folder)) 
+              (file-write-mode (keyword write-mode) target-folder)) ;will return a writing function
+       wmd  (if (= write-mode "merge-all") (constantly target) identity)]      
+  (doseq [[f a] annotations] 
     (wfn (wmd f) a)))) )
-    
+   
       
 (def -process annotate)
 
@@ -494,8 +502,9 @@
     (when-let [cs (:chunking opts)] 
       (reset! fj-chunk-size (Integer/valueOf ^Integer cs)))    
   (do (println "\n\t\t====> PAnnotator v0.3.4 <====\t\t\n\t\t-----------------------------\n\n")
-      (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts) (when-not (:target-folder opts) "\n--Target-File:" (:target opts))
-                                    (when (:target-folder opts) "\n--Target-Folder:" (:target-folder opts))  
+      (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts)  
+                                    "\n--Target-File:" (:target opts)
+                                    "\n--Target-Folder:" (:target-folder opts)
                                     "\n--Data-File:" (:data opts)  "\n--Mapping strategy:" (:parallelism opts) 
                                     "\n--Fork-join tree leaf-size:" @fj-chunk-size "(potentially irrelevant for this run)" 
                                     "\n--Consumer library:" (:for-lib opts) "(potentially irrelevant for this run)"
