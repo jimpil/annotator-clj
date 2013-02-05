@@ -1,5 +1,6 @@
 (ns PAnnotator.viterbi
-  (:use [clojure.pprint :only [pprint]]))
+  (:use [clojure.pprint  :only [pprint]]
+        [PAnnotator.util :only [ngrams]]))
  
 (defrecord HMM 
 [states observations init-probs emission-probs state-transitions]
@@ -10,6 +11,8 @@
         "Init probs: " (:init-probs this) "\n"
         "Emission probs: " (:emission-probs this) "\n"
         "Transitions probs: " (:state-transitions this))))
+        
+(defrecord TokenTagPair [token tag])        
  
 (defn make-hmm [states obs init-probs emission-probs state-transitions]
   (HMM.
@@ -18,6 +21,50 @@
     (if (map? init-probs) init-probs (hash-map init-probs))
     (if (map? emission-probs) emission-probs (hash-map emission-probs))
     (if (map? state-transitions) state-transitions (hash-map state-transitions))))
+    
+(defn extract-pairs [^String corpus & {:keys [pair-sep tt-pair] 
+                                        :or {pair-sep #"\s" tt-pair #"/"}}]
+(->> (clojure.string/split corpus  pair-sep)  
+  (mapv #(let [[token tag] (clojure.string/split % tt-pair)] (TokenTagPair. token tag)))))    
+    
+    
+(defn tables [^String corpus & {:keys [pair-sep tt-pair] 
+                                 :or {pair-sep #"\s" tt-pair #"/"}}]     
+(let [token-tag-pairs (extract-pairs corpus :pair-sep pair-sep :tt-pair tt-pair)
+      tags    (time (mapv :tag token-tag-pairs))
+      bigrams (time (ngrams tags 2))
+      bigram-frequencies (time (frequencies bigrams))
+      tag-groups      (time (group-by :tag token-tag-pairs))
+      ;token-groups (group-by :token token-tag-pairs)
+      tags-per-token  (time (persistent!
+                       (->> tag-groups
+                        (reduce-kv #(assoc! %1 %2 (with-meta %3 (group-by :token %3))) (transient {}))))) ;;YES!!!!
+      
+      
+      
+      
+      init-map (time (zipmap (keys tag-groups) (repeat (zipmap (keys tag-groups) (repeat 0)))))
+      tra-table  (time (reduce-kv #(update-in % [(first %2) (second %2)] + %3 (get-in % [(first %2) (second %2)])) init-map bigram-frequencies))
+      
+      tag-frequency   (time (frequencies tags))] ;;emm2
+[tags-per-token tag-frequency (count token-tag-pairs) tra-table (set tags)] ))
+;;all we need is here (emmissions, starts, token-count, transitions, unique tags )        
+       
+   
+(defn proper-statistics [[ems starts all tra-table uniq-tags :as em-tables] ]
+(let [em-probs  (reduce-kv 
+                 (fn [s k v] 
+                   (assoc s k 
+                    (reduce-kv #(assoc % %2 (/ (count %3) all)) {} (meta v))))
+                 {} ems)
+     start-probs (reduce-kv #(assoc % %2 (/ %3 all)) {} starts)
+     trans-probs   (reduce-kv 
+                 (fn [s k v] 
+                   (assoc s k 
+                    (reduce-kv #(assoc % %2 (/ %3 (get starts %2))) {} v)))
+                  {} tra-table)]
+ [uniq-tags start-probs em-probs trans-probs]))   
+         
  
 (defn argmax [coll]
   (loop [s (map-indexed vector coll)
@@ -31,24 +78,26 @@
  
 (defn init-alphas [hmm obs]
   (mapv (fn [x]
-         (* (get (:init-probs hmm) x) (get-in (:emission-probs hmm) [x obs])))
+         (* (get (:init-probs hmm) x) 
+            (get-in (:emission-probs hmm) [x obs] 0)))
        (:states hmm)))
  
 (defn forward [hmm alphas obs]
   (mapv (fn [state1]
          (* (reduce (fn [sum state2]
-                      (+ sum (* (get alphas (.indexOf ^clojure.lang.APersistentVector (:states hmm) state2)) (get-in (:state-transitions hmm) [state2 state1]))))
+             (+ sum (* (get alphas (.indexOf ^clojure.lang.APersistentVector (:states hmm) state2)) 
+                       (get-in (:state-transitions hmm) [state2 state1] 0))))
                     0
                     (:states hmm))
-            (get-in (:emission-probs hmm) [state1 obs]))) (:states hmm)))
+            (get-in (:emission-probs hmm) [state1 obs] 0))) (:states hmm)))
  
 (defn delta-max [hmm deltas obs]
  (mapv (fn [state1]
         (* (apply max (map (fn [state2]
                               (* (get deltas (.indexOf ^clojure.lang.APersistentVector (:states hmm) state2))
-                                 (get-in (:state-transitions hmm) [state2 state1])))
+                                 (get-in (:state-transitions hmm) [state2 state1] 0)))
                             (:states hmm)))
-            (get-in (:emission-probs hmm) [state1 obs])))
+            (get-in (:emission-probs hmm) [state1 obs] 0)))
        (:states hmm)))
  
 (defn backtrack [paths deltas]
@@ -63,7 +112,7 @@
   (mapv (fn [state1]
          (first (argmax (map (fn [state2]
                                   (* (get deltas (.indexOf ^clojure.lang.APersistentVector (:states hmm) state2))
-                                     (get-in (:state-transitions hmm) [state2 state1])))
+                                     (get-in (:state-transitions hmm) [state2 state1] 0)))
                                 (:states hmm)))))
        (:states hmm)))
        
@@ -94,12 +143,12 @@
 (def states [:healthy :fever])
 (def start-probs {:healthy 0.6 
                   :fever 0.4})
-(def emisison-probs {:healthy {:normal  0.5  :cold 0.4 :dizzy 0.1}
+(def emission-probs {:healthy {:normal  0.5  :cold 0.4 :dizzy 0.1}
                      :fever   {:normal  0.1  :cold 0.3 :dizzy 0.6}})
 (def transition-probs {:healthy  {:healthy 0.7 :fever  0.3}
                        :fever    {:healthy 0.4 :fever  0.6}})
 ;;CONSTRUCT THE HIDDEN-MARKOV-MODEL                                            
-(def hmm (HMM. states observations start-probs emisison-probs transition-probs))                     
+(def hmm (HMM. states observations start-probs emission-probs transition-probs))                     
 ;;run viterbi
 (viterbi hmm)
 ;=>[(:healthy :healthy :fever) 0.03628] ;;correct!
@@ -112,15 +161,55 @@
 (def observations (vec "GGCACTGAA"))
 (def start-probs {:H 0.5 
                   :L 0.5})
-(def emisison-probs {:H {\A 0.2  \C 0.3 \G 0.3 \T 0.2}
+(def emission-probs {:H {\A 0.2  \C 0.3 \G 0.3 \T 0.2}
                      :L {\A 0.3  \C 0.2 \G 0.2 \T 0.3}})
 (def transition-probs {:H  {:L 0.5 :H  0.5}
                        :L  {:H 0.4 :L  0.6}})
 ;;CONSTRUCT THE HIDDEN-MARKOV-MODEL                                            
-(def hmm (HMM. states observations start-probs emisison-probs transition-probs))                     
+(def hmm (HMM. states observations start-probs emission-probs transition-probs))                     
 ;;run viterbi on it
 (viterbi hmm)
 ;=>[(:H :H :H :L :L :L :L :L :L) 3.791016E-6]  ;;correct!
+
+
+;;EXAMPLE 3: (taken from J&M 2nd ed., sec:5.5.3)
+;;assume a very simplified subset of POS-tag classes [VB, TO, NN, PPSS] and 4 words
+(def states [:VB :TO :NN :PPSS]) ;;normally we'd have  all the possible tags (e.g. 36 for PENN)
+(def observations ["I" "want" "to" "race"]) ;;from their example - any sentence would do
+(def start-probs {:VB 0.019 
+                  :TO 0.0043
+                  :NN 0.041
+                  :PPSS 0.067})
+                     
+(def emission-probs {:VB   {"want" 0.0093  "race" 0.00012}
+                     :TO   {"to" 0.99}
+                     :NN   {"want" 0.000054  "race" 0.00057}
+                     :PPSS {"I" 0.37 }})                     
+
+(def transition-probs {:VB   {:VB 0.0038 :TO 0.0345 :NN 0.047 :PPSS 0.07}
+                       :TO   {:VB 0.83 :TO 0 :NN 0.00047 :PPSS 0}
+                       :NN   {:VB 0.0040 :TO 0.016 :NN 0.087 :PPSS 0.0045}
+                       :PPSS {:VB 0.23 :TO 0.00079 :NN 0.0012 :PPSS 0.00014}})
+
+;;CONSTRUCT THE HIDDEN-MARKOV-MODEL                                            
+(def hmm (HMM. states observations start-probs emission-probs transition-probs))                     
+;;run viterbi on it
+(viterbi hmm)
+;=>[(:PPSS :VB :TO :VB) 1.8087296E-10]   ;;correct!
+
+;;EXAMPLE 4 -- with automatic extraction of probabilities from a given corpus
+(def a-corpus "The/DT fox/NN jumped/VBD over/IN the/DT lazy/JJ dog/NN and/CC I/PPSS did/DOD not/NEG notice/VB it/PPS !/TERM") 
+;;OR normally-> (slurp "some-file.txt")
+(def probs (proper-statistics (tables a-corpus)))
+(def hmm (let [[states starts emms trans] probs] 
+          (make-hmm states ["French" "jets" "bomb" "rebel" "bases" "and" "depots" "in" "northern" "Mali" "in" "an" "effort" "to" "cut" "of" "supply" "lines"  "."]   starts emms trans)))
+(viterbi hmm)
+;=>[("DT" "NN" "VBD" "IN" "DT" "JJ" "NN" "CC" "PPSS" "DOD" "NEG" "VB" "PPS" "TERM") 1.6070133E-18]  ;;correct!
+
+;["French" "jets" "bomb" "rebel" "bases" "and" "depots" "in" "northern" "Mali" "in" "an" "effort" "to" "cut" "of" "supply" "lines"  "."]
+
+;["Mr." "Brown" "lost" "this" "election" "by" "a" "small" "margin" "."]
+;["The" "fox" "jumped" "over" "the" "lazy" "dog" "and" "I" "did" "not" "notice" "it" "!"]          
 
 ) 
          
