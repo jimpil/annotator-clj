@@ -108,9 +108,14 @@
 (defn pdf->txt [^String src & {:keys [s-page e-page dest] 
                                :or {s-page 1 dest (str (.substring src 0 (.lastIndexOf src ".")) ".txt")}}]
  {:pre [(< 0 s-page) (.endsWith src ".pdf")]} 
- (println "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m")
+ (println "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m \n Proceed? (y/n):")
+ (when  (-> *in*
+              (java.util.Scanner.)
+              .next
+              (.charAt 0)
+              (= \y))
  (with-open [pd (PDDocument/load (File. src))
-             wr (io/writer dest)]
+             wr ^java.io.BufferedWriter (io/writer dest)]
   (let [page-no (.getNumberOfPages pd)
         stripper (doto (PDFTextStripper.)
                   (.setStartPage s-page)
@@ -118,7 +123,7 @@
     (println " #Total pages =" page-no "\n" 
              "#Selected pages =" (- (or e-page page-no) (dec s-page)))
     (.writeText stripper pd wr)
-    (println "Raw content extracted and written to" dest "..."))))
+    (println "Raw content extracted and written to" dest "...")))))
                        
 
 (def openNLP-NER-tags {:opening "<START:" 
