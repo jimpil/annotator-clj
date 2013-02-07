@@ -8,7 +8,7 @@
  (toString [this] 
    (str "Number of states: " (count (:states this)) "\n"
         "Number of observations: " (count (:observations this)) "\n"
-        "Init probs: " (:init-probs this) "\n"
+        "Init probs: "     (:init-probs this) "\n"
         "Emission probs: " (:emission-probs this) "\n"
         "Transitions probs: " (:state-transitions this))))
         
@@ -23,14 +23,14 @@
     (if (map? state-transitions) state-transitions (hash-map state-transitions))))
     
 (defn extract-pairs [^String corpus & {:keys [pair-sep tt-pair] 
-                                        :or {pair-sep #"\s" tt-pair #"/"}}]
+                                        :or {pair-sep #"\n" tt-pair #"/"}}]
 (->> (clojure.string/split corpus  pair-sep)  
   (mapv #(let [[token tag] (clojure.string/split % tt-pair)] (TokenTagPair. token tag)))))    
     
     
 (defn tables [^String corpus & {:keys [pair-sep tt-pair] 
                                  :or {pair-sep #"\s" tt-pair #"/"}}]     
-(let [token-tag-pairs (extract-pairs corpus :pair-sep pair-sep :tt-pair tt-pair)
+(let [token-tag-pairs (remove #(nil? (:tag %)) (extract-pairs corpus :pair-sep pair-sep :tt-pair tt-pair))
       tags    (time (mapv :tag token-tag-pairs))
       bigrams (time (ngrams tags 2))
       bigram-frequencies (time (frequencies bigrams))
@@ -198,18 +198,22 @@
 ;=>[(:PPSS :VB :TO :VB) 1.8087296E-10]   ;;correct!
 
 ;;EXAMPLE 4 -- with automatic extraction of probabilities from a given corpus
-(def a-corpus "The/DT fox/NN jumped/VBD over/IN the/DT lazy/JJ dog/NN and/CC I/PPSS did/DOD not/NEG notice/VB it/PPS !/TERM") 
-;;OR normally-> (slurp "some-file.txt")
+(def a-corpus (slurp "formitsos_line.txt")) 
+;"The/DT fox/NN jumped/VBD over/IN the/DT lazy/JJ dog/NN and/CC I/PPSS did/DOD not/NEG notice/VB it/PPS !/TERM") 
+;;OR normally-> (slurp "formitsos_line.txt")
 (def probs (proper-statistics (tables a-corpus)))
 (def hmm (let [[states starts emms trans] probs] 
-          (make-hmm states ["French" "jets" "bomb" "rebel" "bases" "and" "depots" "in" "northern" "Mali" "in" "an" "effort" "to" "cut" "of" "supply" "lines"  "."]   starts emms trans)))
+          (make-hmm states ["They" "met"  "in" "the" "pub" "late" "at" "night" "."]   starts emms trans)))
 (viterbi hmm)
 ;=>[("DT" "NN" "VBD" "IN" "DT" "JJ" "NN" "CC" "PPSS" "DOD" "NEG" "VB" "PPS" "TERM") 1.6070133E-18]  ;;correct!
 
 ;["French" "jets" "bomb" "rebel" "bases" "and" "depots" "in" "northern" "Mali" "in" "an" "effort" "to" "cut" "of" "supply" "lines"  "."]
-
+;["Plants" "need" "light" "and" "water" "to" "grow" "."]
+;["Police" "investigating" "allegations" "of" "child" "abuse" "at" "a" "guest" "house" "in" "west" "London" "arrest" "two" "men"  "."]
 ;["Mr." "Brown" "lost" "this" "election" "by" "a" "small" "margin" "."]
-;["The" "fox" "jumped" "over" "the" "lazy" "dog" "and" "I" "did" "not" "notice" "it" "!"]          
-
+;["The" "fox" "jumped" "over" "the" "lazy" "dog" "and" "I" "did" "not" "notice" "it" "!"]  
+;["The" "US" "central" "intelligence" "agency" "has" "been" "operating" "a" "secret" "airbase" "in" "Saudi" "Arabia" "."]
+;["At" "least" "4" "people" "are" "killed" "as" "a" "tsunami" "hits" "the" "Japanese" "islands"  "."]       
+;["They" "met"  "in" "the" "pub" "late" "at" "night" "."]
 ) 
          
