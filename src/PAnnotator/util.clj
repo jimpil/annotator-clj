@@ -23,16 +23,17 @@
                  w (range h)] 
          [i j k w])))
          
-(defn proper-matrix [dim & dim-lengths]
+(defn range-vmatrix [dim & dim-lengths]
 {:pre [(not (nil? dim))]} ;;cannot accept nil dimensions
 (let [dim-no   (count dim-lengths)
       symbols  (take dim-no (repeatedly gensym)) 
       counts   (inc dim-no) ;;include dim in count
       curr-sym (or (first symbols) (gensym))] ;;account for dim
 (if (> counts 1) ;;more dimensions?
-  `(for ~(vector curr-sym `(range ~dim))
-    ~(apply proper-matrix (first dim-lengths) (next dim-lengths))) ;;recurse for each element
- `(for ~(vector curr-sym `(range ~dim))  ~curr-sym))))  ;;revert to plain 'for'            
+ `(vec 
+    (for ~(vector curr-sym `(range ~dim))
+    ~(apply range-vmatrix (first dim-lengths) (next dim-lengths)))) ;;recurse for each element
+ `(vec (for ~(vector curr-sym `(range ~dim))  ~curr-sym)))))  ;;revert to plain 'for'            
          
 (defn ngrams
  "Create ngrams from a seq s. 
