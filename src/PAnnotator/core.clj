@@ -1,11 +1,12 @@
 (ns PAnnotator.core 
    #^{:author "Dimitrios Piliouras 2012 (jimpil1985@gmail.com)"
       :doc    "PAnnotator's core namespace. Strings in this namespace know how to stem themselves (Porter's stemmer), allign themselves (Smith-Waterman)
-               with other strings and also compare compute the edit-distance between themselves and other strings (Levenshtein)."}
+               with other strings and also compare compute the edit-distance (Levenshtein) between themselves and other strings."}
   (:use [clojure.tools.cli :only [cli]]
         [clojure.set :only [union]]
         [clojure.pprint :only [pprint]]
-        [clojure.string :only [split-lines split blank?]])
+        [clojure.string :only [split-lines split blank?]]
+        [re-rand :only [re-rand]])
   (:require [clojure.core.reducers :as r] 
             [clojure.java.io :as io]
             [PAnnotator.allignment :as alli]
@@ -31,9 +32,27 @@
 (def ^:dynamic *cpu-no* (.. Runtime getRuntime availableProcessors))
 (def fj-chunk-size (atom 5))
 (def global-dic    (atom nil))
-(def sentence-segmentation-regex 
-#"(?<=[.!?]|[.!?][\\'\"])(?<!e\.g\.|i\.e\.|vs\.|p\.m\.|a\.m\.|Mr\.|Mrs\.|Ms\.|St\.|Fig\.|fig\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
+(def sentence-segmentation-regex  #"(?<=[.!?]|[.!?][\\'\"])(?<!e\.g\.|i\.e\.|vs\.|p\.m\.|a\.m\.|Mr\.|Mrs\.|Ms\.|St\.|Fig\.|fig\.|Jr\.|Dr\.|Prof\.|Sr\.|\s[A-Z]\.)\s+")
 (def token-regex #"[\w\d/]+|[\-\,\.\?\!\(\)]")
+(def _LEAD  #"^[aeiouy]*(?:qu|[bcdfghjklmnpqrstvwxz])+")    ;;match 0 or more vowels + 1 or more consonants at the start of the word 
+(def _INNER #"\B[aeiouy]+(?:qu|[bcdfghjklmnpqrstvwxz])+\B") ;;match 1 or more vowels + 1 or more consonants inside a word 
+(def _TRAIL #"[aeiouy]+(?:qu|[bcdfghjklmnpqrstvwxz])+$")    ;;match 1 or more vowels + 0 or more consonants at the end of a word 
+
+(defn-  un-capitalize ^String [^String s]
+(if (every? #(Character/isUpperCase ^Character %) s) s 
+  (let [Cfirst (subs s 0 1)
+        Crest  (subs s 1) ]
+  (str (.toLowerCase Cfirst) Crest))))
+
+(def normaliser
+(comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
+      split-lines 
+      slurp))
+      
+(defn singleton? [s]
+(< (count (split s #"(\s|\-|\(|\))")) 2))      
+      
+(def drugbank (filter singleton? (normaliser "DRUGBANK/DRUGBANK-TERMS.txt")))
 
 (defprotocol Stemmable
   (getRoot [this] [this lang]))
@@ -104,9 +123,59 @@
   ([_] nil)
   ([_ _] nil)))
   
+(defn name-parts [names] ;;get some basic syllable statistics
+(let [lead  (transient []) 
+      inner (transient []) 
+      trail (transient [])]
+(doseq [n names] 
+  (when-let [pat1 (re-find _LEAD n)]
+     (conj! lead pat1))
+   (when-let [pats (re-seq _INNER n)]
+     (doseq [p pats] 
+       (conj! inner p)))
+   (when-let [pat2 (re-find _TRAIL n)]
+      (conj! trail pat2)))
+  [(frequencies (persistent! lead)) 
+   (frequencies (persistent! inner)) 
+   (frequencies (persistent! trail))])) ;;a vector of 3 maps   
 
-(defn pdf->txt [^String src & {:keys [s-page e-page dest] 
-                               :or {s-page 1 dest (str (.substring src 0 (.lastIndexOf src ".")) ".txt")}}]
+(defn- freq-desc [freqs] ;(keep the ones with at least five occurences)
+ (mapv first (take-while #(> (second %) 5) (sort-by second > freqs))))
+ 
+
+(defn- namegen [nparts & {:keys [alt-lead alt-trail]}] 
+ (let [[leads inners trails] (mapv freq-desc nparts)
+       random-int (rand-int 3)
+       syllables (if (> (rand) 0.85) (+ 2 random-int) (inc random-int))] 
+ (loop [name (or alt-lead (rand-nth leads))
+        ss syllables]
+   (if (zero? ss) (str name  (or alt-trail (rand-nth trails)))
+     (recur (str name (rand-nth inners)) (dec ss)))))) 
+     
+(def drugen (partial namegen (name-parts drugbank))) ;; (drugen :alt-trail "ine")  (drugen :alt-lead "card")
+
+(declare fold-into-vec)
+
+(defn randrugs 
+([]  (repeatedly drugen)) 
+([t] (repeatedly t drugen))
+([t pred] 
+  (if (< t 11) (remove pred (randrugs t))  ;;don't bother folding
+    (fold-into-vec 15 (r/remove pred (vec (randrugs t))))))
+([t pred & more] 
+ (let [ress (repeatedly t #(apply drugen more))] 
+ (if (< t 11)  (remove pred ress)
+   (fold-into-vec 15 (r/remove pred (vec ress)))))))
+    
+    ;;EXAMPLE USAGE of pred  (fn close? [x] (some #(< (getDistance x %) 4)))    
+  
+(defn re-names [re]
+(lazy-seq 
+  (cons (re-rand re) (re-names re))))  
+  
+
+(defn pdf->txt [^String src & {:keys [s-page e-page dest]  
+                               :or {s-page 1 dest (str (first (split src #"\.")) ".txt")}}]
  {:pre [(< 0 s-page) (.endsWith src ".pdf")]} 
  (println "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m \n Proceed? (y/n):")
  (when  (-> *in*
@@ -196,14 +265,6 @@
 (let [tokens (re-seq rgx sentence)]
   (if stemmer (stemmer tokens) tokens)))
 
-
-#_(defn ngrams
- "Create ngrams from a seq s. 
-  Pass a single string for character n-grams or a seq of strings for word n-grams."
-  [s number]
-  (when (>= (count s) number)
-    (lazy-seq 
-      (cons (take number s) (ngrams (rest s) number)))))
       
 (defn n-grams-count
   "Used to create n-grams with the specified numbers
@@ -288,12 +349,11 @@
 (fold-into-vec @fj-chunk-size (r/map f coll))) 
 
 (defn mapr
-"A pretty basic map-reduce style function. Will partition the data according to p-size and assign a thread to partition."  
+"A pretty basic map-reduce style function. Will partition the data according to p-size and assign a thread to each partition."  
 ([f coll p-size]
-  (let [partitions (partition-all p-size coll)
-        fs (doall (for [p partitions] (future (flatten (map f p)))))
-        sss (for [f fs] @f)] sss))  
-  ;(pmap f (partition-all p-size coll)))
+ (apply concat ;;concat the inner vectors that represent the partitions
+   (pmap (fn [p] (reduce #(conj % (f %2)) [] p))
+     (partition-all p-size coll))))
 ([f coll] (mapr f coll 4)))              
 
 (defn- file->data
@@ -320,12 +380,6 @@
 (-> (re-matcher (re-pattern (str (apply str (next (:closing t-scheme))) "(?! )")) text)   ;"END>(?! )"
    (.replaceAll "$0 ")))
 (.replaceAll " $0")))) 
-
-(defn-  un-capitalize ^String [^String s]
-(if (every? #(Character/isUpperCase ^Character %) s) s 
-  (let [Cfirst (subs s 0 1)
-        Crest  (subs s 1) ]
-  (str (.toLowerCase Cfirst) Crest))))
   
 (defn- create-folder! "Creates a folder at the specified path." 
 [^String path]
@@ -333,7 +387,7 @@
   
 (defn- mapping-fn
 "Returns a fn that will take care mapping with this stratefy. 
- Supported options include :serial, :lazy, :lazy-parallel, :pool-parallel & :fork-join." 
+ Supported options include :serial, :lazy, :lazy-parallel, :pool-parallel, :map-reduce & :fork-join." 
 [strategy]
 (case strategy
   :serial mapv
@@ -351,28 +405,18 @@
 (case mode
   :merge-all   (fn [target content]
                  (do (spit target content :append true) 
-                     (spit target "\n" :append true)))
+                     (spit target "\n\n" :append true)))
   :per-file   (fn [target content] 
                 (let [fname (str target-f "/"  target  ".pann")]
                    (spit fname content)))
   :on-screen   (fn [_ content] (print content "\n\n")) )) 
-  
-(defn normaliser []
-(comp (fn [untrimmed] (mapv #(un-capitalize (.trim ^String %)) untrimmed)) 
-      split-lines 
-      slurp))
     
       
 (defn file-filter [filter]
 (reify FileFilter
  (accept [this f]
-  (boolean (re-find (re-pattern (str ".*" filter)) (.getName ^File f))))))  
-  
-   #_(->> filter 
-         (str  ".*")
-          re-pattern
-          re-find
-          boolean)    
+  (boolean 
+  (re-find (re-pattern (str ".*" filter)) (.getName ^File f))))))     
       
       
 (defn- sort-input [data-s ffilter]
@@ -384,7 +428,7 @@
                 (.listFiles ^File directory ^FileFilter (file-filter ff)) 
                 (.listFiles ^File directory))
         f-seq-names (for [f f-seq :when #(.isFile ^File f)] (.getPath ^File f))]
- (reset! global-dic (combine-dicts (mapv (normaliser) (next data-seq))))     
+ (reset! global-dic (combine-dicts (mapv normaliser (next data-seq))))     
  (mapv #(vec (concat (list %) (next data-seq))) f-seq-names)))) ) ;;build the new 2d vector        
       
 
@@ -403,14 +447,15 @@
                            [\"train/invivo_train-raw.txt\"  \"train/invivo-train-names-distinct.txt\"]]})"
 (^String [^String f ^String entity-type dics lib]
   (let [dic (if-let [gb @global-dic] gb
-            (combine-dicts (mapv (normaliser) dics)))
+            (combine-dicts (mapv normaliser dics)))
         file-name (.getName (java.io.File. f))   
         format-fn  (format-tag lib)]      
        (println (str "Processing document: " f)) 
            (loop [text  (slurp f)
                   names dic]
   	     (if-let [name1 (first names)] 
-           (recur (try ;(do (println (str "ANNOTATING " name1)) ;then clause 
+           (recur 
+            (try 
              (.replaceAll 
         	(re-matcher 
                 (re-pattern (str "(?i)\\b+" (Pattern/quote name1) "+\\b")) text)  
@@ -469,7 +514,7 @@
       ["-d" "--data" "REQUIRED: The data-file (e.g. \"data.txt\")" :default "data-file.txt"]
       ["-e" "--entity-type" "REQUIRED: The type of entity in question (e.g. \"river\")" :default "default"]
       ["-t" "--target" "REQUIRED: The target-file (e.g. \"target.txt\")" :default "target-file.txt"]
-      ["-tfo" "--target-folder" "Specify a target folder. Only useful if write-mode is set 'to per-file' (no defaults)."] 
+      ["-tfo" "--target-folder" "Specify a target folder. Only useful if write-mode is set 'to per-file' (defaults to ANNOTATED/)." :default "ANNOTATED"] 
       ["-ct" "--custom-tags" "Specify your own tags. (e.g \"{:opening \"_\" :closing \"_\" :middle \":\" :order [:token :entity]}\")"]
       ["-par" "--parallelism" "Set a parallelisation strategy (other options are: serial, lazy, pool-parallel & fork-join)." :default "lazy-parallel"]
       ["-chu" "--chunking" "Specify the number where recursive tree splitting should stop in a fork-join task (defaults to 4)." :default 4]
@@ -480,15 +525,21 @@
       ["-ste" "--stemming" "Activates porter-stemming. Only useful when paired with the -tok switch which returns the tokens." :flag true :default false]
       ["-lang" "--language" "Set the stemming language. Only useful when paired with the -tok and -ste switches." :default "english"]
       ["-allign" "--allignment" "Perform local allignement (Smith-Waterman) between 2 sequences."]
-      ["-distance" "--edit-distance" "Calculate the edit-distance (Levenshtein) between 2 words."]
-      ["-rpdf" "-ripdf" "Extract the contents from a pdf file and write them to a plain txt file."]
+      ["-dist" "--edit-distance" "Calculate the edit-distance (Levenshtein) between 2 words."]
+      ["-rpdf"  "--ripdf" "Extract the contents from a pdf file and write them to a plain txt file."]
+      ["-dname" "--drugname" "Generate a finite list of randomly assembled name(s) that look like drugs (orthographically)." :default 10]
       )]
     (when (:help opts)
       (println HELP_MESSAGE "\n\n" banner)
       (System/exit 0))
     (when-let [source (:ripdf opts)]
       (pdf->txt source)
-      (System/exit 0))  
+      (System/exit 0))
+    (when-let [n (try (Integer/parseInt (:drugname opts))
+                 (catch NumberFormatException nfe 
+                 (do (println "\u001B[31mMake sure to specify a limit otherwise the list will be infinite!\u001B[m") (System/exit 1))))] 
+     (println (apply randrugs (or n 1) (drop 2 args)))
+      (System/exit 0))    
     (when (:allignment opts)
       (if (> 3 (count args))
        (do (println "Less than 2 arguments detected! Please provide 2 sequences to allign...")
@@ -506,7 +557,7 @@
       (System/exit 0)) 
     (when-let [cs (:chunking opts)] 
       (reset! fj-chunk-size (Integer/valueOf ^Integer cs)))    
-  (do (println "\n\t\t====> PAnnotator v0.3.4 <====\t\t\n\t\t-----------------------------\n\n")
+  (do (println "\n\t\t====> \u001B[35mPAnnotator\u001B[m \u001B[32mv0.3.4\u001B[m <====\t\t\n\t\t-----------------------------\n\n")
       (println "\tRun settings:" "\n\n--Entity-Type:" (:entity-type opts)  
                                     "\n--Target-File:" (:target opts)
                                     "\n--Target-Folder:" (:target-folder opts)
