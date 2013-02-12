@@ -52,7 +52,7 @@
 (defn singleton? [s]
 (< (count (split s #"(\s|\-|\(|\))")) 2))      
       
-(def drugbank (filter singleton? (normaliser "DRUGBANK/DRUGBANK-TERMS.txt")))
+(def drugbank-singletons (doall (filter singleton? (normaliser (io/resource "DRUGBANK/DRUGBANK-TERMS.txt"))))) 
 
 (defprotocol Stemmable
   (getRoot [this] [this lang]))
@@ -152,7 +152,7 @@
    (if (zero? ss) (str name  (or alt-trail (rand-nth trails)))
      (recur (str name (rand-nth inners)) (dec ss)))))) 
      
-(def drugen (partial namegen (name-parts drugbank))) ;; (drugen :alt-trail "ine")  (drugen :alt-lead "card")
+(def drugen (partial namegen (name-parts drugbank-singletons))) ;; (drugen :alt-trail "ine")  (drugen :alt-lead "card")
 
 (declare fold-into-vec)
 
@@ -160,7 +160,7 @@
 ([]  (repeatedly drugen)) 
 ([t] (repeatedly t drugen))
 ([t pred] 
-  (if (< t 11) (remove pred (randrugs t))  ;;don't bother folding
+  (if (< t 11) (remove pred (randrugs t))  ;;don't bother folding for less than 11 elements
     (fold-into-vec 15 (r/remove pred (vec (randrugs t))))))
 ([t pred & more] 
  (let [ress (repeatedly t #(apply drugen more))] 
@@ -177,7 +177,7 @@
 (defn pdf->txt [^String src & {:keys [s-page e-page dest]  
                                :or {s-page 1 dest (str (first (split src #"\.")) ".txt")}}]
  {:pre [(< 0 s-page) (.endsWith src ".pdf")]} 
- (println "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m \n Proceed? (y/n):")
+ (print "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m \n Proceed? (y/n):")
  (when  (-> *in*
               (java.util.Scanner.)
               .next
