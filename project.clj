@@ -1,9 +1,9 @@
-(defproject PAnnotator "0.3.4"
+(defproject annotator-clj "0.3.4"
   :description "A parallel, dictionary-based annotator tool for text-mining & other NLP-related tasks."
   :url "https://github.com/jimpil/annotator-clj"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.0-RC14"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
  		 [org.clojure/data.zip "0.1.1"]
  		 ;[weissjeffm/clojure.prxml "1.3.0-SNAPSHOT"]
                  [org.clojure/tools.cli "0.2.2"]
