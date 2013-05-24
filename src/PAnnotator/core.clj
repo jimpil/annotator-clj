@@ -527,7 +527,7 @@
       ["-allign" "--allignment" "Perform local allignement (Smith-Waterman) between 2 sequences."]
       ["-dist" "--edit-distance" "Calculate the edit-distance (Levenshtein) between 2 words."]
       ["-rpdf"  "--ripdf" "Extract the contents from a pdf file and write them to a plain txt file."]
-      ["-dname" "--drugname" "Generate a finite list of randomly assembled name(s) that look like drugs (orthographically)." :default 10]
+      ["-dname" "--drugname" "Generate a finite list (you provide how many) of randomly assembled name(s) that look like drugs (orthographically)."]
       )]
     (when (:help opts)
       (println HELP_MESSAGE "\n\n" banner)
@@ -535,11 +535,10 @@
     (when-let [source (:ripdf opts)]
       (pdf->txt source)
       (System/exit 0))
-    (when-let [n (try (Integer/parseInt (:drugname opts))
-                 (catch NumberFormatException nfe 
-                 (do (println "\u001B[31mMake sure to specify a limit otherwise the list will be infinite!\u001B[m") (System/exit 1))))] 
-     (println (apply randrugs (or n 1) (drop 2 args)))
-      (System/exit 0))    
+    (when-let [how-many (:drugname opts)] 
+      (let [n (Integer/parseInt how-many)]
+        (println (apply randrugs n (drop 2 args)))
+        (System/exit 0)))    
     (when (:allignment opts)
       (if (> 3 (count args))
        (do (println "Less than 2 arguments detected! Please provide 2 sequences to allign...")
