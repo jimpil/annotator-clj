@@ -6,12 +6,12 @@
         [clojure.set :only [union]]
         [clojure.pprint :only [pprint]]
         [clojure.string :only [split-lines split blank?]]
-        [re-rand :only [re-rand]])
+        #_[re-rand :only [re-rand]])
   (:require [clojure.core.reducers :as r] 
             [clojure.java.io :as io]
             [PAnnotator.allignment :as alli]
             [PAnnotator.util :as ut]
-            [PAnnotator.scrapper :as scra])      
+            #_[PAnnotator.scrapper :as scra])      
   (:import [java.io File FileFilter]
            [java.util.regex Pattern PatternSyntaxException]
            [org.apache.pdfbox.pdmodel PDDocument] 
@@ -169,22 +169,18 @@
     
     ;;EXAMPLE USAGE of pred  (fn close? [x] (some #(< (getDistance x %) 4)))    
   
-(defn re-names [re]
-(lazy-seq 
-  (cons (re-rand re) (re-names re))))  
-  
 
 (defn pdf->txt [^String src & {:keys [s-page e-page dest]  
                                :or {s-page 1 dest (str (first (split src #"\.")) ".txt")}}]
  {:pre [(< 0 s-page) (.endsWith src ".pdf")]} 
- (print "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m \n Proceed? (y/n):")
+ (println "     \u001B[31mYOU ARE PERFORMING A POTENTIALLY ILLEGAL OPERATION...\n\t PROCEED AT YOUR OWN RISK!!!\u001B[m \n Proceed? (y/n):")
  (when  (-> *in*
               (java.util.Scanner.)
               .next
               (.charAt 0)
               (= \y))
  (with-open [pd (PDDocument/load (File. src))
-             wr ^java.io.BufferedWriter (io/writer dest)]
+             wr (io/writer dest)]
   (let [page-no (.getNumberOfPages pd)
         stripper (doto (PDFTextStripper.)
                   (.setStartPage s-page)
