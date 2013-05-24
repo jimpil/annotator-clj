@@ -7,8 +7,8 @@
  		 [org.clojure/data.zip "0.1.1"]
  		 ;[weissjeffm/clojure.prxml "1.3.0-SNAPSHOT"]
                  [org.clojure/tools.cli "0.2.2"]
-                 [itsy "0.1.1"]
-                 [re-rand "0.1.0"]
+                 ;[itsy "0.1.1"]
+                 ;[re-rand "0.1.0"]
                  [org.apache.lucene/lucene-snowball "3.0.3"]
                  [org.apache.pdfbox/pdfbox "1.7.1"]]
   :jvm-opts ["-Xmx2g" "-server" 
