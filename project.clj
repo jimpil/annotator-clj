@@ -1,4 +1,4 @@
-(defproject annotator-clj "0.3.4"
+(defproject annotator-clj "0.3.5"
   :description "A parallel, dictionary-based annotator tool for text-mining & other NLP-related tasks."
   :url "https://github.com/jimpil/annotator-clj"
   :license {:name "Eclipse Public License"
