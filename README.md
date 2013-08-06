@@ -9,8 +9,8 @@ Text-mining and NLP researchers who require massive amounts of annotated documen
 This project has not been  uploaded to a repository (yet!) so you cannot pull it in automatically. You need to download and potentially install the jar manually in order to use it.
 Download the jars from here if you want to try it out:
 
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.3.4)</a>    
- <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.3.4)</a> 
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator-uber.jar">Standalone jar (uberjar-v0.3.5)</a>    
+ <a href="https://dl.dropbox.com/u/45723414/PAnnotator.jar">Slim jar (jar-v0.3.5)</a> 
 
 There are 3 ways of using this. Refer to instructions.txt or the in-program documentation for more details...
 
@@ -39,7 +39,7 @@ import java.util.Map;
 import clojure.lang.Keyword;
 import clojure.lang.Agent; 
 
-// you need the 'PAnnotator-uber.jar' on your classpath OR the PAnnotator.jar + Clojure 1.4 and above
+// you need the 'PAnnotator-uber.jar' on your classpath OR the PAnnotator.jar + Clojure 1.5 and above
 
 public class PANN {
 	//first we need the map with the appropriate arguments
