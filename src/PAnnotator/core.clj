@@ -325,13 +325,14 @@
 "A saner, more disciplined version of pmap. 
  Submits jobs eagerly but polls for results lazily. 
  Don't use if original ordering of 'coll' matters." 
-[f coll]
- (let [exec (Executors/newFixedThreadPool (inc *cpu-no*))
+([f coll threads]
+ (let [exec (Executors/newFixedThreadPool threads)
        pool (ExecutorCompletionService. exec)
-       futures (try (doall (for [x coll] (.submit pool #(f x))))
-               (finally (.shutdown exec)))] 
- (for [_ futures]  
-   (.. pool take get)) ))
+       futures (try (mapv (fn [x] (.submit pool #(f x))) coll)
+               (finally (.shutdown exec)))]             
+(repeatedly (count futures) #(.. pool take get))))
+([f coll] 
+  (pool-map f coll (+ 2 cpu-no))))
 
 
 (defn fold-into-vec [chunk coll]
@@ -340,17 +341,25 @@
   (r/fold chunk (r/monoid into vector) conj coll))
 
 (defn rmap
-"A fork-join based mapping function that pours the results in a vector." 
-[f coll]
-(fold-into-vec @fj-chunk-size (r/map f coll))) 
+"A high-performance, fork-join based mapping function that uses ArrayList underneath." 
+([f coll fj-chunk-size shuffle?]
+  (r/fold fj-chunk-size r/cat r/append! (r/map f (cond-> coll shuffle? shuffle (not shuffle?) vec))))
+([f coll fj-chunk-size] 
+  (rhmap f coll fj-chunk-size false))  
+([f coll] 
+  (rhmap f coll 1)) )   
 
 (defn mapr
-"A pretty basic map-reduce style function. Will partition the data according to p-size and assign a thread to each partition."  
-([f coll p-size]
- (apply concat ;;concat the inner vectors that represent the partitions
-   (pmap (fn [p] (reduce #(conj % (f %2)) [] p))
-     (partition-all p-size coll))))
-([f coll] (mapr f coll 4)))              
+"A pretty basic map-reduce style mapping function. Will partition the data according to p-size and assign a future to each partition (per pmap)."  
+([f coll p-size shuffle?]
+ (->> (cond-> coll shuffle? shuffle)
+    (partition-all p-size)
+    (pmap #(mapv f %) )  
+    (apply concat)) ) ;;concat the inner vectors that represent the partitions
+([f coll p-size] 
+  (mapr f coll p-size false))    
+([f coll] 
+  (mapr f coll (+ 2 cpu-no))))            
 
 (defn- file->data
 "Read the file f back on memory safely. 
